@@ -1,0 +1,34 @@
+<nav>
+  <div>
+    <h1>Logo</h1>
+  </div>
+  <div>
+    <ul>
+      <li [routerLink]="['/inicio']" [routerLinkActive]="'active'" >Inicio</li>
+      <li [routerLink]="['/nosotros']" [routerLinkActive]="'active'" >Nosotros</li>
+      <li [routerLink]="['/servicios']" [routerLinkActive]="'active'" >Servicios</li>
+      <li [routerLink]="['/contactos']" [routerLinkActive]="'active'" >Contactos</li>
+      <li class="linea" (click)="open()" >En Linea</li>
+    </ul>
+  </div>
+</nav>
+<ngl-modal [header]="'Iniciar sesion'" [(open)]="opened" [prompt]="'error'" dismissOnClickOutside="false">
+  <div class="slds-p-around_medium">
+
+    <div class="slds-col_padded">
+      <ngl-input label="Nick" [error]="hasError ? error : null">
+        <input ngl type="text" [required]="required" [disabled]="disabled" placeholder="Email">
+      </ngl-input>
+    </div>  
+    <div class="slds-col_padded">
+      <ngl-input label="Contraseña" [error]="hasError ? error : null">
+        <input ngl type="password" [required]="required" [disabled]="disabled" placeholder="Contraseña">
+      </ngl-input>
+    </div>
+
+  </div>
+  <ng-template nglModalFooter>
+    <button class="slds-button slds-button_neutral" (click)="cancel()">Entrar</button>
+    <button class="slds-button slds-button_neutral" (click)="cancel()">Cancelar</button>
+  </ng-template>
+</ngl-modal>

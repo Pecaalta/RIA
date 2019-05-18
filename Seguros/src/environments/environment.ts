@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  URLAPI: "",
+  MINAVISOVENCIMINTO: 1000*60*60*24*7
 };
 
 /*
