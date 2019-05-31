@@ -7,6 +7,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ConsultarListadoComponent } from './pages/consultar-listado/consultar-listado.component';
+import { AutentificadoGuard } from './guards/autentificado.guard';
+import { SegurosActivosComponent } from './pages/seguros-activos/seguros-activos.component';
+import { SegurosVencidosComponent } from './pages/seguros-vencidos/seguros-vencidos.component';
+import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
+import { ConsultarClienteComponent } from './pages/consultar-cliente/consultar-cliente.component';
+import { ConsultarVerComponent } from './pages/consultar-ver/consultar-ver.component';
 
 const routes: Routes = [
   { path:"", pathMatch: 'full', redirectTo: "inicio" },
@@ -14,11 +20,10 @@ const routes: Routes = [
   { path:"nosotros", component: NosotrosComponent },
   { path:"servicios", component: ServiciosComponent  },
   { path:"contactos", component: ContactosComponent },
-  { path:"login", component: LoginComponent },
   { path:"registro", component: RegistroComponent },
-  { path:"linea", children: [
+  { path:"linea", canActivate:[AutentificadoGuard] , children: [
 
-    { path:"", pathMatch: 'full', redirectTo: "linea/noticias" },
+    { path:"", pathMatch: 'full', redirectTo: "linea/noticias/lista" },
 
     { path:"noticias", children: [
       { path:"", pathMatch: 'full', redirectTo: "linea/noticias/lista" },
@@ -29,24 +34,24 @@ const routes: Routes = [
     ]},
 
     { path:"consulta", children: [
-      { path:"", pathMatch: 'full', redirectTo: "linea/consulta/lista" },
-      { path:"lista", component: ContactosComponent },
-      { path:"edita", component: RegistroComponent },
-      { path:"crea", component: RegistroComponent },
+      { path:"", component: ConsultarClienteComponent },
+      { path:"lista", component: ConsultarListadoComponent },
+      { path:"edita", component: ConsultarVerComponent },
+      { path:"crea", component: ConsultarVerComponent },
       { path:"**", pathMatch: 'full', redirectTo: "linea/consulta/lista" },
     ]},
 
     { path:"seguros", children: [
-      { path:"", pathMatch: 'full', redirectTo: "linea/seguros/activos" },
-      { path:"vensidos ", component: RegistroComponent },
-      { path:"activos ", component: RegistroComponent },
+      { path:"", component: SegurosActivosComponent },
+      { path:"vensidos ", component: SegurosVencidosComponent },
+      { path:"activos ", component: SegurosActivosComponent },
       { path:"**", pathMatch: 'full', redirectTo: "linea/activos/activos" },
     ]},
 
     { path:"cliente", children: [
       { path:"", pathMatch: 'full', redirectTo: "linea/cliente/lista" },
-      { path:"lista ", component: RegistroComponent },
-      { path:"{id}", component: RegistroComponent },
+      { path:"lista ", component: ListaClienteComponent },
+      { path:"{id}", component: ConsultarClienteComponent },
       { path:"**", pathMatch: 'full', redirectTo: "linea/cliente/lista" },
 
     ]},

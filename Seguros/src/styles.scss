@@ -8,4 +8,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: block;
     max-width: 1000px;
     margin: auto;
+    padding: 20px;
+}
+.titulo {
+    color: #c80000;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.slds-form-element__label {
+    margin-left: 0.5rem;
 }

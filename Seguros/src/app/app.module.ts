@@ -22,6 +22,7 @@ import { SegurosAsignadoComponent } from './pages/seguros-asignado/seguros-asign
 import { SegurosVencidosComponent } from './pages/seguros-vencidos/seguros-vencidos.component';
 import { SegurosActivosComponent } from './pages/seguros-activos/seguros-activos.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NglModule

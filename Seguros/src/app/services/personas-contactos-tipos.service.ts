@@ -1,52 +1,49 @@
 import { Injectable } from '@angular/core';
-import { Session } from '../models/session';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { LoginDto } from '../model/login-dto';
-import { RegistroDto } from '../model/registro-dto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuariosService {
-
-  prefigo:string = "Account";
+export class PersonasContactosTiposService {
+  
+  prefigo = "PersonasContactosTipos";
 
   constructor(
     private httpClient: HttpClient
-    ) { }
+  ) { }
+  
 
-  
-  register(data:RegistroDto){
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo + "Register", data , this.getheaders()).pipe(
-        catchError(this.handleError)
-    )
-  }
-  
-  login(data:LoginDto){
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo + "Login", data , this.getheaders()).pipe(
+  get_all(){
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
-
-  setSession(session:Session){
-    localStorage.setItem("session",JSON.stringify(session));
-  }
-  
-  getSession():Session{
-    let session = localStorage.getItem("session");
-    try {
-      return JSON.parse(session);
-    } catch (error) {
-      return null;
-    }
+  post(data){
+    return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data , this.getheaders()).pipe(
+        catchError(this.handleError)
+    )
   }
 
-  removeSession(){
-    localStorage.removeItem("session")
+  get(id){
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id , this.getheaders()).pipe(
+        catchError(this.handleError)
+    )
+  }
+
+  put(id,data){
+    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + id, data , this.getheaders()).pipe(
+        catchError(this.handleError)
+    )
+  }
+
+  delete(id){
+    return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id , this.getheaders()).pipe(
+        catchError(this.handleError)
+    )
   }
 
   /**
@@ -60,7 +57,7 @@ export class UsuariosService {
       })
     };
   }
-  
+
   /**
   * Devuleve el token en caso de tener un usuario logueado(almacenado en local storage)
   */

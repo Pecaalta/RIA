@@ -1,4 +1,11 @@
-<app-nav-privada></app-nav-privada>
+<app-nav-publica></app-nav-publica>
+
 <div class="container">
- AD
+    <h1 class="titulo">Contactanos</h1>
+    <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Placeholder Text">
+    </ngl-input>
+    <ngl-textarea label="Textarea Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+        <textarea ngl [required]="required" [disabled]="disabled" placeholder="Placeholder Text"></textarea>
+    </ngl-textarea>
 </div>
