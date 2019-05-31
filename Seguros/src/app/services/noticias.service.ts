@@ -16,7 +16,7 @@ export class NoticiasService {
   ) { }
 
   get_all(){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo, this.getheaders()).pipe(
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo).pipe(
         catchError(this.handleError)
     )
   }
