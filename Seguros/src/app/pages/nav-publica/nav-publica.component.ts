@@ -21,6 +21,10 @@ export class NavPublicaComponent implements OnInit {
   user:string = "";
   pass:string = "";
 
+  variant:string = "error"; // error warning success
+  showTopToast = false;
+  msj:string = "";
+
   constructor(
     private router: Router,
     private oUsuariosService:UsuariosService) { }
@@ -34,7 +38,12 @@ export class NavPublicaComponent implements OnInit {
   }
 
   open() {
-    this.opened = !this.opened;
+    let session = this.oUsuariosService.getSession();
+    if (session == null || session.token == null){
+      this.opened = !this.opened;
+    }else {
+      this.router.navigate(['linea']); 
+    }
   }
 
   cancel() {
@@ -44,14 +53,18 @@ export class NavPublicaComponent implements OnInit {
   login(){
     this.oUsuariosService.login({ email: this.user, password: this.pass }).subscribe(
       resultado => {
-        console.log(resultado);
+        this.oUsuariosService.setSession(resultado);
+        this.router.navigate(['linea']); 
       },
       error => {
-        console.log(error);
-        
+        this.showTopToast = true;
+        if(error.responseText != null && error.responseText != ""){
+          this.msj = error.responseText;
+        } else {
+          this.msj = "Algo no fue como deveria intente luego";
+        }
       }
     );
-    this.router.navigate(['linea']); 
   }
   
 }

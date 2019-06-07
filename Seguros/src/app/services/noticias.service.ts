@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { NoticiasDto } from '../model/noticias-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiasService {
 
-  prefigo:string = "Noticias";
+  prefigo:string = "api/Noticias";
 
   constructor(
     private httpClient: HttpClient
@@ -27,25 +28,25 @@ export class NoticiasService {
     )
   }
 
-  post(data){
+  post(data:NoticiasDto){
     return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
-  get(id:number){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders()).pipe(
+  get(id:string){
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id).pipe(
         catchError(this.handleError)
     )
   }
 
-  put(id:number){
+  put(id:string){
     return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
-  delete(id:number){
+  delete(id:string){
     return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders()).pipe(
         catchError(this.handleError)
     )
@@ -69,7 +70,11 @@ export class NoticiasService {
   private getToken() {
     if (localStorage.getItem("SessionSeguros") && localStorage.getItem("SessionSeguros") != '') {
         let Session = JSON.parse(localStorage.getItem("SessionSeguros"));
+        console.log(Session.token);
+        
         return Session.token;
+    }else {
+      console.log("dasd");
     }
     return '';
   }

@@ -17,7 +17,8 @@ export class AutentificadoGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let session = this.oUsuariosService.getSession();
-    if (session != null && session.token) {
+    
+    if (session != null && session.token != "") {
       return true;
     }else {
       this.router.navigate(['inicio']); 

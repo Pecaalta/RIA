@@ -1,4 +1,35 @@
 <app-nav-privada></app-nav-privada>
-<p>
-  agregar-noticia works!
-</p>
+<div class="container">
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="titulo" >Nueva noticia</h2>
+                </div>
+                <div class="slds-no-flex">
+                    <button class="slds-button slds-button_neutral" (click)="guardar_noticia()">Guardar</button>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-size_1-of-3 padding-right-0_5rem">
+                    <div class="slds-m-vertical_medium imagen" >
+                        <input type="file" accept="image/*" (change)="changeListener($event)">
+                        <ngl-file [text]="" [iconName]="icon"><a href="javascript:void(0)" [nglFileCrop]="ratio">
+                            <img [src]="noticia.imagen == null ? 'https://www.lightningdesignsystem.com/assets/images/placeholder-img@16x9.jpg' : noticia.imagen"></a>
+                        </ngl-file>
+                    </div>
+                </div>
+                <div class="slds-size_2-of-3 padding-left-0_5rem">
+                    <ngl-input label="Titulo" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                        <input ngl [(ngModel)]="noticia.titulo" type="input" [required]="required" [disabled]="disabled" placeholder="Placeholder Text">
+                    </ngl-input>
+                    <ngl-textarea label="Contenido" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                        <textarea [(ngModel)]="noticia.texto" ngl [required]="required" [disabled]="disabled" placeholder="Placeholder Text"></textarea>
+                    </ngl-textarea>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

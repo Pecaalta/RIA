@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
 })
 export class ValuesService {
 
-  prefigo = "Values";
+  prefigo = "api/Values";
 
   constructor(
     private httpClient: HttpClient

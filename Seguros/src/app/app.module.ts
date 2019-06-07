@@ -23,6 +23,9 @@ import { SegurosVencidosComponent } from './pages/seguros-vencidos/seguros-venci
 import { SegurosActivosComponent } from './pages/seguros-activos/seguros-activos.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
+import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
+
 
 @NgModule({
   declarations: [
@@ -42,14 +45,16 @@ import { HttpClientModule } from '@angular/common/http';
     SegurosAsignadoComponent,
     SegurosVencidosComponent,
     SegurosActivosComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    ListadoNoticiasComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NglModule
+    NglModule,
+    FormsModule, ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

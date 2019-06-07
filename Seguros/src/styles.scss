@@ -16,6 +16,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-weight: 600;
     margin-bottom: 1rem;
 }
+.sub-titulo {
+    color: #c80000;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+
+}
 .slds-form-element__label {
     margin-left: 0.5rem;
+}
+.img-logo {
+    height: 20px;
+    margin: 0 10px;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+.padding-0_5rem{
+    padding: 0.5rem;
+}
+.padding-left-0_5rem{
+    padding-left: 0.5rem;
+}
+.padding-right-0_5rem{
+    padding-right: 0.5rem;
 }

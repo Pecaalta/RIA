@@ -1,3 +1,23 @@
-<p>
-  registro works!
-</p>
+<div class="conteiner-center ">
+    <div class="box-form">  
+      <h1 class="titulo">Registro</h1>
+      <p>Bienvenido a nuestro sitio de Autogestión.</p>
+      <img class="gb-logo" src="/assets/logo.png" alt="" srcset="">
+
+      <ngl-input label="Usuario" fieldLevelHelpTooltip="Nombre de usuario que usara para logearse" [error]="hasError ? error : null">
+          <input ngl type="input" [(ngModel)]="user" [required]="required" [disabled]="disabled" placeholder="Usuario">
+      </ngl-input>
+      <ngl-input label="Contraseña"  fieldLevelHelpTooltip="Palabra secreta que usara para autentificarse" [error]="hasError ? error : null">
+          <input ngl type="password" [(ngModel)]="pass" [required]="required" [disabled]="disabled" placeholder="Contraseña">
+      </ngl-input>
+      <button class="mt-10 slds-button slds-button_neutral" (click)="registro()">Entrar</button>
+      <div class="loader" [class.active]="cargando">
+          <ngl-spinner [size]="size" [variant]="variant" alternativeText="Loading"></ngl-spinner>
+        </div>
+    </div>
+    <div class="slds-notify_container">
+      <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
+        <h2 class="slds-text-heading_small">{{ msj }}</h2>
+      </ngl-toast>
+    </div>
+</div>

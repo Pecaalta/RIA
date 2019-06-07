@@ -20,24 +20,24 @@ export class UsuariosService {
 
   
   register(data:RegistroDto){
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo + "Register", data , this.getheaders()).pipe(
+    return this.httpClient.post<any>(environment.URLAPI + this.prefigo + "/Register", data , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
   
-  login(data:LoginDto){
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo + "Login", data , this.getheaders()).pipe(
+  login(data:LoginDto){    
+    return this.httpClient.post<any>(environment.URLAPI + this.prefigo + "/Login", data , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
 
   setSession(session:Session){
-    localStorage.setItem("session",JSON.stringify(session));
+    localStorage.setItem("SessionSeguros",JSON.stringify(session));
   }
   
   getSession():Session{
-    let session = localStorage.getItem("session");
+    let session = localStorage.getItem("SessionSeguros");
     try {
       return JSON.parse(session);
     } catch (error) {
@@ -46,7 +46,7 @@ export class UsuariosService {
   }
 
   removeSession(){
-    localStorage.removeItem("session")
+    localStorage.removeItem("SessionSeguros")
   }
 
   /**
@@ -55,21 +55,9 @@ export class UsuariosService {
   getheaders(){
     return {
       headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization': this.getToken()
+          'Content-Type': 'application/json'
       })
     };
-  }
-  
-  /**
-  * Devuleve el token en caso de tener un usuario logueado(almacenado en local storage)
-  */
-  private getToken() {
-    if (localStorage.getItem("SessionSeguros") && localStorage.getItem("SessionSeguros") != '') {
-        let Session = JSON.parse(localStorage.getItem("SessionSeguros"));
-        return Session.token;
-    }
-    return '';
   }
 
   private handleError(error: HttpErrorResponse) {

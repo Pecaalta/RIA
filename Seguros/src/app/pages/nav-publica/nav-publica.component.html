@@ -1,6 +1,6 @@
 <nav class="nav" >
   <div class="logo">
-    <h1>Logo</h1>
+    <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
   </div>
   <div class="btn-menu" *ngIf="bNavModeVertical" (click)="bNavActive = !bNavActive">
     <span class="slds-icon-waffle">
@@ -31,15 +31,15 @@
 
     <div class="slds-col_padded">
       <ngl-input label="Nick" [error]="hasError ? error : null">
-        <input ngl type="text" [required]="required" [disabled]="disabled" placeholder="Email">
+        <input ngl type="text" [(ngModel)]="user" [required]="required" [disabled]="disabled" placeholder="Email">
       </ngl-input>
     </div>  
     <div class="slds-col_padded">
       <ngl-input label="Contraseña" [error]="hasError ? error : null">
-        <input ngl type="password"  [required]="required" [disabled]="disabled" placeholder="Contraseña">
+        <input ngl type="password" [(ngModel)]="pass" [required]="required" [disabled]="disabled" placeholder="Contraseña">
       </ngl-input>
     </div>
-
+    <a class="registro" [routerLink]="['/registro']">Registrate si aun no tienes usuario</a>
   </div>
   <ng-template nglModalFooter>
     <button class="slds-button slds-button_neutral" (click)="login()">Entrar</button>
@@ -52,7 +52,7 @@
   <nav class="slds-nav-vertical" aria-label="Sub page">
     <div class="slds-nav-vertical__section">
       <h2 id="entity-header" class="slds-nav-vertical__title" (click)="bNavActive = !bNavActive">
-        Logo
+        <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
       </h2>
       <ul aria-describedby="entity-header">
         <li class="linea" (click)="open()">Linea</li>
@@ -72,4 +72,10 @@
       </ul>
     </div>
   </nav>
+</div>
+
+<div class="slds-notify_container">
+  <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
+    <h2 class="slds-text-heading_small">{{ msj }}</h2>
+  </ngl-toast>
 </div>
