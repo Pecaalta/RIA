@@ -66,14 +66,13 @@ export class ConsultarListadoComponent implements OnInit {
   }
   
 
-  //data = DATA;
-
   // Initial sort
   sort: INglDatatableSort = { key: 'rank', order: 'asc' };
 
   // Show loading overlay
   loading = false;
 
+  /*
   // Toggle name column
   hideName = false;
 
@@ -86,8 +85,8 @@ export class ConsultarListadoComponent implements OnInit {
   }
 
   toggleData() {
-    //this.data = this.data ? null : DATA;
-  }
+    this.data = this.data ? null : DATA;
+  } */
 
   onRowClick($event: INglDatatableRowClick) {
     console.log('clicked row', $event.data);
