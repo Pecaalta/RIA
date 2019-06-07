@@ -66,7 +66,7 @@ export class ConsultarListadoComponent implements OnInit {
   }
   
 
-  data = DATA;
+  //data = DATA;
 
   // Initial sort
   sort: INglDatatableSort = { key: 'rank', order: 'asc' };
@@ -86,7 +86,7 @@ export class ConsultarListadoComponent implements OnInit {
   }
 
   toggleData() {
-    this.data = this.data ? null : DATA;
+    //this.data = this.data ? null : DATA;
   }
 
   onRowClick($event: INglDatatableRowClick) {
