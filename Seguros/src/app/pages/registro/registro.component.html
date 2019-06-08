@@ -10,6 +10,9 @@
       <ngl-input label="Contraseña"  fieldLevelHelpTooltip="Palabra secreta que usara para autentificarse" [error]="hasError ? error : null">
           <input ngl type="password" [(ngModel)]="pass" [required]="required" [disabled]="disabled" placeholder="Contraseña">
       </ngl-input>
+      <ngl-input label="Confirmar contraseña"  fieldLevelHelpTooltip="Vuelva a ingresar la contraseña" [error]="hasError ? error : null">
+          <input ngl type="password" [(ngModel)]="passConfirm" [required]="required" [disabled]="disabled" placeholder="Confirmar contraseña">
+      </ngl-input>
       <button class="mt-10 slds-button slds-button_neutral" (click)="registro()">Entrar</button>
       <div class="loader" [class.active]="cargando">
           <ngl-spinner [size]="size" [variant]="variant" alternativeText="Loading"></ngl-spinner>
