@@ -23,31 +23,31 @@ export class NoticiasService {
   }
 
   get_active(){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/activas", this.getheaders()).pipe(
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/activas", ).pipe(
         catchError(this.handleError)
     )
   }
 
   post(data:NoticiasDto){
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data , this.getheaders()).pipe(
+    return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data , ).pipe(
         catchError(this.handleError)
     )
   }
 
   get(id:string){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id).pipe(
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders() ).pipe(
         catchError(this.handleError)
     )
   }
 
-  put(id:string){
-    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders()).pipe(
+  put(id:string,data:any){
+    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + id,data ).pipe(
         catchError(this.handleError)
     )
   }
 
   delete(id:string){
-    return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders()).pipe(
+    return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id, ).pipe(
         catchError(this.handleError)
     )
   }
@@ -59,7 +59,7 @@ export class NoticiasService {
     return {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'Authorization': this.getToken()
+          'Authorization': 'Bearer '+this.getToken()
       })
     };
   }
