@@ -65,9 +65,8 @@ export class ConsultarListadoComponent implements OnInit {
     return oDate.toLocaleDateString('es-UY', options);
   }
 
-
   // Initial sort
-  sort: INglDatatableSort = { key: 'rank', order: 'asc' };
+  sort: INglDatatableSort = { key: 'id_noticia', order: 'asc' };
 
   // Show loading overlay
   loading = false;
@@ -79,7 +78,7 @@ export class ConsultarListadoComponent implements OnInit {
   onSort($event: INglDatatableSort) {
     const { key, order } = $event;
     this.lista_noticias.sort((a: any, b: any) => {
-      return (key === 'rank' ? b[key] - a[key] : b[key].localeCompare(a[key])) * (order === 'desc' ? 1 : -1);
+      return (key === 'id_noticia' ? b[key] - a[key] : b[key].localeCompare(a[key])) * (order === 'desc' ? 1 : -1);
     });
   }
 

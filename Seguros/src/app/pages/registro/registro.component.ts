@@ -13,7 +13,7 @@ export class RegistroComponent implements OnInit {
 
   user:string = "";
   pass:string = "";
-
+  passConfirm = "";
 
   variant:string = "error"; // error warning success
   showTopToast = false;
@@ -34,13 +34,19 @@ export class RegistroComponent implements OnInit {
     } else if(this.pass == ""){
       this.msj = "No ha ingresado una contraseña";
       this.showTopToast = true;
+    } else if(this.pass.length < 6){
+      this.msj = "La contraseña debe tener al menos 6 caracteres";
+      this.showTopToast = true;
+    } else if(this.pass != this.passConfirm){
+      this.msj = "La contraseña no coincide, vuelva a intentarlo";
+      this.showTopToast = true;
     } else {
       this.cargando = true;
       this.oUsuariosService.register({ email: this.user, password: this.pass }).subscribe(
         resultado => {
           this.variant = "success";
           this.cargando = false;
-          this.msj = "Su usuario ya a sido registrado";
+          this.msj = "Su usuario ya ha sido registrado";
           this.showTopToast = true;
 
           console.log(resultado);
@@ -52,7 +58,7 @@ export class RegistroComponent implements OnInit {
           if(error.responseText != null && error.responseText != ""){
             this.msj = error.responseText;
           } else {
-            this.msj = "Algo no fue como deveria intente luego";
+            this.msj = "Algo no fue como deberia, intente luego";
           }
         }
       );
