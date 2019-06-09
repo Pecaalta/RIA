@@ -2,13 +2,24 @@
 <div class="container">
   <div class="slds-card">
       <div class="slds-card_body">
-          <ngl-input label="Titulo" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-              <input ngl [(ngModel)]="consulta.titulo" type="input" [required]="required" [disabled]="disabled" placeholder="Placeholder Text">
+          <ngl-input label="Título" fieldLevelHelpTooltip="Some helpful information" [error]="hasErrorTitulo ? error : null">
+              <input ngl [(ngModel)]="consulta.titulo" type="input" [required]="required" [disabled]="disabled" placeholder="Título de la consulta">
           </ngl-input>
-          <ngl-textarea label="Contenido" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-              <textarea [(ngModel)]="consulta.consulta" ngl [required]="required" [disabled]="disabled" placeholder="Placeholder Text"></textarea>
+          <ngl-textarea label="Consulta" fieldLevelHelpTooltip="Some helpful information" [error]="hasErrorConsulta ? error : null">
+              <textarea [(ngModel)]="consulta.consulta" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu consulta aquí"></textarea>
           </ngl-textarea>
           <button (click)="post_consulta()">Enviar consulta</button>
       </div>
+      <ngl-modal [(open)]="open">
+          <div class="slds-p-around_medium">
+            <ng-container *ngIf="enviada == true; else elseTemplate">
+                <p>Tu consulta ha sido enviada, cuando uno de nuestro agentes responda a su consulta le será notificado.</p>
+                <button (click)="redirigir()">Volver a la pagina de consultas</button>
+              </ng-container>
+            <ng-template #elseTemplate>
+                <p>Ha ocurrido un error al enviar la consulta, por favor intentelo nuevamente.</p>
+            </ng-template>
+          </div>
+      </ngl-modal>
   </div>
 </div>

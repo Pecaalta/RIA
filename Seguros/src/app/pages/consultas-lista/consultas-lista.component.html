@@ -11,20 +11,22 @@
                 </div>
             </header>
         </div>
-        <div class="slds-card_body">
-            <div>
-                <ng-container *ngIf="consultas!=null && consultas!= ''; else elseTemplate">
-                    <p>hay algo</p>
-                    <ul>
-                        <li *ngFor="let item of consultas">
-                                {{item.titulo}}
-                        </li>
-                    </ul>
-                </ng-container>
-                <ng-template #elseTemplate>
-                    <p>no hay na de na</p>
+        <div class="slds-card_body cuadroConsulta">
+            <ngl-tabset [(selected)]="selectedTab" [variant]="variant">
+                <ng-template ngl-tab label="Pendientes de lectura">
+                    
                 </ng-template>
-            </div>
+                <ng-template ngl-tab label="Pendientes de respuesta">
+                    <li *ngFor="let item of consultas">
+                        <ng-container *ngIf="item.respuesta != null">
+                            <a [routerLink]="[ '/user/consulta/ver', item.id_Consulta ]">{{item.titulo}}</a>
+                        </ng-container>
+                    </li>
+                </ng-template>
+                <ng-template ngl-tab label="Resueltas">
+                    
+                </ng-template>
+            </ngl-tabset>
         </div>
     </div>
 </div>

@@ -19,6 +19,7 @@ import { AgregarNoticiaComponent } from './pages/agregar-noticia/agregar-noticia
 //Consultas - Lucas
 import { ConsultasListaComponent } from "./pages/consultas-lista/consultas-lista.component";
 import { ConsultasNuevaComponent } from './pages/consultas-nueva/consultas-nueva.component';
+import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
@@ -72,6 +73,7 @@ const routes: Routes = [
       { path:"", component: ConsultasListaComponent },
       { path:"lista", component: ConsultasListaComponent },
       { path:"nueva", component: ConsultasNuevaComponent },
+      { path:"ver/:id", component: ConsultasVerComponent },
       { path:"**", pathMatch: 'full', redirectTo: "user/consulta/lista" },
     ]},
     { path:"**", pathMatch: 'full', redirectTo: "consulta" },

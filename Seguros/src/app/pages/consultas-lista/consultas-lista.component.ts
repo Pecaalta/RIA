@@ -12,6 +12,10 @@ export class ConsultasListaComponent implements OnInit {
 
   cargando = false;
   consultas:Consultas[] = [];
+  variant = 'scoped';
+  id = 0;
+  selectedTab: any = 'sum';
+  details: number[] = [];
 
   consulta:ConsultaDto = {
     titulo: null,
