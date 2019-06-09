@@ -1,6 +1,7 @@
 export class Session {
     constructor(
-        public nombre: string,
-        public is_admin: Boolean,
+        public email: string,
+        public role: string,
+        public token: string
     ){};
 }

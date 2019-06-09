@@ -1,14 +1,57 @@
-<nav>
-  <div class="salir">
-    Salir
+
+<nav class="nav" >
+  <ul>
+    <li (click)="logout()">Salir</li>
+  </ul>
+  <div class="btn-menu" *ngIf="bNavModeVertical" (click)="bNavActive = !bNavActive">
+    <span class="slds-icon-waffle">
+      <span class="slds-r1"></span>
+      <span class="slds-r2"></span>
+      <span class="slds-r3"></span>
+      <span class="slds-r4"></span>
+      <span class="slds-r5"></span>
+      <span class="slds-r6"></span>
+      <span class="slds-r7"></span>
+      <span class="slds-r8"></span>
+      <span class="slds-r9"></span>
+    </span>
   </div>
-  <div>
+  <div *ngIf="!bNavModeVertical">
     <ul>
-      <li [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'" >Consulta</li>
-      <li [routerLink]="['/linea/seguros/activos']" [routerLinkActive]="'active'" >Activos</li>
-      <li [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'" >Vencidos</li>
-      <li [routerLink]="['/linea/cliente']" [routerLinkActive]="'active'" >Clientes</li>
-      <li [routerLink]="['/linea/noticias']" [routerLinkActive]="'active'" >Noticias</li>
+      <li *ngIf="isAdmin" [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'">Consulta</li>
+      <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/activos']" [routerLinkActive]="'active'">Activos</li>
+      <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'">Vencidos</li>
+      <li *ngIf="!isAdmin" [routerLink]="['/linea/cliente']" [routerLinkActive]="'active'">Clientes</li>
+      <li *ngIf="!isAdmin" [routerLink]="['/linea/noticias']" [routerLinkActive]="'active'">Noticias</li>
     </ul>
   </div>
 </nav>
+
+
+<div class="vertical-nav" *ngIf="bNavModeVertical" [class.active]="bNavActive" >
+  <nav class="slds-nav-vertical" aria-label="Sub page">
+    <div class="slds-nav-vertical__section">
+      <h2 id="entity-header" class="slds-nav-vertical__title" (click)="bNavActive = !bNavActive">
+        <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
+      </h2>
+      <ul aria-describedby="entity-header">
+        <li *ngIf="isAdmin" [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Consulta</a>
+        </li>
+        <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/activos']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Activos</a>
+        </li>
+        <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Vencidos</a>
+        </li>
+        <li *ngIf="!isAdmin" [routerLink]="['/linea/cliente']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Clientes</a>
+        </li>
+        <li *ngIf="!isAdmin" [routerLink]="['/linea/noticias']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Noticias</a>
+        </li>
+    
+      </ul>
+    </div>
+  </nav>
+</div>

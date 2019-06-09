@@ -22,6 +22,15 @@ import { SegurosAsignadoComponent } from './pages/seguros-asignado/seguros-asign
 import { SegurosVencidosComponent } from './pages/seguros-vencidos/seguros-vencidos.component';
 import { SegurosActivosComponent } from './pages/seguros-activos/seguros-activos.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
+import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
+import { NavUserComponent } from './pages/nav-user/nav-user.component';
+import { ConsultasListaComponent } from './pages/consultas-lista/consultas-lista.component';
+import { ConsultasNuevaComponent } from './pages/consultas-nueva/consultas-nueva.component';
+import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.component';
+import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
+
 
 @NgModule({
   declarations: [
@@ -41,13 +50,21 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
     SegurosAsignadoComponent,
     SegurosVencidosComponent,
     SegurosActivosComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    ListadoNoticiasComponent,
+    NavUserComponent,
+    ConsultasListaComponent,
+    ConsultasNuevaComponent,
+    ConsultasVerComponent,
+    VerNoticiasComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NglModule
+    NglModule,
+    FormsModule, ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

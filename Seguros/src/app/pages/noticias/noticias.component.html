@@ -1,18 +1,23 @@
 <app-nav-publica></app-nav-publica>
 <div class="container padding-top-1rem">
-  <div class="noticia">
-    <h1>Titulo</h1>
-    <span>10/10/1010</span>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error amet corporis, magni ullam, mollitia tempore animi nostrum magnam quos nihil nobis id! Voluptas qui, laborum rerum provident odio sit nisi!</p>
+    <article  *ngFor="let noticia of lista_noticias" class="slds-card" [routerLink]="['/' + noticia.id_Noticia]">
+      <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+          <div class="slds-media__figure">
+              <img [src]="print_img(noticia)" alt="">
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-card__header-title">{{ noticia.titulo }}</h2>
+            <span>{{ print_date(noticia.fechaHora) }}</span>
+            <p>{{ noticia.texto }}</p>
+          </div>
+        </header>
+      </div>
+    </article>
+  <div *ngIf="!cargando && (lista_noticias == null || lista_noticias.length == 0)" class=msg_no_noticias>
+    <H1>NO TENEMOS NOTICIAS</H1>
   </div>
-  <div class="noticia">
-    <h1>Titulo</h1>
-    <span>10/10/1010</span>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error amet corporis, magni ullam, mollitia tempore animi nostrum magnam quos nihil nobis id! Voluptas qui, laborum rerum provident odio sit nisi!</p>
-  </div>
-  <div class="noticia">
-    <h1>Titulo</h1>
-    <span>10/10/1010</span>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error amet corporis, magni ullam, mollitia tempore animi nostrum magnam quos nihil nobis id! Voluptas qui, laborum rerum provident odio sit nisi!</p>
-  </div>
+</div>
+<div class="loader" [class.active]="cargando">
+  <ngl-spinner alternativeText="Loading"></ngl-spinner>
 </div>

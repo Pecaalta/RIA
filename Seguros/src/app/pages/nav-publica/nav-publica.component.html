@@ -1,8 +1,21 @@
-<nav>
-  <div>
-    <h1>Logo</h1>
+<nav class="nav" >
+  <div class="logo">
+    <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
   </div>
-  <div>
+  <div class="btn-menu" *ngIf="bNavModeVertical" (click)="bNavActive = !bNavActive">
+    <span class="slds-icon-waffle">
+      <span class="slds-r1"></span>
+      <span class="slds-r2"></span>
+      <span class="slds-r3"></span>
+      <span class="slds-r4"></span>
+      <span class="slds-r5"></span>
+      <span class="slds-r6"></span>
+      <span class="slds-r7"></span>
+      <span class="slds-r8"></span>
+      <span class="slds-r9"></span>
+    </span>
+  </div>
+  <div *ngIf="!bNavModeVertical">
     <ul>
       <li [routerLink]="['/inicio']" [routerLinkActive]="'active'" >Inicio</li>
       <li [routerLink]="['/nosotros']" [routerLinkActive]="'active'" >Nosotros</li>
@@ -12,23 +25,57 @@
     </ul>
   </div>
 </nav>
+
 <ngl-modal [header]="'Iniciar sesion'" [(open)]="opened" [prompt]="'error'" dismissOnClickOutside="false">
   <div class="slds-p-around_medium">
 
     <div class="slds-col_padded">
       <ngl-input label="Nick" [error]="hasError ? error : null">
-        <input ngl type="text" [required]="required" [disabled]="disabled" placeholder="Email">
+        <input ngl type="text" [(ngModel)]="user" [required]="required" [disabled]="disabled" placeholder="Email">
       </ngl-input>
     </div>  
     <div class="slds-col_padded">
       <ngl-input label="Contraseña" [error]="hasError ? error : null">
-        <input ngl type="password" [required]="required" [disabled]="disabled" placeholder="Contraseña">
+        <input ngl type="password" [(ngModel)]="pass" [required]="required" [disabled]="disabled" placeholder="Contraseña">
       </ngl-input>
     </div>
-
+    <a class="registro" [routerLink]="['/registro']">Registrate si aun no tienes usuario</a>
   </div>
   <ng-template nglModalFooter>
-    <button class="slds-button slds-button_neutral" (click)="cancel()">Entrar</button>
+    <button class="slds-button slds-button_neutral" (click)="login()">Entrar</button>
     <button class="slds-button slds-button_neutral" (click)="cancel()">Cancelar</button>
   </ng-template>
 </ngl-modal>
+
+
+<div class="vertical-nav" *ngIf="bNavModeVertical" [class.active]="bNavActive" >
+  <nav class="slds-nav-vertical" aria-label="Sub page">
+    <div class="slds-nav-vertical__section">
+      <h2 id="entity-header" class="slds-nav-vertical__title" (click)="bNavActive = !bNavActive">
+        <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
+      </h2>
+      <ul aria-describedby="entity-header">
+        <li class="linea" (click)="open()">Linea</li>
+        <li [routerLink]="['/inicio']" [routerLinkActive]="'slds-is-active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">inicio</a>
+        </li>
+        <li [routerLink]="['/nosotros']" [routerLinkActive]="'slds-is-active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Nosotros</a>
+        </li>
+        <li [routerLink]="['/servicios']" [routerLinkActive]="'slds-is-active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Servicios</a>
+        </li>
+        <li [routerLink]="['/contactos']" [routerLinkActive]="'slds-is-active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Contactos</a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="slds-notify_container">
+  <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
+    <h2 class="slds-text-heading_small">{{ msj }}</h2>
+  </ngl-toast>
+</div>

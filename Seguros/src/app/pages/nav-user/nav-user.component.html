@@ -1,0 +1,47 @@
+
+<nav class="nav" >
+  <ul>
+    <li (click)="logout()">Salir</li>
+    <div class="usuarioActualCuadro"> 
+      <svg aria-hidden="true" class="slds-icon" title="when needed">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#user"></use>
+      </svg>
+      <p class="usuarioActual">{{user}}</p>
+    </div>
+  </ul>
+  
+  <div class="btn-menu" *ngIf="bNavModeVertical" (click)="bNavActive = !bNavActive">
+    <span class="slds-icon-waffle">
+      <span class="slds-r1"></span>
+      <span class="slds-r2"></span>
+      <span class="slds-r3"></span>
+      <span class="slds-r4"></span>
+      <span class="slds-r5"></span>
+      <span class="slds-r6"></span>
+      <span class="slds-r7"></span>
+      <span class="slds-r8"></span>
+      <span class="slds-r9"></span>
+    </span>
+  </div>
+  <div *ngIf="!bNavModeVertical">
+    <ul>
+      <li [routerLink]="['/user/consulta']" [routerLinkActive]="'active'">Consulta</li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="vertical-nav" *ngIf="bNavModeVertical" [class.active]="bNavActive" >
+  <nav class="slds-nav-vertical" aria-label="Sub page">
+    <div class="slds-nav-vertical__section">
+      <h2 id="entity-header" class="slds-nav-vertical__title" (click)="bNavActive = !bNavActive">
+        <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
+      </h2>
+      <ul aria-describedby="entity-header">
+        <li [routerLink]="['/user/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Consulta</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

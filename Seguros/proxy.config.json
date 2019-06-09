@@ -1,0 +1,9 @@
+{
+    "/api/*": {
+       "target": "http://13.68.169.97/TDW2019_V2",
+       "secure": false,
+       "changeOrigin": true,
+       "logLevel": "debug",
+       "pathRewrite": {"^/api" : "http://13.68.169.97/TDW2019_V2"}
+    }
+  }

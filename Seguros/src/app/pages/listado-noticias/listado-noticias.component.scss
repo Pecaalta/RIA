@@ -1,0 +1,15 @@
+
+.width-50px {
+    width: 100px!important;
+}
+.w-100 {
+    width: 100%;
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    .slds-checkbox_toggle {
+        width: auto!important;
+        float: right!important;
+    }
+}
