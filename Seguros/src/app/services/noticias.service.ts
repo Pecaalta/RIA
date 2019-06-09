@@ -23,52 +23,31 @@ export class NoticiasService {
   }
 
   get_active(){
-<<<<<<< HEAD
     return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/activas").pipe(
-=======
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/activas", ).pipe(
->>>>>>> e1346955e52928d8ede6cab4c476c29853c777ee
         catchError(this.handleError)
     )
   }
 
-  post(data:NoticiasDto){
-<<<<<<< HEAD
+  post(data:NoticiasDto){    
     return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data ).pipe(
-=======
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data , ).pipe(
->>>>>>> e1346955e52928d8ede6cab4c476c29853c777ee
         catchError(this.handleError)
     )
   }
 
   get(id:string){
-<<<<<<< HEAD
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id,this.getheaders()).pipe(
-=======
     return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders() ).pipe(
->>>>>>> e1346955e52928d8ede6cab4c476c29853c777ee
         catchError(this.handleError)
     )
   }
 
-<<<<<<< HEAD
   put(noticia:NoticiasDto){
     return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + noticia.id_Noticia,noticia).pipe(
-=======
-  put(id:string,data:any){
-    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + id,data ).pipe(
->>>>>>> e1346955e52928d8ede6cab4c476c29853c777ee
         catchError(this.handleError)
     )
   }
 
   delete(id:string){
-<<<<<<< HEAD
     return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id).pipe(
-=======
-    return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id, ).pipe(
->>>>>>> e1346955e52928d8ede6cab4c476c29853c777ee
         catchError(this.handleError)
     )
   }
@@ -80,11 +59,7 @@ export class NoticiasService {
     return {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
-<<<<<<< HEAD
-          'Authorization': 'Bearer' + this.getToken()
-=======
           'Authorization': 'Bearer '+this.getToken()
->>>>>>> e1346955e52928d8ede6cab4c476c29853c777ee
       })
     };
   }
