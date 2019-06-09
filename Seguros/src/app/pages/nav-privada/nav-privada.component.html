@@ -18,11 +18,11 @@
   </div>
   <div *ngIf="!bNavModeVertical">
     <ul>
-      <li [routerLink]="['/admin/consulta']" [routerLinkActive]="'active'">Consulta</li>
-      <li [routerLink]="['/admin/seguros/activos']" [routerLinkActive]="'active'">Activos</li>
-      <li [routerLink]="['/admin/seguros/vensidos']" [routerLinkActive]="'active'">Vencidos</li>
-      <li [routerLink]="['/admin/cliente']" [routerLinkActive]="'active'">Clientes</li>
-      <li [routerLink]="['/admin/noticias']" [routerLinkActive]="'active'">Noticias</li>
+      <li *ngIf="isAdmin" [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'">Consulta</li>
+      <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/activos']" [routerLinkActive]="'active'">Activos</li>
+      <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'">Vencidos</li>
+      <li *ngIf="!isAdmin" [routerLink]="['/linea/cliente']" [routerLinkActive]="'active'">Clientes</li>
+      <li *ngIf="!isAdmin" [routerLink]="['/linea/noticias']" [routerLinkActive]="'active'">Noticias</li>
     </ul>
   </div>
 </nav>
@@ -35,19 +35,19 @@
         <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
       </h2>
       <ul aria-describedby="entity-header">
-        <li [routerLink]="['/admin/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+        <li *ngIf="isAdmin" [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Consulta</a>
         </li>
-        <li [routerLink]="['/admin/seguros/activos']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+        <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/activos']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Activos</a>
         </li>
-        <li [routerLink]="['/admin/seguros/vensidos']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+        <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Vencidos</a>
         </li>
-        <li [routerLink]="['/admin/cliente']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+        <li *ngIf="!isAdmin" [routerLink]="['/linea/cliente']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Clientes</a>
         </li>
-        <li [routerLink]="['/admin/noticias']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+        <li *ngIf="!isAdmin" [routerLink]="['/linea/noticias']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Noticias</a>
         </li>
     

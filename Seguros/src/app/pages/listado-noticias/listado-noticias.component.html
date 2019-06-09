@@ -12,13 +12,15 @@
           </header>
         </div>
         <div class="slds-card__body">
-          <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="lista_noticias" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">          
+          <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="lista_noticias" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)">          
               <ngl-datatable-column cellClass="width-50px" headClass="width-50px" heading="Activo" key="activa" truncate sortable>
-                <ng-template nglDatatableCell nglDatatable let-value>
-                  <ngl-checkbox-toggle style="width: 50px" enabledText="" disabledText="">
-                    <input ngl [(ngModel)]="value" type="checkbox">
-                  </ngl-checkbox-toggle>
-                </ng-template>
+                <div class="toggle">
+                  <ng-template nglDatatableCell nglDatatable let-row="row" let-value>
+                    <ngl-checkbox-toggle style="width: 50px" enabledText="" disabledText="">
+                      <input ngl (change)="toggle(row)" [(ngModel)]="value" type="checkbox">
+                    </ngl-checkbox-toggle>
+                  </ng-template>
+                </div>
               </ngl-datatable-column>
               
               <ngl-datatable-column heading="Titulo" key="titulo" sortable></ngl-datatable-column>
@@ -38,10 +40,10 @@
               </ngl-datatable-column>
               
               <!-- Loading overlay-->
-              <ng-template nglLoadingOverlay>
-                <div class="slds-box slds-box_small slds-theme_shade slds-text-align_center">Loading...</div>
+              <ng-template class="loader" nglLoadingOverlay>
+                <ngl-spinner alternativeText="Loading"></ngl-spinner>
               </ng-template>
-    
+
               <!-- No rows overlay-->
               <ng-template nglNoRowsOverlay>No data available in table!</ng-template>
       

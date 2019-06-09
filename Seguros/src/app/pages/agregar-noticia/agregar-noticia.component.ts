@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoticiasDto } from 'src/app/model/noticias-dto';
 import { NoticiasService } from 'src/app/services/noticias.service';
 import { ActivatedRoute } from "@angular/router";
+import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 
 
 @Component({
@@ -18,6 +19,15 @@ export class AgregarNoticiaComponent implements OnInit {
     texto: "",
     activa: true
   }
+  cargando:boolean = false;
+
+  showFilename = true;
+  ratio = '16-by-9';
+  icon = 'doctype:img';
+  
+  variant:string = "error"; // error warning success
+  showTopToast = false;
+  msj:string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -30,24 +40,26 @@ export class AgregarNoticiaComponent implements OnInit {
 
   get(){
     let id = this.route.snapshot.paramMap.get("id");
-    this.oNoticiasService.get(id).subscribe(
-      resultado => {
-        this.noticia = resultado;
-      },
-      error => {
-        console.log(error);
-        
-      }
-    );
-
+    if (id != null){
+      this.cargando = true;
+      this.oNoticiasService.get(id).subscribe(
+        resultado => {
+          this.cargando = false;
+          this.noticia = resultado;
+        },
+        error => {
+          console.log(error);
+          this.norificacion("Algo salio mal en la carga de su noticia", "1");
+          this.cargando = false;        
+        }
+      );
+    }
   }
 
-  showFilename = true;
-  ratio = '16-by-9';
-  icon = 'doctype:img';
   changeListener($event) : void {
     this.readThis($event.target);
   }
+
   readThis(inputValue: any): void {
     var file:File = inputValue.files[0];
     var myReader:FileReader = new FileReader();
@@ -58,17 +70,44 @@ export class AgregarNoticiaComponent implements OnInit {
   }
   
   guardar_noticia() {
-    this.noticia.fechaHora = new Date();
-    this.oNoticiasService.post(this.noticia).subscribe(
-      resultado => {
-        console.log(resultado);
-         
-      },
-      error => {
-        console.log(error);
-        
-      }
-    );
+    if(this.noticia.imagen == null) this.norificacion("Falta la imagen de la noticia", "2");
+    else if(this.noticia.texto == "") this.norificacion("Falta un texto", "2");
+    else if(this.noticia.titulo == "") this.norificacion("Falta un titulo", "2");
+    else {
+      this.cargando = false;
+      this.noticia.fechaHora = new Date();
+      this.oNoticiasService.post(this.noticia).subscribe(
+        resultado => {
+          this.norificacion("Su noticia se a guardado con exito", "3");
+          this.cargando = false;
+        },
+        error => {
+          console.log(error);
+          this.norificacion("Error", "error");
+          this.cargando = false;        
+        }
+      );
+
+    }
   }
 
+  norificacion(msj:string, variant:string){
+    switch (variant) {
+      case 'error':case '1':
+          this.variant = 'error'; 
+        break;
+      case 'warning':case '2':
+          this.variant = 'warning';
+        break;
+      case 'success':case '3':
+          this.variant = 'success';
+        break;
+      default:
+          this.variant = 'warning';
+        break;
+    }
+    this.msj = msj;
+    console.log("notificacion",msj);
+    this.showTopToast = true;
+  }
 }

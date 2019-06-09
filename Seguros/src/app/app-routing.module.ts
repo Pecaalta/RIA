@@ -15,6 +15,7 @@ import { ConsultarClienteComponent } from './pages/consultar-cliente/consultar-c
 import { ConsultarVerComponent } from './pages/consultar-ver/consultar-ver.component';
 import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
 import { AgregarNoticiaComponent } from './pages/agregar-noticia/agregar-noticia.component';
+import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
 
 //Consultas - Lucas
 import { ConsultasListaComponent } from "./pages/consultas-lista/consultas-lista.component";
@@ -28,16 +29,16 @@ const routes: Routes = [
   { path:"servicios", component: ServiciosComponent  },
   { path:"contactos", component: ContactosComponent },
   { path:"registro", component: RegistroComponent },
-  { path:"admin", canActivate:[AutentificadoGuard] , children: [
+  { path:"linea", canActivateChild:[AutentificadoGuard] , children: [
     
-    { path:"", pathMatch: 'full', redirectTo: "admin/noticias/lista" },
+    { path:"", pathMatch: 'full', redirectTo: "linea/noticias/lista" },
 
     { path:"noticias", children: [
       { path:"", component: ListadoNoticiasComponent },
       { path:"lista", component: ListadoNoticiasComponent },
       { path:"crea", component: AgregarNoticiaComponent },
       { path:"editar/:id", component: AgregarNoticiaComponent },
-      { path:"**", pathMatch: 'full', redirectTo: "admin/noticias/lista" },   
+      { path:"**", pathMatch: 'full', redirectTo: "linea/noticias/lista" },   
     ]},
 
     { path:"consulta", children: [
@@ -45,21 +46,21 @@ const routes: Routes = [
       { path:"lista", component: ConsultarListadoComponent },
       { path:"edita", component: ConsultarVerComponent },
       { path:"crea", component: ConsultarVerComponent },
-      { path:"**", pathMatch: 'full', redirectTo: "admin/consulta/lista" },
+      { path:"**", pathMatch: 'full', redirectTo: "linea/consulta/lista" },
     ]},
 
     { path:"seguros", children: [
       { path:"", component: SegurosActivosComponent },
       { path:"vensidos ", component: SegurosVencidosComponent },
       { path:"activos ", component: SegurosActivosComponent },
-      { path:"**", pathMatch: 'full', redirectTo: "admin/activos/activos" },
+      { path:"**", pathMatch: 'full', redirectTo: "linea/activos/activos" },
     ]},
 
     { path:"cliente", children: [
-      { path:"", pathMatch: 'full', redirectTo: "admin/cliente/lista" },
+      { path:"", pathMatch: 'full', redirectTo: "linea/cliente/lista" },
       { path:"lista ", component: ListaClienteComponent },
       { path:"{id}", component: ConsultarClienteComponent },
-      { path:"**", pathMatch: 'full', redirectTo: "admin/cliente/lista" },
+      { path:"**", pathMatch: 'full', redirectTo: "linea/cliente/lista" },
 
     ]},
     { path:"**", pathMatch: 'full', redirectTo: "noticias" },
@@ -79,6 +80,7 @@ const routes: Routes = [
     { path:"**", pathMatch: 'full', redirectTo: "consulta" },
 
   ]},
+  { path:":id", component: VerNoticiasComponent },
   { path:"**", pathMatch: 'full', redirectTo: "inicio" },
 ];
 

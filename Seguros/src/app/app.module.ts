@@ -29,6 +29,7 @@ import { NavUserComponent } from './pages/nav-user/nav-user.component';
 import { ConsultasListaComponent } from './pages/consultas-lista/consultas-lista.component';
 import { ConsultasNuevaComponent } from './pages/consultas-nueva/consultas-nueva.component';
 import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.component';
+import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.compo
     ConsultasListaComponent,
     ConsultasNuevaComponent,
     ConsultasVerComponent,
+    VerNoticiasComponent
   ],
   imports: [
     BrowserModule,

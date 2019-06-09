@@ -14,6 +14,10 @@ export class ListadoNoticiasComponent implements OnInit {
 
   lista_noticias:NoticiasDto[] = [];
 
+  variant:string = "error"; // error warning success
+  showTopToast = false;
+  msj:string = "";
+  
   constructor(
     private oNoticiasService:NoticiasService
   ) { }
@@ -31,11 +35,13 @@ export class ListadoNoticiasComponent implements OnInit {
     this.oNoticiasService.delete(nId).subscribe(
       resultado => {
         this.cargando = false;
+        this.norificacion("Se guardo de manera exitosa", "3");
         this.get_all(); 
       },
       error => {
         console.log(error);
         this.cargando = false;
+        this.norificacion("Error al intentar eleiminar", "1");
         
       }
     );
@@ -54,7 +60,7 @@ export class ListadoNoticiasComponent implements OnInit {
       error => {
         console.log(error);
         this.cargando = false;
-        
+        this.norificacion("Error al cargar los datos", "1");
       }
     );
   }
@@ -84,5 +90,40 @@ export class ListadoNoticiasComponent implements OnInit {
     });
   }
 
+  toggle(noticia:NoticiasDto){
+    noticia.activa = !noticia.activa; 
+    console.log(noticia);
+    this.oNoticiasService.put(noticia).subscribe(
+      resultado => {
+        this.cargando = false;
+        this.norificacion("Cambios guardados", "3");
+      },
+      error => {
+        console.log(error);
+        this.norificacion("Algo no va como deveria", "1");
+        this.cargando = false;  
+      }
+    );
+  }
+
+  norificacion(msj:string, variant:string){
+    switch (variant) {
+      case 'error':case '1':
+          this.variant = 'error'; 
+        break;
+      case 'warning':case '2':
+          this.variant = 'warning';
+        break;
+      case 'success':case '3':
+          this.variant = 'success';
+        break;
+      default:
+          this.variant = 'warning';
+        break;
+    }
+    this.msj = msj;
+    console.log("notificacion",msj);
+    this.showTopToast = true;
+  }
 
 }

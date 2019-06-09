@@ -64,29 +64,23 @@ export class ConsultarListadoComponent implements OnInit {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return oDate.toLocaleDateString('es-UY', options);
   }
-  
 
   // Initial sort
-  sort: INglDatatableSort = { key: 'rank', order: 'asc' };
+  sort: INglDatatableSort = { key: 'id_noticia', order: 'asc' };
 
   // Show loading overlay
   loading = false;
 
-  /*
   // Toggle name column
   hideName = false;
 
   // Custom sort function
   onSort($event: INglDatatableSort) {
     const { key, order } = $event;
-    this.data.sort((a: any, b: any) => {
-      return (key === 'rank' ? b[key] - a[key] : b[key].localeCompare(a[key])) * (order === 'desc' ? 1 : -1);
+    this.lista_noticias.sort((a: any, b: any) => {
+      return (key === 'id_noticia' ? b[key] - a[key] : b[key].localeCompare(a[key])) * (order === 'desc' ? 1 : -1);
     });
   }
-
-  toggleData() {
-    this.data = this.data ? null : DATA;
-  } */
 
   onRowClick($event: INglDatatableRowClick) {
     console.log('clicked row', $event.data);
