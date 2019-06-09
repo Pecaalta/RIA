@@ -55,7 +55,7 @@ export class NavPublicaComponent implements OnInit {
       resultado => {
         this.oUsuariosService.setSession(resultado);
         if (resultado.role == "ADMIN" ) {
-          this.router.navigate(['admin']); 
+          this.router.navigate(['linea']); 
         } else {
           this.router.navigate(['user']); 
           console.log("pepito clavo un clavito");

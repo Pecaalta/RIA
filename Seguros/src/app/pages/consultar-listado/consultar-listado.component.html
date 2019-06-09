@@ -7,7 +7,7 @@
               <h2 class="titulo">Noticias</h2>
             </div>
             <div class="slds-no-flex">
-              <button class="slds-button slds-button_neutral" [routerLink]="['/admin/noticias/crea']">Crear la concha de la lora porque no me lleva a donde le digo, hijo de una camionada de putas</button>
+              <button class="slds-button slds-button_neutral" [routerLink]="['/linea/noticias/crea']">Crear la concha de la lora porque no me lleva a donde le digo, hijo de una camionada de putas</button>
             </div>
           </header>
         </div>
@@ -32,7 +32,7 @@
               <ngl-datatable-column headClass="text-center" heading="Ver" key="id_Noticia">
                 <ng-template nglDatatableHeading><strong class="text-center w-100">Ver</strong></ng-template>
                 <ng-template nglDatatableCell let-value>
-                  <button type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="right" [routerLink]="['/admin/noticias/editar/' + value]">Editar</button>
+                  <button type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="right" [routerLink]="['/linea/noticias/editar/' + value]">Editar</button>
                   <button type="button" nglButton variant="destructive" iconName="utility:delete" iconPosition="right" (click)="delete(value)">Delete</button>
                 </ng-template>
               </ngl-datatable-column>
