@@ -21,9 +21,15 @@ export class NavPrivadaComponent implements OnInit {
   user:string = "";
   pass:string = "";
 
+  isAdmin:boolean = false;
+
   constructor(
     private router: Router,
-    private oUsuariosService:UsuariosService) { }
+    private oUsuariosService:UsuariosService) { 
+      this.isAdmin = this.oUsuariosService.isAdmin();  
+      console.log(this.isAdmin);
+      
+    }
 
   ngOnInit() {
     this.bNavModeVertical = !(window.innerWidth > 720);

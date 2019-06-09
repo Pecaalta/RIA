@@ -36,3 +36,34 @@
         color: #999;
     }
 }
+
+.slds-media__figure {
+    padding: 0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    .slds-media__figure {
+        border-radius: 0px;
+    }
+    .slds-card {
+        overflow: hidden;
+    }
+    .slds-media__figure {
+        width: 100%;
+        display: block;
+    }
+    .slds-media_center {
+        flex-wrap: wrap;
+    }
+    .slds-card__header {
+        padding: 0;
+    }
+    .slds-media__figure {
+        padding: 0;
+    }
+    .slds-media__body {
+        padding: .5rem;
+    }
+}

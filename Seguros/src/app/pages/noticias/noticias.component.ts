@@ -10,23 +10,32 @@ import { NoticiasDto } from 'src/app/model/noticias-dto';
 export class NoticiasComponent implements OnInit {
 
   lista_noticias:NoticiasDto[] = [];
-
+  cargando:boolean = false;
+  
   constructor(
     private oNoticiasService:NoticiasService
-  ) { }
-
-  ngOnInit() {
+  ) {
+    this.cargando = true;
     this.oNoticiasService.get_active().subscribe(
       resultado => {
+        this.cargando = false;
         this.lista_noticias = resultado; 
       },
       error => {
+        this.cargando = false;
         console.log(error);
-        
       }
     );
+   }
+
+  ngOnInit() {
   }
 
+  print_img(noticia){
+    if(noticia == null || noticia.imagen == null || noticia.imagen == '') return "/assets/noimagen.png";
+    else return noticia.imagen;
+  }
+  
   print_date(date:string){
     let oDate = new Date(date);
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

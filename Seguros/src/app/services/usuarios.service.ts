@@ -31,6 +31,18 @@ export class UsuariosService {
     )
   }
 
+  isAdmin(){
+    let session = localStorage.getItem("SessionSeguros");
+    try {
+      let s:Session = JSON.parse(session);
+      console.log(s);
+      
+      return s != null && s.role == 'ADMIN';
+    } catch (error) {
+      return false;
+    }
+
+  }
 
   setSession(session:Session){
     localStorage.setItem("SessionSeguros",JSON.stringify(session));

@@ -15,6 +15,7 @@ import { ConsultarClienteComponent } from './pages/consultar-cliente/consultar-c
 import { ConsultarVerComponent } from './pages/consultar-ver/consultar-ver.component';
 import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
 import { AgregarNoticiaComponent } from './pages/agregar-noticia/agregar-noticia.component';
+import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path:"servicios", component: ServiciosComponent  },
   { path:"contactos", component: ContactosComponent },
   { path:"registro", component: RegistroComponent },
-  { path:"linea", canActivate:[AutentificadoGuard] , children: [
+  { path:"linea", canActivateChild:[AutentificadoGuard] , children: [
     
     { path:"", pathMatch: 'full', redirectTo: "linea/noticias/lista" },
 
@@ -60,6 +61,7 @@ const routes: Routes = [
     { path:"**", pathMatch: 'full', redirectTo: "noticias" },
 
   ]},
+  { path:":id", component: VerNoticiasComponent },
   { path:"**", pathMatch: 'full', redirectTo: "inicio" },
 ];
 

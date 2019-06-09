@@ -64,9 +64,7 @@ export class ConsultarListadoComponent implements OnInit {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return oDate.toLocaleDateString('es-UY', options);
   }
-  
 
-  data = DATA;
 
   // Initial sort
   sort: INglDatatableSort = { key: 'rank', order: 'asc' };
@@ -80,13 +78,9 @@ export class ConsultarListadoComponent implements OnInit {
   // Custom sort function
   onSort($event: INglDatatableSort) {
     const { key, order } = $event;
-    this.data.sort((a: any, b: any) => {
+    this.lista_noticias.sort((a: any, b: any) => {
       return (key === 'rank' ? b[key] - a[key] : b[key].localeCompare(a[key])) * (order === 'desc' ? 1 : -1);
     });
-  }
-
-  toggleData() {
-    this.data = this.data ? null : DATA;
   }
 
   onRowClick($event: INglDatatableRowClick) {

@@ -25,6 +25,7 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
+import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-notic
     SegurosVencidosComponent,
     SegurosActivosComponent,
     NosotrosComponent,
-    ListadoNoticiasComponent
+    ListadoNoticiasComponent,
+    VerNoticiasComponent
   ],
   imports: [
     BrowserModule,
