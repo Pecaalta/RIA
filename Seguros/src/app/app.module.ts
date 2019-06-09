@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
 import { NavUserComponent } from './pages/nav-user/nav-user.component';
 import { ConsultasListaComponent } from './pages/consultas-lista/consultas-lista.component';
+import { ConsultasNuevaComponent } from './pages/consultas-nueva/consultas-nueva.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ConsultasListaComponent } from './pages/consultas-lista/consultas-lista
     ListadoNoticiasComponent,
     NavUserComponent,
     ConsultasListaComponent,
+    ConsultasNuevaComponent,
   ],
   imports: [
     BrowserModule,

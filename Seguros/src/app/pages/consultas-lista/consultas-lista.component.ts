@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Consultas } from 'src/app/model/consultas';
+import { ConsultasService } from 'src/app/services/consultas.service';
+import { ConsultaDto } from 'src/app/model/consulta-dto';
 
 @Component({
   selector: 'app-consultas-lista',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultasListaComponent implements OnInit {
 
-  constructor() { }
+  cargando = false;
+  consultas:Consultas[] = [];
+
+  consulta:ConsultaDto = {
+    titulo: null,
+    consulta: null
+  }
+
+  constructor(
+    private oConsultasService:ConsultasService
+  ) { }
 
   ngOnInit() {
+    this.oConsultasService.get_all();
+    this.get_consultasUsuario();
+  }
+
+  get_consultasUsuario(){
+    this.cargando = true;
+    this.oConsultasService.get_usuario().subscribe(
+      resultado=>{
+        this.cargando = false;
+        this.consultas = resultado;
+      },
+      error=>{
+        this.cargando = false;
+        console.log(error);
+      }
+    );
   }
 
 }

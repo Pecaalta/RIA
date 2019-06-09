@@ -1,0 +1,14 @@
+<app-nav-user></app-nav-user>
+<div class="container">
+  <div class="slds-card">
+      <div class="slds-card_body">
+          <ngl-input label="Titulo" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+              <input ngl [(ngModel)]="consulta.titulo" type="input" [required]="required" [disabled]="disabled" placeholder="Placeholder Text">
+          </ngl-input>
+          <ngl-textarea label="Contenido" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+              <textarea [(ngModel)]="consulta.consulta" ngl [required]="required" [disabled]="disabled" placeholder="Placeholder Text"></textarea>
+          </ngl-textarea>
+          <button (click)="post_consulta()">Enviar consulta</button>
+      </div>
+  </div>
+</div>

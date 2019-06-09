@@ -1,1 +1,30 @@
 <app-nav-user></app-nav-user>
+<div class="container">
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="titulo">Tus consultas</h2>
+                </div>
+                <div class="slds-no-flex">
+                    <button class="slds-button slds-button_neutral" [routerLink]="['/user/consulta/nueva']">Realizar nueva consulta</button>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card_body">
+            <div>
+                <ng-container *ngIf="consultas!=null && consultas!= ''; else elseTemplate">
+                    <p>hay algo</p>
+                    <ul>
+                        <li *ngFor="let item of consultas">
+                                {{item.titulo}}
+                        </li>
+                    </ul>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <p>no hay na de na</p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,13 +18,13 @@ export class ConsultasService {
   ) { }
 
   get_all(){
-    return this.httpClient.get<any>(environment.URLAPI+this.prefijo).pipe(
+    return this.httpClient.get<any>(environment.URLAPI+this.prefijo, this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }
 
   get_usuario(){
-    return this.httpClient.get<any>(environment.URLAPI+this.prefijo+"/usuario").pipe(
+    return this.httpClient.get<any>(environment.URLAPI+this.prefijo+"/usuario", this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }
