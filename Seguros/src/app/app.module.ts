@@ -25,6 +25,8 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
+import { NavUserComponent } from './pages/nav-user/nav-user.component';
+import { ConsultasListaComponent } from './pages/consultas-lista/consultas-lista.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-notic
     SegurosVencidosComponent,
     SegurosActivosComponent,
     NosotrosComponent,
-    ListadoNoticiasComponent
+    ListadoNoticiasComponent,
+    NavUserComponent,
+    ConsultasListaComponent,
   ],
   imports: [
     BrowserModule,

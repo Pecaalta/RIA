@@ -13,7 +13,7 @@ export class RegistroComponent implements OnInit {
 
   user:string = "";
   pass:string = "";
-  passConfirm = "";
+  passConfirm:string = "";
 
   variant:string = "error"; // error warning success
   showTopToast = false;
@@ -36,6 +36,9 @@ export class RegistroComponent implements OnInit {
       this.showTopToast = true;
     } else if(this.pass.length < 6){
       this.msj = "La contraseña debe tener al menos 6 caracteres";
+      this.showTopToast = true;
+    }else if(this.pass.length > 100){
+      this.msj = "La contraseña puede tener como maximo 100 caracteres";
       this.showTopToast = true;
     } else if(this.pass != this.passConfirm){
       this.msj = "La contraseña no coincide, vuelva a intentarlo";

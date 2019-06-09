@@ -54,7 +54,12 @@ export class NavPublicaComponent implements OnInit {
     this.oUsuariosService.login({ email: this.user, password: this.pass }).subscribe(
       resultado => {
         this.oUsuariosService.setSession(resultado);
-        this.router.navigate(['linea']); 
+        if (resultado.role == "ADMIN" ) {
+          this.router.navigate(['admin']); 
+        } else {
+          this.router.navigate(['user']); 
+          console.log("pepito clavo un clavito");
+        }
       },
       error => {
         this.showTopToast = true;
