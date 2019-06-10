@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Consultas } from 'src/app/model/consultas';
+import { ActivatedRoute } from '@angular/router';
 import { ConsultasService } from 'src/app/services/consultas.service';
+import { StrignDto } from 'src/app/model/string-dto';
 
 @Component({
-  selector: 'app-consultas-ver',
-  templateUrl: './consultas-ver.component.html',
-  styleUrls: ['./consultas-ver.component.scss']
+  selector: 'app-consultas-admin-ver',
+  templateUrl: './consultas-admin-ver.component.html',
+  styleUrls: ['./consultas-admin-ver.component.scss']
 })
-export class ConsultasVerComponent implements OnInit {
+export class ConsultasAdminVerComponent implements OnInit {
 
   idConsulta:string;
   consultas:Consultas[] = [];
+
+  consultaTexto:StrignDto ={
+    value: null
+  }
 
   cargando:boolean = false;
 
@@ -28,7 +33,7 @@ export class ConsultasVerComponent implements OnInit {
 
   get_consultasUsuario(){
     this.cargando = true;
-    this.oConsultasService.get_usuario().subscribe(
+    this.oConsultasService.get_all().subscribe(
       resultado=>{
         this.cargando = false;
         this.consultas = resultado;
@@ -45,5 +50,15 @@ export class ConsultasVerComponent implements OnInit {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return oDate.toLocaleDateString('es-UY', options);
   }
-  
+
+  put_respuesta(){
+    this.oConsultasService.put_respuesta(this.idConsulta, this.consultaTexto).subscribe(
+      resultado => {
+        console.log(resultado);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

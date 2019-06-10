@@ -1,13 +1,10 @@
-<app-nav-user></app-nav-user>
+<app-nav-privada></app-nav-privada>
 <div class="container">
     <div class="slds-card">
         <div class="slds-card__header slds-grid">
             <header class="slds-media slds-media_center slds-has-flexi-truncate">
                 <div class="slds-media__body">
-                    <h2 class="titulo">Tus consultas</h2>
-                </div>
-                <div class="slds-no-flex">
-                    <button class="slds-button slds-button_neutral" [routerLink]="['/user/consulta/nueva']">Realizar nueva consulta</button>
+                    <h2 class="titulo">Consultas de clientes</h2>
                 </div>
             </header>
         </div>
@@ -15,12 +12,12 @@
             <ngl-tabset [(selected)]="selectedTab" [variant]="variant">
                 <ng-template ngl-tab label="Pendientes de lectura">
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinLeer" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
-                        <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
-                            <ng-template nglDatatableCell let-value>
-                                <a [routerLink]="[ '/user/consulta/ver', value ]" (click)="put_respuestaVista(value)">Ver</a>
-                            </ng-template>
-                        </ngl-datatable-column>
-                        <ngl-datatable-column heading="Asunto" key="titulo" sortable></ngl-datatable-column>
+                      <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
+                        <ng-template nglDatatableCell let-value>
+                          <a [routerLink]="[ '/linea/consulta/ver', value ]" (click)="put_consultaVista(value)">Ver</a>
+                        </ng-template>
+                      </ngl-datatable-column>  
+                      <ngl-datatable-column heading="Asunto" key="titulo" sortable></ngl-datatable-column>
                         <ngl-datatable-column heading="Fecha de envío" key="fechaHora" truncate sortable>
                             <ng-template nglDatatableCell let-value>
                                 {{ print_date(value) }}
@@ -31,14 +28,14 @@
                             <div class="slds-box slds-box_small slds-theme_shade slds-text-align_center">Cargando...</div>
                         </ng-template>
                         <!-- No rows overlay-->
-                        <ng-template nglNoRowsOverlay>No tienes nuevas consultas respondidas para leer.</ng-template>
+                        <ng-template nglNoRowsOverlay>No tienes nuevas consultas para leer.</ng-template>
                     </table>
                 </ng-template>
                 <ng-template ngl-tab label="Pendientes de respuesta">
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinResponder" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
                             <ng-template nglDatatableCell let-value>
-                                <a [routerLink]="[ '/user/consulta/ver', value ]">Ver</a>
+                                <a [routerLink]="[ '/linea/consulta/ver', value ]">Ver</a>
                             </ng-template>
                         </ngl-datatable-column>
                         <ngl-datatable-column heading="Asunto" key="titulo" sortable>
@@ -63,7 +60,7 @@
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasResueltas" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
                             <ng-template nglDatatableCell let-value>
-                                <a [routerLink]="[ '/user/consulta/ver', value ]">Ver</a>
+                                <a [routerLink]="[ '/linea/consulta/ver', value ]">Ver</a>
                             </ng-template>
                         </ngl-datatable-column>
                         <ngl-datatable-column heading="Asunto" key="titulo" sortable></ngl-datatable-column>
@@ -77,7 +74,7 @@
                             <div class="slds-box slds-box_small slds-theme_shade slds-text-align_center">Cargando...</div>
                         </ng-template>
                         <!-- No rows overlay-->
-                        <ng-template nglNoRowsOverlay>No tienes consultas respondidas que hayas leído previamente.</ng-template>
+                        <ng-template nglNoRowsOverlay>No tienes consultas que hayas respondido.</ng-template>
                     </table>
                 </ng-template>
             </ngl-tabset>

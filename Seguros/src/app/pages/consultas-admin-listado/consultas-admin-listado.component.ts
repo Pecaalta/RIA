@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Consultas } from 'src/app/model/consultas';
 import { ConsultasService } from 'src/app/services/consultas.service';
-import { ConsultaDto } from 'src/app/model/consulta-dto';
-import { element } from '@angular/core/src/render3';
 
 @Component({
-  selector: 'app-consultas-lista',
-  templateUrl: './consultas-lista.component.html',
-  styleUrls: ['./consultas-lista.component.scss']
+  selector: 'app-consultas-admin-listado',
+  templateUrl: './consultas-admin-listado.component.html',
+  styleUrls: ['./consultas-admin-listado.component.scss']
 })
-export class ConsultasListaComponent implements OnInit {
+export class ConsultasAdminListadoComponent implements OnInit {
 
   cargando = false;
   consultas:Consultas[] = [];
@@ -22,27 +20,22 @@ export class ConsultasListaComponent implements OnInit {
   selectedTab: any = 'sum';
   details: number[] = [];
 
-  consulta:ConsultaDto = {
-    titulo: null,
-    consulta: null
-  }
-
   constructor(
     private oConsultasService:ConsultasService
   ) { }
 
   ngOnInit() {
     this.oConsultasService.get_all();
-    this.get_consultasUsuario();
+    this.get_consultas();
   }
 
-  get_consultasUsuario(){
+  get_consultas(){
     this.cargando = true;
-    this.oConsultasService.get_usuario().subscribe(
+    this.oConsultasService.get_all().subscribe(
       resultado=>{
         this.cargando = false;
         this.consultas = resultado;
-        this.sinResponder();
+        this.ordenarConsultas();
       },
       error=>{
         this.cargando = false;
@@ -57,20 +50,20 @@ export class ConsultasListaComponent implements OnInit {
     return oDate.toLocaleDateString('es-UY', options);
   }
 
-  sinResponder(){
+  ordenarConsultas(){
     this.consultas.forEach(element => {
-      if(element.respuesta.length <= 0){
-        this.consultasSinResponder.push(element);
-      }else if(element.respuesta.length > 0 && element.respuestaVista == false){
+      if(element.consultaVista == false){
         this.consultasSinLeer.push(element);
+      }else if(element.respuesta.length <= 0 || element.respuesta == null){
+        this.consultasSinResponder.push(element);
       }else{
         this.consultasResueltas.push(element);
       }
     });
   }
 
-  put_respuestaVista(idConsulta:string){
-    this.oConsultasService.put_respuestaVista(idConsulta).subscribe(
+  put_consultaVista(idConsulta:string){
+    this.oConsultasService.put_consultaVista(idConsulta).subscribe(
       resultado => {
         console.log(resultado);
       },

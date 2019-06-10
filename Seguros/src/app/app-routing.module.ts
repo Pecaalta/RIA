@@ -21,6 +21,8 @@ import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.componen
 import { ConsultasListaComponent } from "./pages/consultas-lista/consultas-lista.component";
 import { ConsultasNuevaComponent } from './pages/consultas-nueva/consultas-nueva.component';
 import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.component';
+import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/consultas-admin-listado.component';
+import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
@@ -42,10 +44,9 @@ const routes: Routes = [
     ]},
 
     { path:"consulta", children: [
-      { path:"", component: ConsultarClienteComponent },
-      { path:"lista", component: ConsultarListadoComponent },
-      { path:"edita", component: ConsultarVerComponent },
-      { path:"crea", component: ConsultarVerComponent },
+      { path:"", component: ConsultasAdminListadoComponent },
+      { path:"lista", component: ConsultasAdminListadoComponent },
+      { path:"ver/:id", component: ConsultasAdminVerComponent },
       { path:"**", pathMatch: 'full', redirectTo: "linea/consulta/lista" },
     ]},
 

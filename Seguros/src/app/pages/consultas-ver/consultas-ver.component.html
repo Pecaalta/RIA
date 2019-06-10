@@ -1,8 +1,42 @@
 <app-nav-user></app-nav-user>
 <div class="container">
-  <div class="slds-m-vertical_medium">
-    <div class="slds-box slds-is-relative slds-theme_default slds-m-bottom_large">
-      <p>haha</p>
+  <div *ngFor="let item of consultas">
+    <div  *ngIf="item.id_Consulta == idConsulta">
+      <div class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__body">
+              <h2 class="sub-titulo">
+                {{item.titulo}}
+              </h2>
+              <p>Fecha de envío: {{print_date(item.fechaHora)}}</p>
+              <ng-container *ngIf="item.consultaVista == true; else elseTemplate" st>
+                <p style="color: red">La consulta fue leída por un administrador.</p>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <p style="color: red">La consulta aún no ha sido leída por un administrador.</p>
+              </ng-template>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card_body" style="margin-left: 1rem">
+          <h5 class="subTituloConsulta">
+            Tu consulta:
+          </h5>
+          <p>{{item.consulta}}</p>
+          <p>{{item.respuestaVista}}</p>
+          <br>
+          <h5 class="subTituloConsulta">
+              Respuesta:
+            </h5>
+          <ng-container *ngIf="item.respuesta.length > 0; else elseTemplate2">
+            <p>{{item.respuesta}}</p>
+          </ng-container>
+          <ng-template #elseTemplate2>
+            <p style="color: red">En cuanto un administrador lea su consulta le respondera a la brevedad.</p>
+          </ng-template>
+        </div>
+      </div>
     </div>
-  </div>=
+  </div>
 </div>
