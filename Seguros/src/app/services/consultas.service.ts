@@ -35,18 +35,18 @@ export class ConsultasService {
     )
   }
 
-  put_consultaVista(id:string,data:any){
-    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/consultavista/"+id, data).pipe(
+  put_consultaVista(id:string){
+    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/consultavista/"+id, this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }
-  put_respuesta(id:string,data:any){
-    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuesta/"+id, data).pipe(
+  put_respuesta(id:string){
+    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuesta/"+id, this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }
-  put_respuestaVista(id:string,data:any){
-    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuestavista/"+id, data).pipe(
+  put_respuestaVista(id:string){
+    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuestavista/"+id, this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }
