@@ -66,7 +66,7 @@ const routes: Routes = [
     { path:"**", pathMatch: 'full', redirectTo: "noticias" },
 
   ]},
-  { path:"user", canActivate:[AutentificadoGuard] , children: [
+  { path:"user", canActivateChild:[AutentificadoGuard] , children: [
     
     { path:"", pathMatch: 'full', redirectTo: "user/consulta/lista" },
 
