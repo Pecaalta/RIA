@@ -17,7 +17,7 @@
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinLeer" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
                             <ng-template nglDatatableCell let-value>
-                                <a [routerLink]="[ '/user/consulta/ver', value ]">Ver</a>
+                                <a [routerLink]="[ '/user/consulta/ver', value ]" (click)="put_respuestaVista(value)">Ver</a>
                             </ng-template>
                         </ngl-datatable-column>
                         <ngl-datatable-column heading="Asunto" key="titulo" sortable></ngl-datatable-column>

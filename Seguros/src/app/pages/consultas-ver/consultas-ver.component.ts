@@ -45,17 +45,5 @@ export class ConsultasVerComponent implements OnInit {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return oDate.toLocaleDateString('es-UY', options);
   }
-
-  put_respuestaVista(){
-    this.oConsultasService.put_respuestaVista(this.idConsulta).subscribe(
-      resultado => {
-        console.log(resultado);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
   
 }

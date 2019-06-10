@@ -69,4 +69,15 @@ export class ConsultasListaComponent implements OnInit {
     });
   }
 
+  put_respuestaVista(idConsulta:string){
+    this.oConsultasService.put_respuestaVista(idConsulta).subscribe(
+      resultado => {
+        console.log(resultado);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }

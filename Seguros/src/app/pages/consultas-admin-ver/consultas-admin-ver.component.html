@@ -26,7 +26,7 @@
               <p>{{item.respuesta}}</p>
             </ng-container>
             <ng-template #elseTemplate2>
-              <ngl-textarea label="Consulta" fieldLevelHelpTooltip="Some helpful information" [error]="hasErrorConsulta ? error : null">
+              <ngl-textarea label="Respuesta a la consulta" fieldLevelHelpTooltip="Some helpful information" [error]="hasErrorConsulta ? error : null">
                 <textarea [(ngModel)]="consultaTexto.value" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu consulta aquí"></textarea>
               </ngl-textarea>
               <button (click)="put_respuesta()">Enviar respuesta</button>
