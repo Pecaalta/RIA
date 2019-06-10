@@ -1,0 +1,38 @@
+<app-nav-privada></app-nav-privada>
+<div class="container">
+    <div *ngFor="let item of consultas">
+      <div  *ngIf="item.id_Consulta == idConsulta">
+        <div class="slds-card">
+          <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+              <div class="slds-media__body">
+                <h2 class="sub-titulo">
+                  {{item.titulo}}
+                </h2>
+                <p>Fecha de envío: {{print_date(item.fechaHora)}}</p>
+              </div>
+            </header>
+          </div>
+          <div class="slds-card_body" style="margin-left: 1rem">
+            <h5 class="subTituloConsulta">
+              Consulta del cliente:
+            </h5>
+            <p>{{item.consulta}}</p>
+            <br>
+            <h5 class="subTituloConsulta">
+                Respuesta:
+              </h5>
+            <ng-container *ngIf="item.respuesta.length > 0; else elseTemplate2">
+              <p>{{item.respuesta}}</p>
+            </ng-container>
+            <ng-template #elseTemplate2>
+              <ngl-textarea label="Consulta" fieldLevelHelpTooltip="Some helpful information" [error]="hasErrorConsulta ? error : null">
+                <textarea [(ngModel)]="consultaTexto.value" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu consulta aquí"></textarea>
+              </ngl-textarea>
+              <button (click)="put_respuesta()">Enviar respuesta</button>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

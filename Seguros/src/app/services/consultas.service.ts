@@ -40,8 +40,8 @@ export class ConsultasService {
       catchError(this.handleError)
     )
   }
-  put_respuesta(id:string){
-    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuesta/"+id, this.getheaders()).pipe(
+  put_respuesta(id:string, data:any){
+    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuesta/"+id, data, this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }

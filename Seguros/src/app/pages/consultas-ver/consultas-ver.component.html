@@ -29,7 +29,7 @@
           <h5 class="subTituloConsulta">
               Respuesta:
             </h5>
-          <ng-container *ngIf="expression; else elseTemplate2">
+          <ng-container *ngIf="item.respuesta.length > 0; else elseTemplate2">
             <p>{{item.respuesta}}</p>
           </ng-container>
           <ng-template #elseTemplate2>

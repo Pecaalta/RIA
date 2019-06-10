@@ -30,6 +30,8 @@ import { ConsultasListaComponent } from './pages/consultas-lista/consultas-lista
 import { ConsultasNuevaComponent } from './pages/consultas-nueva/consultas-nueva.component';
 import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.component';
 import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
+import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/consultas-admin-listado.component';
+import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.componen
     ConsultasListaComponent,
     ConsultasNuevaComponent,
     ConsultasVerComponent,
-    VerNoticiasComponent
+    VerNoticiasComponent,
+    ConsultasAdminListadoComponent,
+    ConsultasAdminVerComponent
   ],
   imports: [
     BrowserModule,
