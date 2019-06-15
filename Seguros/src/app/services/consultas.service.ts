@@ -36,7 +36,7 @@ export class ConsultasService {
   }
 
   put_consultaVista(id:string){
-    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/consultavista/"+id, this.getheaders()).pipe(
+    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/consultavista/"+id, null, this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }
@@ -46,7 +46,7 @@ export class ConsultasService {
     )
   }
   put_respuestaVista(id:string){
-    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuestavista/"+id, this.getheaders()).pipe(
+    return this.httpClient.put<any>(environment.URLAPI+this.prefijo+"/respuestavista/"+id, null, this.getheaders()).pipe(
       catchError(this.handleError)
     )
   }
