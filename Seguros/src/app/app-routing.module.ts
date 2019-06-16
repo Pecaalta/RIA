@@ -24,6 +24,9 @@ import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.compo
 import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/consultas-admin-listado.component';
 import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
 
+//Tipos de seguro - Mariano
+import { TiposdeseguroNuevoComponent } from './tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
+
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
   { path:"inicio", component: NoticiasComponent },
