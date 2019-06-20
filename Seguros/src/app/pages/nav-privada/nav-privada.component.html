@@ -21,6 +21,7 @@
       <li *ngIf="isAdmin" [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'">Consulta</li>
       <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/activos']" [routerLinkActive]="'active'">Activos</li>
       <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'">Vencidos</li>
+      <li *ngIf="isAdmin" [routerLink]="['/linea/tiposdeseguros']" [routerLinkActive]="'active'">Tipos de seguros</li>
       <li *ngIf="!isAdmin" [routerLink]="['/linea/cliente']" [routerLinkActive]="'active'">Clientes</li>
       <li *ngIf="!isAdmin" [routerLink]="['/linea/noticias']" [routerLinkActive]="'active'">Noticias</li>
     </ul>
@@ -43,6 +44,9 @@
         </li>
         <li *ngIf="isAdmin" [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Vencidos</a>
+        </li>
+        <li *ngIf="isAdmin" [routerLink]="['/linea/tiposdeseguros']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Tipos de seguros</a>
         </li>
         <li *ngIf="!isAdmin" [routerLink]="['/linea/cliente']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Clientes</a>
