@@ -32,9 +32,9 @@ import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.compo
 import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
 import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/consultas-admin-listado.component';
 import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
-import { TiposdeseguroNuevoComponent } from './tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
-import { TiposdeseguroListaComponent } from './tiposdeseguro-lista/tiposdeseguro-lista.component';
-import { TiposdeseguroVerComponent } from './tiposdeseguro-ver/tiposdeseguro-ver.component';
+import { TiposdeseguroNuevoComponent } from './pages/tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
+import { TiposdeseguroListaComponent } from './pages/tiposdeseguro-lista/tiposdeseguro-lista.component';
+import { TiposdeseguroVerComponent } from './pages/tiposdeseguro-ver/tiposdeseguro-ver.component';
 
 
 @NgModule({
