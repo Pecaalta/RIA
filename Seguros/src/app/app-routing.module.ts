@@ -60,6 +60,14 @@ const routes: Routes = [
       { path:"**", pathMatch: 'full', redirectTo: "linea/activos/activos" },
     ]},
 
+    { path:"tiposdeseguro", children: [
+   //   { path:"", component: ListadoNoticiasComponent },
+   //   { path:"lista", component: ListadoNoticiasComponent },
+      { path:"crea", component: TiposdeseguroNuevoComponent },
+   //   { path:"editar/:id", component: AgregarNoticiaComponent },
+      { path:"**", pathMatch: 'full', redirectTo: "linea/tiposdeseguro/lista" },   
+    ]},
+
     { path:"cliente", children: [
       { path:"", pathMatch: 'full', redirectTo: "linea/cliente/lista" },
       { path:"lista ", component: ListaClienteComponent },
