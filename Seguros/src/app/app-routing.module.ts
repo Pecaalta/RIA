@@ -25,9 +25,9 @@ import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/
 import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
 
 //Tipos de seguro - Mariano
-import { TiposdeseguroNuevoComponent } from './tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
-import { TiposdeseguroListaComponent } from './tiposdeseguro-lista/tiposdeseguro-lista.component';
-import { TiposdeseguroVerComponent } from './tiposdeseguro-ver/tiposdeseguro-ver.component';
+import { TiposdeseguroNuevoComponent } from './pages/tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
+import { TiposdeseguroListaComponent } from './pages/tiposdeseguro-lista/tiposdeseguro-lista.component';
+import { TiposdeseguroVerComponent } from './pages/tiposdeseguro-ver/tiposdeseguro-ver.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
