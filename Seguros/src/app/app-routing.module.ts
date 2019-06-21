@@ -26,6 +26,7 @@ import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consulta
 
 //Tipos de seguro - Mariano
 import { TiposdeseguroNuevoComponent } from './tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
+import { TiposdeseguroListaComponent } from './tiposdeseguro-lista/tiposdeseguro-lista.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
@@ -61,10 +62,10 @@ const routes: Routes = [
     ]},
 
     { path:"tiposdeseguro", children: [
-   //   { path:"", component: ListadoNoticiasComponent },
-   //   { path:"lista", component: ListadoNoticiasComponent },
+      { path:"", component: TiposdeseguroListaComponent },
+      { path:"lista", component: TiposdeseguroListaComponent },
       { path:"crea", component: TiposdeseguroNuevoComponent },
-   //   { path:"editar/:id", component: AgregarNoticiaComponent },
+      { path:"editar/:id", component: TiposdeseguroNuevoComponent },
       { path:"**", pathMatch: 'full', redirectTo: "linea/tiposdeseguro/lista" },   
     ]},
 

@@ -33,6 +33,7 @@ import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.componen
 import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/consultas-admin-listado.component';
 import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
 import { TiposdeseguroNuevoComponent } from './tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
+import { TiposdeseguroListaComponent } from './tiposdeseguro-lista/tiposdeseguro-lista.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { TiposdeseguroNuevoComponent } from './tiposdeseguro-nuevo/tiposdeseguro
     VerNoticiasComponent,
     ConsultasAdminListadoComponent,
     ConsultasAdminVerComponent,
-    TiposdeseguroNuevoComponent
+    TiposdeseguroNuevoComponent,
+    TiposdeseguroListaComponent
   ],
   imports: [
     BrowserModule,
