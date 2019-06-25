@@ -61,7 +61,7 @@ export class RegistroComponent implements OnInit {
           if(error.responseText != null && error.responseText != ""){
             this.msj = error.responseText;
           } else {
-            this.msj = "Algo no fue como deberia, intente luego";
+            this.msj = "Algo no sucedio como deberia, intente luego";
           }
         }
       );

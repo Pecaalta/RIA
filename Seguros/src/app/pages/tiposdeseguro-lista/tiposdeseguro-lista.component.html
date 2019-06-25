@@ -1,3 +1,12 @@
-<p>
-  tiposdeseguro-lista works!
-</p>
+<div class="conteiner-center ">
+    <h1 class="titulo">Tipos de seguros</h1>
+  <div class ="wrapper">
+    <div class ="contact-item" ng-repeat="servicio in TipoServicios| orderBy:'id'">
+    <div>
+      {{servicio.id}}
+    </div>
+    </div>
+
+  </div>
+
+</div>
