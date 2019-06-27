@@ -62,7 +62,7 @@ export class TiposdeseguroListaComponent implements OnInit {
    }
 
    // Initial sort
-  sort: INglDatatableSort = { key: 'fechaHora', order: 'asc' };
+  sort: INglDatatableSort = { key: 'nombre', order: 'asc' };
 
   // Show loading overlay
   loading = false;
@@ -86,7 +86,7 @@ export class TiposdeseguroListaComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.notificacion("Algo no va como deveria", "1");
+        this.notificacion("Algo no va como deberia", "1");
         this.cargando = false;  
       }
     );
