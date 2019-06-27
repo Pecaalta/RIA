@@ -29,7 +29,7 @@ export class TiposdeseguroNuevoComponent implements OnInit {
   registro() { 
     this.variant = "warning";
     if (this.nombre == "") {
-      this.msj = "No ha ingresado el nnombre del tipo de seguro";
+      this.msj = "No ha ingresado el nombre del tipo de seguro";
       this.showTopToast = true;
     } else
       if (this.color == "") {
@@ -41,7 +41,7 @@ export class TiposdeseguroNuevoComponent implements OnInit {
           resultado => {
             this.variant = "success";
             this.cargando = false;
-            this.msj = "Colorin colorado, la nueva categoria ya ha sido dada de alta";
+            this.msj = "El nuevo tipo de seguro ya ha sido dado de alta";
             this.showTopToast = true;
   
             console.log(resultado);
