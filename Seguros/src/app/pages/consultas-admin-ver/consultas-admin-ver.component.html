@@ -9,7 +9,16 @@
                 <h2 class="sub-titulo">
                   {{item.titulo}}
                 </h2>
+                <p>Usuario: <span style="color: red">{{item.usuario}}</span></p>
                 <p>Fecha de envío: {{print_date(item.fechaHora)}}</p>
+                <ng-container *ngIf="item.respuesta.length > 0">
+                  <ng-container *ngIf="item.respuestaVista == true; else elseTemplate" st>
+                    <p style="color: red">La respuesta fue leída por el usuario.</p>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <p style="color: red">La respuesta aún no ha sido leída por el usuario.</p>
+                  </ng-template>
+                </ng-container>
               </div>
             </header>
           </div>
@@ -27,7 +36,7 @@
             </ng-container>
             <ng-template #elseTemplate2>
               <ngl-textarea label="Respuesta a la consulta" fieldLevelHelpTooltip="Some helpful information" [error]="hasErrorConsulta ? error : null">
-                <textarea [(ngModel)]="consultaTexto.value" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu consulta aquí"></textarea>
+                <textarea [(ngModel)]="consultaTexto.value" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu respuesta aquí"></textarea>
               </ngl-textarea>
               <button (click)="put_respuesta()">Enviar respuesta</button>
             </ng-template>
