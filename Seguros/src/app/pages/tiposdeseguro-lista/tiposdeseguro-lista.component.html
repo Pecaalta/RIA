@@ -15,7 +15,19 @@
           <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="lista_tiposdeseguro" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)">          
               <ngl-datatable-column heading="Nombre" key="nombre" sortable></ngl-datatable-column>
               
-              <ngl-datatable-column heading="Color" key="color" sortable></ngl-datatable-column>
+              <ngl-datatable-column heading="Color" key="color" sortable>
+                  <ng-template nglDatatableCell let-value>
+                      <p >{{value}}</p>
+                      <input type="color" value={{value}}>
+                  </ng-template>
+                <!---
+                  
+               <ng-template nglDatatableCell let-value>
+                    
+               </ng-template>-->
+                  
+              </ngl-datatable-column>
+            
           
               <ngl-datatable-column headClass="text-center" heading="Ver" key="id_TipoDeSeguro">
                 <ng-template nglDatatableHeading><strong class="text-center w-100">Ver</strong></ng-template>
