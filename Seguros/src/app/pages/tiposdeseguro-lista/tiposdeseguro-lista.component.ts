@@ -20,6 +20,7 @@ export class TiposdeseguroListaComponent implements OnInit {
   msj:string = "";
 
   ngOnInit() {
+    this.get_all();
   }
 
   /**
@@ -28,7 +29,7 @@ export class TiposdeseguroListaComponent implements OnInit {
    */
   delete(nId:string){
     this.cargando = true;
-    this.TiposServicios.delete(nId).subscribe(
+    this.TDSService.delete(nId).subscribe(
       resultado => {
         this.cargando = false;
         this.notificacion("Se guardo de manera exitosa", "3");
@@ -37,7 +38,7 @@ export class TiposdeseguroListaComponent implements OnInit {
       error => {
         console.log(error);
         this.cargando = false;
-        this.notificacion("Error al intentar eleiminar", "1");
+        this.notificacion("Error al intentar eliminar", "1");
         
       }
     );
@@ -48,10 +49,10 @@ export class TiposdeseguroListaComponent implements OnInit {
    */
   get_all() {
     this.cargando = true;
-    this.TiposServicios.get_all().subscribe(
+    this.TDSService.get_all().subscribe(
       resultado => {
         this.cargando = false;
-        this.TiposServicios = resultado; 
+        this.lista_tiposdeseguro = resultado; 
       },
       error => {
         console.log(error);
