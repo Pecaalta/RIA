@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TiposdeseguroService } from 'src/app/services/tiposdeseguro.service';
-import { Router } from '@angular/router';
-import { puts } from 'util';
+import { ActivatedRoute } from "@angular/router";
+
+import { TiposDeSeguroDto } from 'src/app/model/tiposdeseguro-dto';
+
 @Component({
   selector: 'app-tiposdeseguro-nuevo',
   templateUrl: './tiposdeseguro-nuevo.component.html',
@@ -9,39 +11,40 @@ import { puts } from 'util';
 })
 export class TiposdeseguroNuevoComponent implements OnInit {
 
+  TDS:TiposDeSeguroDto = {
+    nombre: null,
+    color: null
+  }
 
-  nombre: string = "";
-  color: string = "";
-  
-
-  variant:string = "error"; // error warning success
+  variant:string = "error"; 
   showTopToast = false;
   msj: string = "";
   cargando = false;
   constructor(
-    private router: Router,
+    private router: ActivatedRoute,
     private TDSService: TiposdeseguroService
   ) { }
 
   ngOnInit() {
+    this.get();
   }
 
   registro() { 
     this.variant = "warning";
-    if (this.nombre == "") {
+    if (this.TDS.nombre == "") {
       this.msj = "No ha ingresado el nombre del tipo de seguro";
       this.showTopToast = true;
     } else
-      if (this.color == "") {
+      if (this.TDS.color == "") {
         this.msj = "No ha ingresado un color";
         this.showTopToast = true;
       } else {
         this.cargando = true;
-        this.TDSService.post({ nombre: this.nombre, color: this.color }).subscribe(
+        this.TDSService.post(this.TDS).subscribe(
           resultado => {
             this.variant = "success";
             this.cargando = false;
-            this.msj = "El nuevo tipo de seguro ya ha sido dado de alta";
+            this.msj = "El nuevo tipo de seguro ha sido dado de alta";
             this.showTopToast = true;
   
             console.log(resultado);
@@ -59,4 +62,23 @@ export class TiposdeseguroNuevoComponent implements OnInit {
         );
       }
   }
+
+  get(){
+    let id = this.router.snapshot.paramMap.get("id");
+    if (id != null){
+      this.cargando = true;
+      this.TDSService.get(id).subscribe(
+        resultado => {
+          this.cargando = false;
+          this.TDS = resultado;
+        },
+        error => {
+          console.log(error);
+          this.msj= "Algo salio mal en la carga del tipo de seguro";
+          this.cargando = false;        
+        }
+      );
+    }
+  }
+
 }
