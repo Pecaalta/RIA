@@ -5,10 +5,19 @@
       <img class="gb-logo" src="/assets/logo.png" alt="" srcset="">
 
       <ngl-input label="Usuario" fieldLevelHelpTooltip="Nombre de usuario que usara para logearse" [error]="hasError ? error : null">
-          <input ngl type="input" [(ngModel)]="user" [required]="required" [disabled]="disabled" placeholder="Usuario">
+          <input ngl type="input" [(ngModel)]="registroDTO.email" [required]="required" [disabled]="disabled" placeholder="Usuario">
+      </ngl-input>
+      <ngl-input label="Nombres" fieldLevelHelpTooltip="Su nombre/s real/es" [error]="hasError ? error : null">
+          <input ngl type="input" [(ngModel)]="registroDTO.nombres" [required]="required" [disabled]="disabled" placeholder="Nombres">
+      </ngl-input>
+      <ngl-input label="Apellidos" fieldLevelHelpTooltip="Sus apellidos reales" [error]="hasError ? error : null">
+          <input ngl type="input" [(ngModel)]="registroDTO.apellidos" [required]="required" [disabled]="disabled" placeholder="Apellidos">
+      </ngl-input>
+      <ngl-input label="Documento" fieldLevelHelpTooltip="Su numero de documento" [error]="hasError ? error : null">
+          <input ngl type="input" [(ngModel)]="registroDTO.documento" [required]="required" [disabled]="disabled" placeholder="Documento">
       </ngl-input>
       <ngl-input label="Contraseña"  fieldLevelHelpTooltip="Palabra secreta que usara para autentificarse" [error]="hasError ? error : null">
-          <input ngl type="password" [(ngModel)]="pass" [required]="required" [disabled]="disabled" placeholder="Contraseña">
+          <input ngl type="password" [(ngModel)]="registroDTO.password" [required]="required" [disabled]="disabled" placeholder="Contraseña">
       </ngl-input>
       <ngl-input label="Confirmar contraseña"  fieldLevelHelpTooltip="Vuelva a ingresar la contraseña" [error]="hasError ? error : null">
           <input ngl type="password" [(ngModel)]="passConfirm" [required]="required" [disabled]="disabled" placeholder="Confirmar contraseña">
