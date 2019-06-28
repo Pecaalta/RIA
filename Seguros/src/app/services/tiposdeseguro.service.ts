@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
 })
 export class TiposdeseguroService {
 
-  prefijo = "api/TiposDeSeguro";
+  prefijo = "api/TiposDeSeguros";
 
   constructor(
     private httpClient: HttpClient
@@ -52,7 +52,7 @@ export class TiposdeseguroService {
     return {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'Authorization': this.getToken()
+          'Authorization':'Bearer ' + this.getToken()
       })
     };
   }
