@@ -1,22 +1,34 @@
 <app-nav-privada></app-nav-privada>
-<div class="conteiner-center ">
-  <div class="box-form">  
-    <h1 class="titulo">Nuevo tipo de seguro</h1>
+<div class="container">
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="titulo" >Nuevo tipo de seguro</h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body">
+      <div class="slds-p-left_medium">
+        <ngl-input label="Nombre" fieldLevelHelpTooltip="Nombre del tipo de seguro" [error]="hasError ? error : null">
+            <input ngl type="input" [(ngModel)]="nombre" [required]="required" [disabled]="disabled" placeholder="Ingrese el nombre">
+        </ngl-input>
+        <ngl-input label="Color"  fieldLevelHelpTooltip="Color del tipo de seguro" [error]="hasError ? error : null">
+          <ngl-colorpicker [(ngModel)]="color" label="" cancelButtonLabel="Cancelar" submitButtonLabel="Confirmar" invalidColorLabel="Debe elegir un color válido" swatchTabLabel="De muestra" customTabLabel="Elegir" readonlyInput requiered></ngl-colorpicker>
+        </ngl-input> 
+        <div class="slds-p-bottom_medium"></div>
 
-    <ngl-input label="Nombre" fieldLevelHelpTooltip="Nombre del tipo de seguro" [error]="hasError ? error : null">
-        <input ngl type="input" [(ngModel)]="nombre" [required]="required" [disabled]="disabled" placeholder="Nombre">
-    </ngl-input>
-    <ngl-input label="Color"  fieldLevelHelpTooltip="Color del tipo de seguro" [error]="hasError ? error : null">
-        <input ngl type="color" [(ngModel)]="color" [required]="required" [disabled]="disabled" placeholder="Color">
-    </ngl-input>
-    <button class="mt-10 slds-button slds-button_neutral" (click)="registro()">Confirmar</button>
-    <div class="loader" [class.active]="cargando">
-        <ngl-spinner [size]="size" [variant]="variant" alternativeText="Loading"></ngl-spinner>
+        <button class="mt-10 slds-button slds-button_neutral" (click)="registro()">Confirmar</button>
+
+        <div class="loader" [class.active]="cargando">
+            <ngl-spinner [size]="size" [variant]="variant" alternativeText="Loading"></ngl-spinner>
+        </div>
+        <div class="slds-notify_container">
+            <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
+              <h2 class="slds-text-heading_small">{{ msj }}</h2>
+            </ngl-toast>
+        </div>
       </div>
-  </div>
-  <div class="slds-notify_container">
-    <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
-      <h2 class="slds-text-heading_small">{{ msj }}</h2>
-    </ngl-toast>
-  </div>
+    </div>
+  </article>
 </div>
