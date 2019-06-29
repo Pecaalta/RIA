@@ -28,6 +28,7 @@ import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consulta
 import { TiposdeseguroNuevoComponent } from './pages/tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
 import { TiposdeseguroListaComponent } from './pages/tiposdeseguro-lista/tiposdeseguro-lista.component';
 import { TiposdeseguroVerComponent } from './pages/tiposdeseguro-ver/tiposdeseguro-ver.component';
+import { TiposdeseguroEditarComponent } from './pages/tiposdeseguro-editar/tiposdeseguro-editar.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
@@ -66,7 +67,7 @@ const routes: Routes = [
       { path:"", component: TiposdeseguroListaComponent },
       { path:"lista", component: TiposdeseguroListaComponent },
       { path:"crea", component: TiposdeseguroNuevoComponent },
-      { path:"editar/:id", component: TiposdeseguroNuevoComponent },
+      { path:"editar/:id", component: TiposdeseguroEditarComponent },
       { path:"ver/:id", component: TiposdeseguroVerComponent },
       { path:"**", pathMatch: 'full', redirectTo: "linea/tiposdeseguro/lista" },   
     ]},

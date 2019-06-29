@@ -4,11 +4,11 @@ import { ActivatedRoute } from "@angular/router";
 import { TiposDeSeguroDto } from 'src/app/model/tiposdeseguro-dto';
 
 @Component({
-  selector: 'app-tiposdeseguro-nuevo',
-  templateUrl: './tiposdeseguro-nuevo.component.html',
-  styleUrls: ['./tiposdeseguro-nuevo.component.scss']
+  selector: 'app-tiposdeseguro-editar',
+  templateUrl: './tiposdeseguro-editar.component.html',
+  styleUrls: ['./tiposdeseguro-editar.component.scss']
 })
-export class TiposdeseguroNuevoComponent implements OnInit {
+export class TiposdeseguroEditarComponent implements OnInit {
 
   TDS:TiposDeSeguroDto = {
     nombre: null,
@@ -25,9 +25,10 @@ export class TiposdeseguroNuevoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.get();
   }
 
-  registro() { 
+  editar() { 
     this.variant = "warning";
     if (this.TDS.nombre == "") {
       this.msj = "No ha ingresado el nombre del tipo de seguro";
@@ -38,7 +39,8 @@ export class TiposdeseguroNuevoComponent implements OnInit {
         this.showTopToast = true;
       } else {
         this.cargando = true;
-        this.TDSService.post(this.TDS).subscribe(
+        let id = this.router.snapshot.paramMap.get("id");
+        this.TDSService.put(id, this.TDS).subscribe(
           resultado => {
             this.variant = "success";
             this.cargando = false;
@@ -59,6 +61,24 @@ export class TiposdeseguroNuevoComponent implements OnInit {
           }
         );
       }
+  }
+
+  get(){
+    let id = this.router.snapshot.paramMap.get("id");
+    if (id != null){
+      this.cargando = true;
+      this.TDSService.get(id).subscribe(
+        resultado => {
+          this.cargando = false;
+          this.TDS = resultado;
+        },
+        error => {
+          console.log(error);
+          this.msj= "Algo salio mal en la carga del tipo de seguro";
+          this.cargando = false;        
+        }
+      );
+    }
   }
 
 }
