@@ -44,7 +44,7 @@ export class TiposdeseguroEditarComponent implements OnInit {
           resultado => {
             this.variant = "success";
             this.cargando = false;
-            this.msj = "El nuevo tipo de seguro ha sido dado de alta";
+            this.msj = "El tipo de seguro ha sido modificado con éxito";
             this.showTopToast = true;
   
             console.log(resultado);
