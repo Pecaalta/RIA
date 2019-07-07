@@ -42,4 +42,8 @@ export class NoticiasComponent implements OnInit {
     return oDate.toLocaleDateString('es-UY', options);
   }
 
+  print_text(text:string) {
+    if (text.length >= 150) text = text.substring(0,146) + '...';
+    return text;
+  }
 }

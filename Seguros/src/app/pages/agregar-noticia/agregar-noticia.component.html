@@ -1,4 +1,5 @@
 <app-nav-privada></app-nav-privada>
+
 <div class="container">
     <article class="slds-card">
         <div class="slds-card__header slds-grid">
@@ -23,12 +24,11 @@
                     </div>
                 </div>
                 <div class="slds-size_2-of-3 padding-left-0_5rem">
-                    <ngl-input label="Titulo" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-                        <input ngl [(ngModel)]="noticia.titulo" type="input" [required]="required" [disabled]="disabled" placeholder="Placeholder Text">
+                    <ngl-input class='mb-1' label="Titulo" fieldLevelHelpTooltip="Titulo de la nueva noticia">
+                        <input ngl [(ngModel)]="noticia.titulo" type="input" required placeholder="Titulo">
                     </ngl-input>
-                    <ngl-textarea label="Contenido" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-                        <textarea [(ngModel)]="noticia.texto" ngl [required]="required" [disabled]="disabled" placeholder="Placeholder Text"></textarea>
-                    </ngl-textarea>
+                    <br>
+                    <div [froalaEditor]='froalaEditor' [(froalaModel)]="noticia.texto"></div>
                 </div>
             </div>
         </div>

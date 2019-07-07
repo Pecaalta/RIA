@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Router } from '@angular/router';
+import { RegistroDto } from 'src/app/model/registro-dto';
 
 @Component({
   selector: 'app-registro',
@@ -11,8 +12,14 @@ export class RegistroComponent implements OnInit {
 
   cargando = false;
 
-  user:string = "";
-  pass:string = "";
+  registroDTO:RegistroDto = {
+    email:      null,
+    nombres:    null,
+    apellidos:  null,
+    documento:  null,
+    password:   null
+  }
+
   passConfirm:string = "";
 
   variant:string = "error"; // error warning success
@@ -28,31 +35,48 @@ export class RegistroComponent implements OnInit {
 
   registro(){
     this.variant = "warning";
-    if(this.user == ""){
+    if(this.registroDTO.email == ""){
       this.msj = "No ha ingresado un correo";
       this.showTopToast = true;
-    } else if(this.pass == ""){
+    } else if(this.registroDTO.nombres.length < 3){
+      this.msj = "Los nombres deben tener al menos 3 caracteres";
+      this.showTopToast = true;
+    } else if(this.registroDTO.nombres.length > 128){
+      this.msj = "Los nombres deben tener como maximo 128 caracteres";
+      this.showTopToast = true;
+    } else if(this.registroDTO.apellidos.length < 3){
+      this.msj = "Los apellidos deben tener al menos 3 caracteres";
+      this.showTopToast = true;
+    } else if(this.registroDTO.apellidos.length > 128){
+      this.msj = "Los apellidos deben tener como maximo 128 caracteres";
+      this.showTopToast = true;
+    } else if(this.registroDTO.documento.length < 3){
+      this.msj = "El documento debe tener al menos 3 caracteres";
+      this.showTopToast = true;
+    } else if(this.registroDTO.documento.length > 128){
+      this.msj = "El documento debe tener como maximo 128 caracteres";
+      this.showTopToast = true;
+    } else if(this.registroDTO.password == ""){
       this.msj = "No ha ingresado una contraseña";
       this.showTopToast = true;
-    } else if(this.pass.length < 6){
-      this.msj = "La contraseña debe tener al menos 6 caracteres";
+    } else if(this.registroDTO.password.length < 4){
+      this.msj = "La contraseña debe tener al menos 4 caracteres";
       this.showTopToast = true;
-    }else if(this.pass.length > 100){
+    }else if(this.registroDTO.password.length > 100){
       this.msj = "La contraseña puede tener como maximo 100 caracteres";
       this.showTopToast = true;
-    } else if(this.pass != this.passConfirm){
+    } else if(this.registroDTO.password != this.passConfirm){
       this.msj = "La contraseña no coincide, vuelva a intentarlo";
       this.showTopToast = true;
     } else {
       this.cargando = true;
-      this.oUsuariosService.register({ email: this.user, password: this.pass }).subscribe(
+      this.oUsuariosService.register(this.registroDTO).subscribe(
         resultado => {
           this.variant = "success";
           this.cargando = false;
           this.msj = "Su usuario ya ha sido registrado";
           this.showTopToast = true;
-
-          console.log(resultado);
+          this.router.navigate(['/']); 
         },
         error => {
           this.cargando = false;
@@ -61,7 +85,7 @@ export class RegistroComponent implements OnInit {
           if(error.responseText != null && error.responseText != ""){
             this.msj = error.responseText;
           } else {
-            this.msj = "Algo no fue como deberia, intente luego";
+            this.msj = "Algo no sucedio como deberia, intente luego";
           }
         }
       );

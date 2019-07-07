@@ -6,8 +6,7 @@ import { UsuariosService } from '../services/usuarios.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AutentificadoGuard implements CanActivateChild {
-  
+export class UserGuard implements CanActivateChild {
   constructor( 
     private router: Router,
     private oUsuariosService:UsuariosService 
@@ -17,12 +16,11 @@ export class AutentificadoGuard implements CanActivateChild {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let session = this.oUsuariosService.getSession();    
-    if (session != null && session.token != "" && session.role == 'ADMIN' ) {
+    if (session != null && session.token != "" && session.role == 'USER' ) {
       return true;
     }else {
       this.router.navigate(['inicio']); 
       return false;
     }
   }
-  
 }

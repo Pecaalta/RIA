@@ -1,6 +1,12 @@
 
 .imagen {
     position: relative;
+    border-radius: 3px;
+    
+    border: 1px solid #dddbda;
+    border-radius: .25rem;
+    overflow: hidden;
+
     input {
         position: absolute;
         z-index: 10;
@@ -13,4 +19,33 @@
     width: 100%;
     margin: 0;
     padding: 0 1rem;
+}
+
+.slds-card__header {
+    border-bottom: 1px solid #dddbda;
+    padding: .75rem 1rem;
+}
+textarea {
+    height: 500px;
+}
+::ng-deep .fr-toolbar  {
+    border-top-left-radius: 0.25rem!important;
+    border-top-right-radius: 0.25rem!important;
+}
+::ng-deep .second-toolbar {
+    display: none!important;
+}
+
+::ng-deep .fr-wrapper {
+    border-bottom-left-radius: 0.25rem!important;
+    border-bottom-right-radius: 0.25rem!important;
+    
+    border: 1px solid #CCCCCC;
+}
+
+::ng-deep .fr-element {
+    height: 300px;
+}
+.mb-1 {
+    margin-bottom: 1rem;
 }

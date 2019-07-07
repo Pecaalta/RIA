@@ -3,86 +3,71 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { NoticiasDto } from '../model/noticias-dto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NoticiasService {
+export class TiposdeseguroService {
 
-  prefigo:string = "api/Noticias";
+  prefijo = "api/TiposDeSeguros";
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   get_all(){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo, this.getheaders() ).pipe(
+    return this.httpClient.get<any>(environment.URLAPI + this.prefijo , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
-  get_active(){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/activas", this.getheaders() ).pipe(
+  post(data){
+    return this.httpClient.post<any>(environment.URLAPI + this.prefijo, data , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
-  post(data:NoticiasDto){    
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data, this.getheaders()  ).pipe(
+  get(id){
+    return this.httpClient.get<any>(environment.URLAPI + this.prefijo + "/" + id , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
-  get(id:string){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id).pipe(
+  put(id,data){
+    return this.httpClient.put<any>(environment.URLAPI + this.prefijo + "/" + id, data , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
-  put(noticia:NoticiasDto){
-    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + noticia.id_Noticia,noticia ).pipe(
-        catchError(this.handleError)
-    )
-  }
-
-  delete(id:string){
-    return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders() ).pipe(
+  delete(id){
+    return this.httpClient.delete<any>(environment.URLAPI + this.prefijo + "/" + id , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
   /**
-   * Genera el headers de los riquest
+   * Genera el headers de los request
    */
   getheaders(){
     return {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer '+this.getToken()
+          'Authorization':'Bearer ' + this.getToken()
       })
     };
   }
-
+  
   /**
   * Devuleve el token en caso de tener un usuario logueado(almacenado en local storage)
   */
   private getToken() {
     if (localStorage.getItem("SessionSeguros") && localStorage.getItem("SessionSeguros") != '') {
         let Session = JSON.parse(localStorage.getItem("SessionSeguros"));
-        console.log(Session.token);
-        
         return Session.token;
-    }else {
-      console.log("dasd");
     }
     return '';
   }
 
-  /**
-   * Cacheo de errores
-   * @param error 
-   */
   private handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {
           console.error('An error occurred:', error.error.message);

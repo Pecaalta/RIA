@@ -9,18 +9,10 @@ import { NglModule } from 'ng-lightning';
 import { NavPublicaComponent } from './pages/nav-publica/nav-publica.component';
 import { NavPrivadaComponent } from './pages/nav-privada/nav-privada.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
-import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { ContactosComponent } from './pages/contactos/contactos.component';
-import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { AgregarNoticiaComponent } from './pages/agregar-noticia/agregar-noticia.component';
 import { ConsultarListadoComponent } from './pages/consultar-listado/consultar-listado.component';
-import { ConsultarVerComponent } from './pages/consultar-ver/consultar-ver.component';
-import { ConsultarClienteComponent } from './pages/consultar-cliente/consultar-cliente.component';
-import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
-import { SegurosAsignadoComponent } from './pages/seguros-asignado/seguros-asignado.component';
-import { SegurosVencidosComponent } from './pages/seguros-vencidos/seguros-vencidos.component';
-import { SegurosActivosComponent } from './pages/seguros-activos/seguros-activos.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
@@ -32,6 +24,12 @@ import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.compo
 import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
 import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/consultas-admin-listado.component';
 import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
+import { TiposdeseguroNuevoComponent } from './pages/tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
+import { TiposdeseguroListaComponent } from './pages/tiposdeseguro-lista/tiposdeseguro-lista.component';
+import { TiposdeseguroVerComponent } from './pages/tiposdeseguro-ver/tiposdeseguro-ver.component';
+import { TiposdeseguroEditarComponent } from './pages/tiposdeseguro-editar/tiposdeseguro-editar.component';
+
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 @NgModule({
@@ -40,18 +38,10 @@ import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consulta
     NavPublicaComponent,
     NavPrivadaComponent,
     NoticiasComponent,
-    ServiciosComponent,
     ContactosComponent,
-    LoginComponent,
     RegistroComponent,
     AgregarNoticiaComponent,
     ConsultarListadoComponent,
-    ConsultarVerComponent,
-    ConsultarClienteComponent,
-    ListaClienteComponent,
-    SegurosAsignadoComponent,
-    SegurosVencidosComponent,
-    SegurosActivosComponent,
     NosotrosComponent,
     ListadoNoticiasComponent,
     NavUserComponent,
@@ -60,7 +50,11 @@ import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consulta
     ConsultasVerComponent,
     VerNoticiasComponent,
     ConsultasAdminListadoComponent,
-    ConsultasAdminVerComponent
+    ConsultasAdminVerComponent,
+    TiposdeseguroNuevoComponent,
+    TiposdeseguroListaComponent,
+    TiposdeseguroVerComponent,
+    TiposdeseguroEditarComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +62,8 @@ import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consulta
     AppRoutingModule,
     BrowserAnimationsModule,
     NglModule,
-    FormsModule, ReactiveFormsModule 
+    FormsModule, ReactiveFormsModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

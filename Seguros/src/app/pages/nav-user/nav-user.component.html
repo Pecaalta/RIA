@@ -25,6 +25,7 @@
   </div>
   <div *ngIf="!bNavModeVertical">
     <ul>
+      <li [routerLink]="['/inicio']" [routerLinkActive]="'active'">Inicio</li>
       <li [routerLink]="['/user/consulta']" [routerLinkActive]="'active'">Consulta</li>
     </ul>
   </div>
@@ -38,9 +39,12 @@
         <img class="img-logo" src="/assets/logo.png" alt="" srcset="">
       </h2>
       <ul aria-describedby="entity-header">
-        <li [routerLink]="['/user/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
-          <a class="slds-nav-vertical__action" aria-current="page">Consulta</a>
-        </li>
+          <li [routerLink]="['/']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+            <a class="slds-nav-vertical__action" aria-current="page">Inicio</a>
+          </li>
+          <li [routerLink]="['/user/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+            <a class="slds-nav-vertical__action" aria-current="page">Consulta</a>
+          </li>
       </ul>
     </div>
   </nav>

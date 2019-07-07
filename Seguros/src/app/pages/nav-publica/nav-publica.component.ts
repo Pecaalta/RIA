@@ -42,7 +42,11 @@ export class NavPublicaComponent implements OnInit {
     if (session == null || session.token == null){
       this.opened = !this.opened;
     }else {
-      this.router.navigate(['linea']); 
+      if (session.role == "ADMIN" ) {
+        this.router.navigate(['linea']); 
+      } else {
+        this.router.navigate(['user']); 
+      }
     }
   }
 
@@ -58,7 +62,6 @@ export class NavPublicaComponent implements OnInit {
           this.router.navigate(['linea']); 
         } else {
           this.router.navigate(['user']); 
-          console.log("pepito clavo un clavito");
         }
       },
       error => {

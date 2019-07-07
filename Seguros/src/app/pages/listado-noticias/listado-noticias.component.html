@@ -16,7 +16,7 @@
               <ngl-datatable-column cellClass="width-50px" headClass="width-50px" heading="Activo" key="activa" truncate sortable>
                 <div class="toggle">
                   <ng-template nglDatatableCell nglDatatable let-row="row" let-value>
-                    <ngl-checkbox-toggle style="width: 50px" enabledText="" disabledText="">
+                    <ngl-checkbox-toggle enabledText="" disabledText="">
                       <input ngl (change)="toggle(row)" [(ngModel)]="value" type="checkbox">
                     </ngl-checkbox-toggle>
                   </ng-template>

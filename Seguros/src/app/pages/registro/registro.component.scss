@@ -4,20 +4,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: flex;
 }
 .box-form {
     border: solid 1px rgba($color: #c23934, $alpha: 0.3);
     box-shadow: 0px -5px 0px 0px #c23934;
     padding: 2rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
+    max-height: 100%;
     .slds-button {
         color: #c23934;
-        margin-top: 2rem;
         padding: 0.6rem;
+        max-width: 100%;
+        width: 200px;
+        margin: 2rem auto 0;
+        display: block;
     }
 }
 .gb-logo {

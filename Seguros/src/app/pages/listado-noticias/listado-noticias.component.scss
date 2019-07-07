@@ -1,15 +1,23 @@
 
-.width-50px {
-    width: 100px!important;
-}
 .w-100 {
     width: 100%;
     display: block;
 }
 
-@media only screen and (max-width: 600px) {
-    .slds-checkbox_toggle {
-        width: auto!important;
-        float: right!important;
+@media only screen and (max-width: 769px) {
+        
+    ::ng-deep .slds-form-element__label {
+        margin: 0;
+        width: 100%!important;
     }
+}
+
+@media only screen and (min-width: 769px) {
+    ::ng-deep .width-50px {
+        width: 100px!important;
+    }
+}
+
+.mt-3 {
+    margin-top: 1rem
 }

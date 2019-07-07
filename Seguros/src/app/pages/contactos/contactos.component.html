@@ -2,10 +2,11 @@
 
 <div class="container">
     <h1 class="titulo">Contactanos</h1>
-    <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Placeholder Text">
+    <ngl-input label="Email" fieldLevelHelpTooltip="Email, nombre o forma de contacto">
+        <input ngl type="input" required placeholder="Email o numero">
     </ngl-input>
-    <ngl-textarea label="Textarea Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <textarea ngl [required]="required" [disabled]="disabled" placeholder="Placeholder Text"></textarea>
+    <ngl-textarea label="Consulta" fieldLevelHelpTooltip="Su consulta aqui">
+        <textarea ngl required placeholder="Contenido"></textarea>
     </ngl-textarea>
+    <button class="slds-button slds-button_neutral"> Mandar </button>
 </div>
