@@ -22,6 +22,8 @@ import { TiposdeseguroListaComponent } from './pages/tiposdeseguro-lista/tiposde
 import { TiposdeseguroVerComponent } from './pages/tiposdeseguro-ver/tiposdeseguro-ver.component';
 import { TiposdeseguroEditarComponent } from './pages/tiposdeseguro-editar/tiposdeseguro-editar.component';
 import { UserGuard } from './guards/user.guard';
+import { ListadoSegurosComponent } from './pages/listado-seguros/listado-seguros.component';
+import { AgregarSegurosComponent } from './pages/agregar-seguros/agregar-seguros.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
@@ -32,6 +34,14 @@ const routes: Routes = [
   { path:"linea", canActivateChild:[AutentificadoGuard] , children: [
     
     { path:"", pathMatch: 'full', redirectTo: "linea/noticias/lista" },
+
+    { path:"seguros", children: [
+      { path:"", component: ListadoSegurosComponent },
+      { path:"lista", component: ListadoSegurosComponent },
+      { path:"crea", component: AgregarSegurosComponent },
+      { path:"editar/:id", component: AgregarSegurosComponent },
+      { path:"**", pathMatch: 'full', redirectTo: "linea/seguros/lista" },   
+    ]},
 
     { path:"noticias", children: [
       { path:"", component: ListadoNoticiasComponent },

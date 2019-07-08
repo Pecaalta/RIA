@@ -1,0 +1,89 @@
+<app-nav-privada></app-nav-privada>
+
+<div class="container">
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="titulo" >Nueva noticia</h2>
+                </div>
+                <div class="slds-no-flex">
+              <button class="slds-button slds-button_neutral" [routerLink]="['/linea/seguros']">Listado</button>
+              <button class="slds-button slds-button_neutral" (click)="guardar()">Guardar</button>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-size_1-of-3 padding-right-0_5rem">
+                    <div class="slds-m-vertical_medium imagen" >
+                        <input type="file" (change)="changeListener($event)">
+                        <ngl-file [text]="showFilename ? 'file ' + ratio : null" [iconName]="icon">
+                          <a href="javascript:void(0)" [nglFileCrop]="ratio">
+                            <img src="https://www.lightningdesignsystem.com/assets/images/placeholder-img@16x9.jpg">
+                          </a>
+                        </ngl-file>
+
+                    </div>
+                </div>
+                <div class="slds-size_2-of-3 padding-left-0_5rem">
+                    
+                  <ngl-input class='mb-1' label="Titulo" fieldLevelHelpTooltip="Titulo de la nueva seguro">
+                    <input ngl [(ngModel)]="Seguro.titulo" type="input" required placeholder="Titulo">
+                  </ngl-input>
+                  
+                  <ngl-datepicker-input 
+                    required
+                    label="Fecha inicio" 
+                    fieldLevelHelpTooltip="Titulo de la nueva seguro"
+                    [(ngModel)]="Seguro.fechaInicio"
+                    [max]="Seguro.fechaFechaFin">
+                  </ngl-datepicker-input>
+                  
+                  <ngl-datepicker-input 
+                    required
+                    label="Fecha inicio" 
+                    fieldLevelHelpTooltip="Titulo de la nueva seguro"
+                    [(ngModel)]="Seguro.fechaFechaFin"
+                    [min]="Seguro.fechaInicio">
+                  </ngl-datepicker-input>
+
+                  <ngl-input class='mb-1' label="Descripcion" fieldLevelHelpTooltip="Descripcion del seguro">
+                      <input ngl [(ngModel)]="Seguro.descripccion" type="input" required placeholder="Titulo">
+                  </ngl-input>
+
+                  <ngl-input class='mb-1' label="Costo" fieldLevelHelpTooltip="Costo total del seguro">
+                      <input ngl [(ngModel)]="Seguro.costoTotal" type="input" required placeholder="Titulo">
+                  </ngl-input>
+                  
+                  <ngl-select label="Tipo de seguro" fieldLevelHelpTooltip="Seleccione el tipo de seguro">
+                    <select ngl required [(ngModel)]="Seguro.id_Tipo" >
+                      <option class='tipo' [attr.data-color]="tipo_seguro.color" *ngFor="let tipo_seguro of lista_tipo_seguro"  [value]="tipo_seguro.id_TipoDeSeguro">{{ tipo_seguro.nombre }}</option>
+                    </select>
+                  </ngl-select>
+
+                  <ngl-input class='mb-1' label="Buscar clinete" fieldLevelHelpTooltip="Filtro de texto para buscar un clinte">
+                    <input ngl [(ngModel)]="filter" (input)="get_clientes()" type="input" required placeholder="Titulo">
+                  </ngl-input>
+
+                  <ngl-select label="Clientes" fieldLevelHelpTooltip="Lista de clintes">
+                    <select ngl required multiple >
+                      <option *ngFor="let cliente of lista_clientes" (click)='Seguro.id_Cliente = cliente.id'>{{ cliente.documento + '-' + cliente.nombre }}</option>
+                    </select>
+                  </ngl-select>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="loader" [class.active]="cargando">
+            <ngl-spinner alternativeText="Loading"></ngl-spinner>
+        </div>
+    </article>
+</div>
+
+<div class="slds-notify_container">
+    <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
+      <h2 class="slds-text-heading_small">{{ msj }}</h2>
+    </ngl-toast>
+</div>

@@ -20,6 +20,8 @@
     <ul>
       <li [routerLink]="['/inicio']" [routerLinkActive]="'active'">Inicio</li>
       <li *ngIf="isAdmin" [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'">Consulta</li>
+      
+      <li *ngIf="isAdmin" [routerLink]="['/linea/seguros']" [routerLinkActive]="'active'">Seguros</li>
       <li *ngIf="!isAdmin" [routerLink]="['/linea/seguros/activos']" [routerLinkActive]="'active'">Activos</li>
       <li *ngIf="!isAdmin" [routerLink]="['/linea/seguros/vensidos']" [routerLinkActive]="'active'">Vencidos</li>
       <li *ngIf="isAdmin" [routerLink]="['/linea/tiposdeseguro/lista']" [routerLinkActive]="'active'">Tipos de seguros</li>
@@ -39,6 +41,9 @@
       <ul aria-describedby="entity-header">
         <li [routerLink]="['/']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Inicio</a>
+        </li>
+        <li *ngIf="isAdmin" [routerLink]="['/linea/seguros']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+          <a class="slds-nav-vertical__action" aria-current="page">Seguros</a>
         </li>
         <li *ngIf="isAdmin" [routerLink]="['/linea/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
           <a class="slds-nav-vertical__action" aria-current="page">Consulta</a>
