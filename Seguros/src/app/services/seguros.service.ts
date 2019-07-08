@@ -44,13 +44,13 @@ export class SegurosService {
 
 
   get(id:string){
-    return this.httpClient.get<Seguro[]>(environment.URLAPI + this.prefigo + "/" + id).pipe(
+    return this.httpClient.get<Seguro>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
   put(seguro:SeguroDto){
-    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + seguro.id_DeSeguro,seguro ).pipe(
+    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + seguro.id_DeSeguro,seguro, this.getheaders() ).pipe(
         catchError(this.handleError)
     )
   }

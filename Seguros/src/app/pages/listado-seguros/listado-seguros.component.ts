@@ -82,7 +82,10 @@ export class ListadoSegurosComponent implements OnInit {
       return cliente.documento;
     }
   }
-
+  print_color(seguro:Seguro){
+    if (seguro != null && seguro.tipo != null && seguro.tipo.color != null) return seguro.tipo.color;
+    return null;
+  }
 
   // Initial sort
   sort: INglDatatableSort = { key: 'fechaHora', order: 'asc' };

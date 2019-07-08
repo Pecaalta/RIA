@@ -58,21 +58,19 @@ export class AgregarSegurosComponent implements OnInit {
   }
 
   get(){
-    let id = this.route.snapshot.paramMap.get("id");    
-    if (id != null){
-      console.log(id);
-
+    this.Seguro.id_DeSeguro = Number(this.route.snapshot.paramMap.get("id"));    
+    if (this.Seguro.id_DeSeguro != null){
       this.cargando = true;
-      this.oSegurosService.get(id).subscribe(
+      this.oSegurosService.get(this.Seguro.id_DeSeguro.toString()).subscribe(
         resultado => {
-          console.log('resultado',resultado);
-
+          console.log(resultado);
+          
           this.cargando = false;
-          this.Seguro = this.SeguroToDt(resultado[0]);
+          if (resultado != null) this.Seguro = this.SeguroToDt(resultado);
+          else this.norificacion("No se consigio el elemento esperado", "1"); 
         },
         error => {
-          console.log('reee',error);
-          this.norificacion("Algo salio mal en la carga de su noticia", "1");
+          this.norificacion("Algo salio mal en la carga de su seguro", "1");
           this.cargando = false;        
         }
       );
@@ -81,6 +79,7 @@ export class AgregarSegurosComponent implements OnInit {
 
   get_clientes(){
     if (this.filter != '') {
+      this.Seguro.id_Cliente = null;
       this.oSegurosService.get_clientes(this.filter).subscribe(
         resultado => {
           this.lista_clientes = resultado;
@@ -106,23 +105,25 @@ export class AgregarSegurosComponent implements OnInit {
 }
 
   SeguroToDt(seguro:Seguro):SeguroDto{
+    console.log(seguro);
+    
     return {
-      id_DeSeguro: seguro.id_DeSeguro,
-      id_Cliente: seguro.cliente.id_Cliente,
-      id_Tipo: seguro.tipo.id_TipoDeSeguro,
-      fechaInicio: seguro.fechaInicio,
-      fechaFechaFin: seguro.fechaFechaFin,
+      id_Cliente: ( seguro['cliente'] != null ) ? seguro.cliente.id_Cliente : null,
+      id_Tipo: ( seguro['tipo'] != null ) ? seguro.tipo.id_TipoDeSeguro : null,
+      fechaInicio: new Date(seguro.fechaInicio),
+      fechaFechaFin: new Date(seguro.fechaFechaFin),
       titulo: seguro.titulo,
       descripccion: seguro.descripccion,
       documentoPDFBase64: seguro.documentoPDFBase64,
       costoTotal: seguro.costoTotal
     }
+    
   }
 
   changeListener($event) : void {
     this.readThis($event.target);
   }
-
+  name:string = '';
   readThis(inputValue: any): void {
     var file:File = inputValue.files[0];
     var myReader:FileReader = new FileReader();
@@ -130,10 +131,13 @@ export class AgregarSegurosComponent implements OnInit {
       this.Seguro.documentoPDFBase64 = myReader.result.toString();
     }
     myReader.readAsDataURL(file);
+    this.name = file.name;
   }
   
   guardar() {
     if(this.Seguro.costoTotal == null) this.norificacion("Falta un costo", "2");
+    else if(this.Seguro.id_Cliente == null) this.norificacion("Falta un cliente", "2");
+    else if(this.Seguro.id_Tipo == null) this.norificacion("Falta un tipo de seguro", "2");
     else if(this.Seguro.titulo == "") this.norificacion("Falta un titulo", "2");
     else if(this.Seguro.descripccion == "") this.norificacion("Falta un descripcion", "2");
     else if(this.Seguro.fechaFechaFin == null) this.norificacion("Falta un fecha de fin", "2");

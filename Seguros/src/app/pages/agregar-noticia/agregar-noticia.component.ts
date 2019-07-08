@@ -95,7 +95,13 @@ export class AgregarNoticiaComponent implements OnInit {
     else {
       this.cargando = false;
       this.noticia.fechaHora = new Date();
-      this.oNoticiasService.post(this.noticia).subscribe(
+      let pedido = null;
+      if(this.noticia.id_Noticia != null){
+        pedido = this.oNoticiasService.post(this.noticia); 
+      }else {
+        pedido = this.oNoticiasService.put(this.noticia); 
+      }
+      pedido.subscribe(
         resultado => {
           this.norificacion("Su noticia se a guardado con exito", "3");
           this.cargando = false;

@@ -58,3 +58,25 @@ ngl-datepicker-input {
     background-color: attr(data-color color);
 
 }
+.autocomplete {
+    width: 100%;
+    position: relative;
+    ul {
+        max-height: 200%;
+        bottom: -100%;
+        border: 1px solid #dddbda;
+        border-radius: .25rem;
+        background: #fff;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,.16);
+        padding: 0;
+        overflow: auto;
+        li {
+            padding: 5px 10px;
+            &:hover {
+                background: #008aff;
+                cursor: pointer;
+                font-size: .75rem;
+            }
+        }
+    }
+}
