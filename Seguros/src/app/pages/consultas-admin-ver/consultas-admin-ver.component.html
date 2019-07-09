@@ -1,47 +1,58 @@
 <app-nav-privada></app-nav-privada>
 <div class="container">
-    <div *ngFor="let item of consultas">
-      <div  *ngIf="item.id_Consulta == idConsulta">
-        <div class="slds-card">
-          <div class="slds-card__header slds-grid">
-            <header class="slds-media slds-media_center slds-has-flexi-truncate">
-              <div class="slds-media__body">
-                <h2 class="sub-titulo">
-                  {{item.titulo}}
-                </h2>
-                <p>Usuario: <span style="color: red">{{item.usuario}}</span></p>
-                <p>Fecha de envío: {{print_date(item.fechaHora)}}</p>
-                <ng-container *ngIf="item.respuesta.length > 0">
-                  <ng-container *ngIf="item.respuestaVista == true; else elseTemplate" st>
-                    <p style="color: red">La respuesta fue leída por el usuario.</p>
-                  </ng-container>
-                  <ng-template #elseTemplate>
-                    <p style="color: red">La respuesta aún no ha sido leída por el usuario.</p>
-                  </ng-template>
+  <div *ngFor="let item of consultas">
+    <div  *ngIf="item.id_Consulta == idConsulta">
+      <div class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__body">
+              <h2 class="sub-titulo">
+                {{item.titulo}}
+              </h2>
+              <p>Usuario: <span style="color: red">{{item.usuario}}</span></p>
+              <p>Fecha de envío: {{print_date(item.fechaHora)}}</p>
+              <ng-container *ngIf="item.respuesta.length > 0">
+                <ng-container *ngIf="item.respuestaVista == true; else elseTemplate" st>
+                  <p style="color: red">La respuesta fue leída por el usuario.</p>
                 </ng-container>
-              </div>
-            </header>
-          </div>
-          <div class="slds-card_body" style="margin-left: 1rem">
-            <h5 class="subTituloConsulta">
-              Consulta del cliente:
+                <ng-template #elseTemplate>
+                  <p style="color: red">La respuesta aún no ha sido leída por el usuario.</p>
+                </ng-template>
+              </ng-container>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card_body" style="margin-left: 1rem">
+          <h5 class="subTituloConsulta">
+            Consulta del cliente:
+          </h5>
+          <p>{{item.consulta}}</p>
+          <br>
+          <h5 class="subTituloConsulta">
+              Respuesta:
             </h5>
-            <p>{{item.consulta}}</p>
-            <br>
-            <h5 class="subTituloConsulta">
-                Respuesta:
-              </h5>
-            <ng-container *ngIf="item.respuesta.length > 0; else elseTemplate2">
-              <p>{{item.respuesta}}</p>
-            </ng-container>
-            <ng-template #elseTemplate2>
-              <ngl-textarea label="Respuesta a la consulta" fieldLevelHelpTooltip="Some helpful information" [error]="hasErrorConsulta ? error : null">
-                <textarea [(ngModel)]="consultaTexto.value" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu respuesta aquí"></textarea>
-              </ngl-textarea>
-              <button (click)="put_respuesta()">Enviar respuesta</button>
-            </ng-template>
-          </div>
+          <ng-container *ngIf="item.respuesta.length > 0; else elseTemplate2">
+            <p>{{item.respuesta}}</p>
+          </ng-container>
+          <ng-template #elseTemplate2>
+            <ngl-textarea label="Respuesta a la consulta" fieldLevelHelpTooltip="Aquí va tu respuesta para el usuario" [error]="hasErrorConsulta ? error : null">
+              <textarea [(ngModel)]="consultaTexto.value" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu respuesta aquí"></textarea>
+            </ngl-textarea>
+            <button (click)="put_respuesta()">Enviar respuesta</button>
+          </ng-template>
         </div>
       </div>
     </div>
   </div>
+  <ngl-modal [(open)]="open">
+    <div class="slds-p-around_medium">
+      <ng-container *ngIf="enviada == true; else elseTemplate">
+        <p>Tu respuesta ha sido enviada al usuario exitosamente.</p>
+        <button id="botonModal" (click)="redirigir()">Volver a la pagina de consultas</button>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <p>Ha ocurrido un error al enviar la respuesta, por favor intentelo nuevamente.</p>
+      </ng-template>
+    </div>
+  </ngl-modal>
+</div>

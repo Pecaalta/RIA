@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Consultas } from 'src/app/model/consultas';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConsultasService } from 'src/app/services/consultas.service';
 import { StrignDto } from 'src/app/model/string-dto';
 
@@ -10,6 +10,9 @@ import { StrignDto } from 'src/app/model/string-dto';
   styleUrls: ['./consultas-admin-ver.component.scss']
 })
 export class ConsultasAdminVerComponent implements OnInit {
+
+  open = false;
+  enviada = false;
 
   idConsulta:string;
   consultas:Consultas[] = [];
@@ -21,6 +24,7 @@ export class ConsultasAdminVerComponent implements OnInit {
   cargando:boolean = false;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private oConsultasService:ConsultasService
   ) { }
@@ -55,10 +59,16 @@ export class ConsultasAdminVerComponent implements OnInit {
     this.oConsultasService.put_respuesta(this.idConsulta, this.consultaTexto).subscribe(
       resultado => {
         console.log(resultado);
+        this.enviada = true;
       },
       error => {
         console.log(error);
       }
     );
+    this.open = true;
+  }
+
+  redirigir(){
+    this.router.navigate(['linea/consulta']); 
   }
 }

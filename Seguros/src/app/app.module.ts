@@ -32,6 +32,8 @@ import { TiposdeseguroEditarComponent } from './pages/tiposdeseguro-editar/tipos
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { AgregarSegurosComponent } from './pages/agregar-seguros/agregar-seguros.component';
 import { ListadoSegurosComponent } from './pages/listado-seguros/listado-seguros.component';
+import { SegurosListaUsuarioComponent } from './pages/seguros-lista-usuario/seguros-lista-usuario.component';
+import { SegurosVerUsuarioComponent } from './pages/seguros-ver-usuario/seguros-ver-usuario.component';
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import { ListadoSegurosComponent } from './pages/listado-seguros/listado-seguros
     TiposdeseguroVerComponent,
     TiposdeseguroEditarComponent,
     AgregarSegurosComponent,
-    ListadoSegurosComponent
+    ListadoSegurosComponent,
+    SegurosListaUsuarioComponent,
+    SegurosVerUsuarioComponent
   ],
   imports: [
     BrowserModule,

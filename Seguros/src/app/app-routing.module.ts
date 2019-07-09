@@ -24,6 +24,8 @@ import { TiposdeseguroEditarComponent } from './pages/tiposdeseguro-editar/tipos
 import { UserGuard } from './guards/user.guard';
 import { ListadoSegurosComponent } from './pages/listado-seguros/listado-seguros.component';
 import { AgregarSegurosComponent } from './pages/agregar-seguros/agregar-seguros.component';
+import { SegurosListaUsuarioComponent } from './pages/seguros-lista-usuario/seguros-lista-usuario.component';
+import { SegurosVerUsuarioComponent } from './pages/seguros-ver-usuario/seguros-ver-usuario.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
@@ -80,6 +82,12 @@ const routes: Routes = [
       { path:"nueva", component: ConsultasNuevaComponent },
       { path:"ver/:id", component: ConsultasVerComponent },
       { path:"**", pathMatch: 'full', redirectTo: "user/consulta/lista" },
+    ]},
+    { path:"seguros", children: [
+      { path:"", component: SegurosListaUsuarioComponent },
+      { path:"lista", component: SegurosListaUsuarioComponent },
+      { path:"ver/:id", component: SegurosVerUsuarioComponent },
+      { path:"**", pathMatch: 'full', redirectTo: "user/seguros/lista" },
     ]},
     { path:"**", pathMatch: 'full', redirectTo: "consulta" },
 
