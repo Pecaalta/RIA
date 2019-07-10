@@ -19,6 +19,11 @@ export class SegurosListaUsuarioComponent implements OnInit {
 
   cargando = false;
 
+  variant = 'scoped';
+  id = 0;
+  selectedTab: any = 'sum';
+  details: number[] = [];
+
   lista_seguros:Seguro[] = [];
 
   getMisSeguros(){
@@ -33,6 +38,12 @@ export class SegurosListaUsuarioComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  print_date(date:string){
+    let oDate = new Date(date);
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return oDate.toLocaleDateString('es-UY', options);
   }
 
 }
