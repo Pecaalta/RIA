@@ -9,6 +9,7 @@ export interface Seguro {
     fechaFechaFin: Date
     titulo: string
     descripccion: string
-    documentoPDFBase64: string
+    documentoPDFBase64?: string
+    documentoPDF?: string
     costoTotal: number
 }

@@ -46,4 +46,13 @@ export class SegurosListaUsuarioComponent implements OnInit {
     return oDate.toLocaleDateString('es-UY', options);
   }
 
+  print_color(seguro:number){
+    this.lista_seguros.forEach(element => {
+      if(element.id_DeSeguro = seguro){
+        console.log(element.tipo.color);
+        return element.tipo.color;
+      }
+    });
+  }
+
 }
