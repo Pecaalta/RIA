@@ -15,7 +15,7 @@
             <ngl-tabset [(selected)]="selectedTab" [variant]="variant">
                 <ng-template ngl-tab label="Pendientes de lectura">
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinLeer" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
-                        <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
+                        <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>
                                 <a [routerLink]="[ '/user/consulta/ver', value ]" (click)="put_respuestaVista(value)">Ver</a>
                             </ng-template>
@@ -35,8 +35,8 @@
                     </table>
                 </ng-template>
                 <ng-template ngl-tab label="Pendientes de respuesta">
-                    <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinResponder" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
-                        <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
+                    <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinResponder" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort3($event)" (rowClick)="onRowClick($event)">
+                        <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>
                                 <a [routerLink]="[ '/user/consulta/ver', value ]">Ver</a>
                             </ng-template>
@@ -60,8 +60,8 @@
                     </table>
                 </ng-template>
                 <ng-template ngl-tab label="Resueltas">
-                    <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasResueltas" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
-                        <ngl-datatable-column heading="Ver" key="id_Consulta" sortable>
+                    <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasResueltas" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort2($event)" (rowClick)="onRowClick($event)">
+                        <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>
                                 <a [routerLink]="[ '/user/consulta/ver', value ]">Ver</a>
                             </ng-template>

@@ -1,0 +1,39 @@
+<app-nav-user></app-nav-user>
+<div class="container">
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__body">
+              <h2 class="titulo">Seguros</h2>
+            </div>
+            <div class="slds-no-flex">
+              <p>Los seguros marcados con "icono" significa que estan cerca de vencer</p>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body">
+          <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="lista_seguros" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)">          
+              
+              <ngl-datatable-column heading="Titulo" key="titulo"></ngl-datatable-column>
+              <ngl-datatable-column heading="Vencimiento" key="vencimiento" truncate sortable>
+                <ng-template nglDatatableCell let-value>
+                  {{ print_date(value) }}
+                </ng-template>
+              </ngl-datatable-column>
+
+              <ngl-datatable-column headClass="text-center" heading="Ver" key="id_DeSeguro">
+                <ng-template nglDatatableHeading><strong class="text-center w-100">Ver</strong></ng-template>
+              </ngl-datatable-column>
+              
+              <!-- Loading overlay-->
+              <ng-template class="loader" nglLoadingOverlay>
+                <ngl-spinner alternativeText="Loading"></ngl-spinner>
+              </ng-template>
+
+              <!-- No rows overlay-->
+              <ng-template nglNoRowsOverlay>No tienes ningún seguro activo actualmente!</ng-template>
+      
+          </table>
+        </div>
+      </article>
+</div>

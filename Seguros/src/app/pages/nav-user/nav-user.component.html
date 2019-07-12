@@ -6,7 +6,7 @@
       <svg aria-hidden="true" class="slds-icon" title="when needed">
         <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#user"></use>
       </svg>
-      <p class="usuarioActual">{{user}}</p>
+      <p class="usuarioActual"> {{user}}</p>
     </div>
   </ul>
   
@@ -27,6 +27,7 @@
     <ul>
       <li [routerLink]="['/inicio']" [routerLinkActive]="'active'">Inicio</li>
       <li [routerLink]="['/user/consulta']" [routerLinkActive]="'active'">Consulta</li>
+      <li [routerLink]="['/user/seguros']" [routerLinkActive]="'active'">Seguros</li>
     </ul>
   </div>
 </nav>
@@ -44,6 +45,9 @@
           </li>
           <li [routerLink]="['/user/consulta']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
             <a class="slds-nav-vertical__action" aria-current="page">Consulta</a>
+          </li>
+          <li [routerLink]="['/user/seguros']" [routerLinkActive]="'active'" class="slds-nav-vertical__item">
+            <a class="slds-nav-vertical__action" aria-current="page">Seguros</a>
           </li>
       </ul>
     </div>
