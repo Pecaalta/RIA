@@ -10,6 +10,7 @@ import { Cliente } from 'src/app/model/Cliente';
 import { ClienteDto } from 'src/app/model/cliente-dto';
 import { TiposDeSeguroDto } from 'src/app/model/tiposdeseguro-dto';
 import { TiposdeseguroService } from 'src/app/services/tiposdeseguro.service';
+import { ReturnStatement } from '@angular/compiler';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { TiposdeseguroService } from 'src/app/services/tiposdeseguro.service';
 export class AgregarSegurosComponent implements OnInit {
 
   Seguro:SeguroDto = {
-    id_DeSeguro: 1,
+    id_DeSeguro: 0,
     id_Cliente: null,
     id_Tipo: null,
     fechaInicio: null,
@@ -130,6 +131,13 @@ export class AgregarSegurosComponent implements OnInit {
   name:string = '';
   readThis(inputValue: any): void {
     var file:File = inputValue.files[0];
+    console.log();
+    if (file.type != "application/pdf" ) {
+      this.Seguro.documentoPDFBase64 = null;
+      this.name = null;
+      this.norificacion("El archivo no es un PDF", "2");
+      return;
+    }
     var myReader:FileReader = new FileReader();
     myReader.onloadend = (e) => {
       this.Seguro.documentoPDFBase64 = myReader.result.toString();
@@ -150,9 +158,9 @@ export class AgregarSegurosComponent implements OnInit {
     else if(this.Seguro.fechaInicio == null) this.norificacion("Falta un fecha de inicio", "2");
     else if(this.Seguro.fechaInicio >= this.Seguro.fechaFechaFin) this.norificacion("Falta un fecha de inicio tiene que ue ser anterior a la de fin", "2");
     else {
-      this.cargando = false;
+      this.cargando = true;
       let pedido = null;
-      if(this.Seguro.id_DeSeguro == null || this.Seguro.id_DeSeguro == undefined){
+      if(this.Seguro.id_DeSeguro == null || this.Seguro.id_DeSeguro == undefined || this.Seguro.id_DeSeguro == 0){
         pedido = this.oSegurosService.post(this.Seguro);
       }else {
         pedido = this.oSegurosService.put(this.Seguro); 

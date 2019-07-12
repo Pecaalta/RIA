@@ -94,7 +94,7 @@ export class AgregarNoticiaComponent implements OnInit {
     else if(this.noticia.texto == "") this.norificacion("Falta un texto", "2");
     else if(this.noticia.titulo == "") this.norificacion("Falta un titulo", "2");
     else {
-      this.cargando = false;
+      this.cargando = true;
       this.noticia.fechaHora = new Date();
       let pedido = null;
       if(this.noticia.id_Noticia != null && this.noticia.id_Noticia != undefined){

@@ -14,6 +14,10 @@
             </header>
         </div>
         <div class="slds-card__body">
+            <div class="loader" [class.active]="cargando">
+                <ngl-spinner [size]="size" [variant]="variant" alternativeText="Loading"></ngl-spinner>
+            </div>
+                 
             <div class="slds-grid slds-gutters">
                 <div class="slds-size_1-of-3 padding-right-0_5rem">
                     <div class="slds-m-vertical_medium imagen" >

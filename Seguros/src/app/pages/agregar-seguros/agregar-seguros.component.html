@@ -14,10 +14,14 @@
             </header>
         </div>
         <div class="slds-card__body">
+            <div class="loader" [class.active]="cargando">
+                <ngl-spinner [size]="size" [variant]="variant" alternativeText="Loading"></ngl-spinner>
+            </div>
+                 
             <div class="slds-grid slds-gutters">
                 <div class="slds-size_1-of-3 padding-right-0_5rem">
                     <div class="slds-m-vertical_medium imagen" >
-                        <input type="file" (change)="changeListener($event)">
+                        <input type="file" (change)="changeListener($event)" accept="application/pdf">
                         <ngl-file [text]="name ? name : 'Sube su pdf'" [iconName]="icon">
                           <a href="javascript:void(0)" [nglFileCrop]="ratio">
                             <img src="https://www.lightningdesignsystem.com/assets/images/placeholder-img@16x9.jpg">
@@ -44,7 +48,7 @@
                   <ngl-datepicker-input 
                     required
                     label="Fecha inicio" 
-                    fieldLevelHelpTooltip="Titulo de la nueva seguro"
+                    fieldLevelHelpTooltip="Fecha de inicio del seguro"
                     [(ngModel)]="Seguro.fechaInicio"
                     [max]="Seguro.fechaFechaFin">
                   </ngl-datepicker-input>
@@ -52,13 +56,13 @@
                   <ngl-datepicker-input 
                     required
                     label="*Fecha fin" 
-                    fieldLevelHelpTooltip="Titulo de la nueva seguro"
+                    fieldLevelHelpTooltip="Fecha de fin de el seguro"
                     [(ngModel)]="Seguro.fechaFechaFin"
                     [min]="Seguro.fechaInicio">
                   </ngl-datepicker-input>
 
                   <ngl-input class='mb-1' label="Descripcion" fieldLevelHelpTooltip="Descripcion del seguro">
-                      <input ngl [(ngModel)]="Seguro.descripccion" type="text" required placeholder="Titulo">
+                      <input ngl [(ngModel)]="Seguro.descripccion" type="text" required placeholder="Descripcion">
                   </ngl-input>
 
                   <ngl-input class='mb-1' label="Costo" fieldLevelHelpTooltip="Costo total del seguro">
