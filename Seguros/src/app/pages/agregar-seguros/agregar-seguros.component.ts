@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoticiasDto } from 'src/app/model/noticias-dto';
 import { NoticiasService } from 'src/app/services/noticias.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 import { SeguroDto } from 'src/app/model/Seguro-dto';
 import { SegurosService } from 'src/app/services/seguros.service';
@@ -45,6 +45,7 @@ export class AgregarSegurosComponent implements OnInit {
   lista_tipo_seguro:TiposDeSeguroDto[] = [];
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private oSegurosService:SegurosService,
     private oTiposdeseguroService:TiposdeseguroService,
@@ -57,17 +58,18 @@ export class AgregarSegurosComponent implements OnInit {
     this.get_tipos_seguros();
   }
 
-  get(){
-    this.Seguro.id_DeSeguro = Number(this.route.snapshot.paramMap.get("id"));    
-    if (this.Seguro.id_DeSeguro != null){
+  get(){ 
+    let id = this.route.snapshot.paramMap.get("id");
+    if (id != null){
+      this.Seguro.id_DeSeguro = Number(id);
       this.cargando = true;
       this.oSegurosService.get(this.Seguro.id_DeSeguro.toString()).subscribe(
         resultado => {
           console.log(resultado);
-          
           this.cargando = false;
           if (resultado != null) this.Seguro = this.SeguroToDt(resultado);
           else this.norificacion("No se consigio el elemento esperado", "1"); 
+          this.Seguro.id_DeSeguro = Number(id);
         },
         error => {
           this.norificacion("Algo salio mal en la carga de su seguro", "1");
@@ -95,18 +97,20 @@ export class AgregarSegurosComponent implements OnInit {
   get_tipos_seguros(){
       this.oTiposdeseguroService.get_all().subscribe(
         resultado => {
-          this.lista_tipo_seguro = resultado;
+          this.lista_tipo_seguro = resultado;          
         },
         error => {
           this.norificacion("Algo salio mal en la carga de su noticia", "1");
           this.cargando = false;        
         }
       );
-}
+  }
+  SetTipoSeguro(tipo_seguro){
+    this.Seguro.id_Tipo = tipo_seguro.id_TipoDeSeguro;
+  }
 
   SeguroToDt(seguro:Seguro):SeguroDto{
-    console.log(seguro);
-    
+    this.filter = seguro['cliente'].nombres;
     return {
       id_Cliente: ( seguro['cliente'] != null ) ? seguro.cliente.id_Cliente : null,
       id_Tipo: ( seguro['tipo'] != null ) ? seguro.tipo.id_TipoDeSeguro : null,
@@ -135,6 +139,8 @@ export class AgregarSegurosComponent implements OnInit {
   }
   
   guardar() {
+    console.log(this.Seguro);
+    
     if(this.Seguro.costoTotal == null) this.norificacion("Falta un costo", "2");
     else if(this.Seguro.id_Cliente == null) this.norificacion("Falta un cliente", "2");
     else if(this.Seguro.id_Tipo == null) this.norificacion("Falta un tipo de seguro", "2");
@@ -145,13 +151,19 @@ export class AgregarSegurosComponent implements OnInit {
     else if(this.Seguro.fechaInicio >= this.Seguro.fechaFechaFin) this.norificacion("Falta un fecha de inicio tiene que ue ser anterior a la de fin", "2");
     else {
       this.cargando = false;
-      this.oSegurosService.post(this.Seguro).subscribe(
+      let pedido = null;
+      if(this.Seguro.id_DeSeguro == null || this.Seguro.id_DeSeguro == undefined){
+        pedido = this.oSegurosService.post(this.Seguro);
+      }else {
+        pedido = this.oSegurosService.put(this.Seguro); 
+      }
+      pedido.subscribe(
         resultado => {
           this.norificacion("Su seguro se a guardado con exito", "3");
           this.cargando = false;
+          this.router.navigate(['/linea/seguros']); 
         },
         error => {
-          console.log(error);
           this.norificacion("Error", "error");
           this.cargando = false;        
         }
@@ -176,7 +188,6 @@ export class AgregarSegurosComponent implements OnInit {
         break;
     }
     this.msj = msj;
-    console.log("notificacion",msj);
     this.showTopToast = true;
   }
 }

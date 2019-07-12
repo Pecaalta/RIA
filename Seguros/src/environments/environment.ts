@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URLAPI: "http://13.68.169.97/TDW2019GR2/",
+  URLAPI: "http://104.211.57.42/TDW2019GR2/",
   
   MINAVISOVENCIMINTO: 1000*60*60*24*7
 };

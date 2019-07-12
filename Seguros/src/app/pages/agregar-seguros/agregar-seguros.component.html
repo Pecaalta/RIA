@@ -5,7 +5,7 @@
         <div class="slds-card__header slds-grid">
             <header class="slds-media slds-media_center slds-has-flexi-truncate">
                 <div class="slds-media__body">
-                    <h2 class="titulo" >Nueva noticia</h2>
+                    <h2 class="titulo" >Seguro</h2>
                 </div>
                 <div class="slds-no-flex">
               <button class="slds-button slds-button_neutral" [routerLink]="['/linea/seguros']">Listado</button>
@@ -66,9 +66,10 @@
                   </ngl-input>
                   
                   <ngl-select label="Tipo de seguro" fieldLevelHelpTooltip="Seleccione el tipo de seguro">
-                    <select ngl required [(ngModel)]="Seguro.id_Tipo" >
-                      <option class='tipo'  [style.background-color]="tipo_seguro.color" *ngFor="let tipo_seguro of lista_tipo_seguro"  [value]="tipo_seguro.id_TipoDeSeguro">{{ tipo_seguro.nombre }}</option>
-                    </select>
+                    <select ngl required  [(ngModel)]="Seguro.id_Tipo">
+                        <option class='tipo' >Seleccione un tipos</option>
+                        <option class='tipo' [selected]='Seguro.id_Tipo == tipo_seguro.id_TipoDeSeguro' [style.background-color]="tipo_seguro.color" *ngFor="let tipo_seguro of lista_tipo_seguro" [value]='tipo_seguro.id_TipoDeSeguro' >{{ tipo_seguro.nombre }}</option>
+                      </select>
                   </ngl-select>
 
                 </div>

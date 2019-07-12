@@ -5,6 +5,8 @@ import { NoticiasDto } from 'src/app/model/noticias-dto';
 import { SeguroDto } from 'src/app/model/Seguro-dto';
 import { SegurosService } from 'src/app/services/seguros.service';
 import { Seguro } from 'src/app/model/Seguro';
+import { TiposDeSeguroDto } from 'src/app/model/tiposdeseguro-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-seguros',
@@ -22,6 +24,7 @@ export class ListadoSegurosComponent implements OnInit {
   msj:string = "";
   
   constructor(
+    private router: Router,
     private oNoticiasService:NoticiasService,
     private oSegurosService:SegurosService,
 
@@ -72,7 +75,7 @@ export class ListadoSegurosComponent implements OnInit {
 
   print_date(date:string){
     let oDate = new Date(date);
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var options = {year: 'numeric', month: 'numeric', day: 'numeric' };
     return oDate.toLocaleDateString('es-UY', options);
   }
   print_cliente(cliente){
@@ -82,8 +85,8 @@ export class ListadoSegurosComponent implements OnInit {
       return cliente.documento;
     }
   }
-  print_color(seguro:Seguro){
-    if (seguro != null && seguro.tipo != null && seguro.tipo.color != null) return seguro.tipo.color;
+  print_color(tipo:TiposDeSeguroDto){
+    if (tipo.color != null) return tipo.color;
     return null;
   }
 
