@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { INglDatatableSort, INglDatatableRowClick } from 'ng-lightning';
 import { NoticiasService } from 'src/app/services/noticias.service';
 import { NoticiasDto } from 'src/app/model/noticias-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-noticias',
@@ -19,6 +20,7 @@ export class ListadoNoticiasComponent implements OnInit {
   msj:string = "";
   
   constructor(
+    private router: Router,
     private oNoticiasService:NoticiasService
   ) { }
 

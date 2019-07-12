@@ -49,3 +49,19 @@ textarea {
 .mb-1 {
     margin-bottom: 1rem;
 }
+
+.loader {
+    z-index: -1;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all .2s;
+    &.active {
+        opacity: 1;
+        z-index: 10000;
+    }
+}

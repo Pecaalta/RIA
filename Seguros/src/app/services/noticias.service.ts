@@ -41,7 +41,7 @@ export class NoticiasService {
   }
 
   put(noticia:NoticiasDto){
-    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + noticia.id_Noticia,noticia ).pipe(
+    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + noticia.id_Noticia,noticia, this.getheaders() ).pipe(
         catchError(this.handleError)
     )
   }

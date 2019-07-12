@@ -12,32 +12,54 @@
           </header>
         </div>
         <div class="slds-card__body">
-          <table cellspacing="0" cellpadding="0" class='slds-table_bordered slds-table'>
-              <thead>
-                  <tr>
-                      <th height='40px'>Titulo</th>
-                      <th height='40px'>Cliente</th>
-                      <th height='40px'>Desde</th>
-                      <th height='40px'>Hasta</th>
-                      <th height='40px'>Costo</th>
-                      <th height='40px'></th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor='let seguro of lista_seguros' [style.background-color]="print_color(seguro)">
-                      <td>{{ seguro.titulo }}</td>
-                      <td>{{ print_cliente(seguro.cliente) }}</td>
-                      <td>{{ print_date(seguro.fechaInicio) }}</td>
-                      <td>{{ print_date(seguro.fechaFechaFin) }}</td>
-                      <td>{{ seguro.costoTotal }}</td>
-                      <td class='acciones'>
-                          <button type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="right" [routerLink]="['/linea/seguros/editar/' + seguro.id_DeSeguro]">Editar</button>
-                          <button type="button" nglButton variant="destructive" iconName="utility:delete" iconPosition="right" (click)="delete(seguro.id_DeSeguro)">Delete</button>
-                      </td>
-                  </tr>
+            <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="lista_seguros" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">          
 
-              </tbody>
-          </table>
+              <ngl-datatable-column heading="Tipo" key="tipo" cellClass="width-50px"  headClass="width-50px" truncate sortable>
+                <ng-template nglDatatableCell let-value>
+                  <span class='Color' [style.background-color]="print_color(value)"></span>
+                </ng-template>
+              </ngl-datatable-column>
+
+              <ngl-datatable-column heading="Titulo" key="titulo" sortable></ngl-datatable-column>
+              
+              <ngl-datatable-column heading="Cliente" key="cliente" truncate sortable>
+                <ng-template nglDatatableCell let-value>
+                  {{ print_cliente(value) }}
+                </ng-template>
+              </ngl-datatable-column>
+              
+              <ngl-datatable-column cellClass="width-50px"  headClass="width-50px" heading="Inicio" key="fechaInicio" truncate sortable>
+                <ng-template nglDatatableCell let-value>
+                  {{ print_date(value) }}
+                </ng-template>
+              </ngl-datatable-column>
+        
+              <ngl-datatable-column cellClass="width-50px"  headClass="width-50px" heading="Fin" key="fechaFechaFin" truncate sortable>
+                <ng-template nglDatatableCell let-value>
+                  {{ print_date(value) }}
+                </ng-template>
+              </ngl-datatable-column>
+              
+              <ngl-datatable-column cellClass="width-50px"  headClass="width-50px" heading="Costo" key="costoTotal" sortable></ngl-datatable-column>
+                
+              <ngl-datatable-column cellClass="width-btn"  headClass="width-btn text-center" heading="Ver" key="id_DeSeguro">
+                <ng-template nglDatatableCell let-value>
+                  
+                  <button type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="right" [routerLink]="['/linea/seguros/editar/' + value]">Editar</button>
+                  <button type="button" nglButton variant="destructive" iconName="utility:delete" iconPosition="right" (click)="delete(value)">Delete</button>
+                 
+                </ng-template>
+              </ngl-datatable-column>
+              
+              <!-- Loading overlay-->
+              <ng-template nglLoadingOverlay>
+                <div class="slds-box slds-box_small slds-theme_shade slds-text-align_center">Loading...</div>
+              </ng-template>
+    
+              <!-- No rows overlay-->
+              <ng-template nglNoRowsOverlay>No data available in table!</ng-template>
+      
+            </table>
         </div>
       </article>
 </div>

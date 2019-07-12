@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoticiasDto } from 'src/app/model/noticias-dto';
 import { NoticiasService } from 'src/app/services/noticias.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 
 
@@ -49,6 +49,7 @@ export class AgregarNoticiaComponent implements OnInit {
     iconsTemplate: 'font_awesome_5'
   }
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private oNoticiasService:NoticiasService
   ) { }
@@ -93,18 +94,19 @@ export class AgregarNoticiaComponent implements OnInit {
     else if(this.noticia.texto == "") this.norificacion("Falta un texto", "2");
     else if(this.noticia.titulo == "") this.norificacion("Falta un titulo", "2");
     else {
-      this.cargando = false;
+      this.cargando = true;
       this.noticia.fechaHora = new Date();
       let pedido = null;
-      if(this.noticia.id_Noticia != null){
-        pedido = this.oNoticiasService.post(this.noticia); 
-      }else {
+      if(this.noticia.id_Noticia != null && this.noticia.id_Noticia != undefined){
         pedido = this.oNoticiasService.put(this.noticia); 
+      }else {
+        pedido = this.oNoticiasService.post(this.noticia);
       }
       pedido.subscribe(
         resultado => {
           this.norificacion("Su noticia se a guardado con exito", "3");
           this.cargando = false;
+          this.router.navigate(['/linea/noticias']); 
         },
         error => {
           console.log(error);

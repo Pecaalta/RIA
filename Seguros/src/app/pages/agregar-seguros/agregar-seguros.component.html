@@ -5,7 +5,7 @@
         <div class="slds-card__header slds-grid">
             <header class="slds-media slds-media_center slds-has-flexi-truncate">
                 <div class="slds-media__body">
-                    <h2 class="titulo" >Nueva noticia</h2>
+                    <h2 class="titulo" >Seguro</h2>
                 </div>
                 <div class="slds-no-flex">
               <button class="slds-button slds-button_neutral" [routerLink]="['/linea/seguros']">Listado</button>
@@ -14,10 +14,14 @@
             </header>
         </div>
         <div class="slds-card__body">
+            <div class="loader" [class.active]="cargando">
+                <ngl-spinner [size]="size" [variant]="variant" alternativeText="Loading"></ngl-spinner>
+            </div>
+                 
             <div class="slds-grid slds-gutters">
                 <div class="slds-size_1-of-3 padding-right-0_5rem">
                     <div class="slds-m-vertical_medium imagen" >
-                        <input type="file" (change)="changeListener($event)">
+                        <input type="file" (change)="changeListener($event)" accept="application/pdf">
                         <ngl-file [text]="name ? name : 'Sube su pdf'" [iconName]="icon">
                           <a href="javascript:void(0)" [nglFileCrop]="ratio">
                             <img src="https://www.lightningdesignsystem.com/assets/images/placeholder-img@16x9.jpg">
@@ -44,7 +48,7 @@
                   <ngl-datepicker-input 
                     required
                     label="Fecha inicio" 
-                    fieldLevelHelpTooltip="Titulo de la nueva seguro"
+                    fieldLevelHelpTooltip="Fecha de inicio del seguro"
                     [(ngModel)]="Seguro.fechaInicio"
                     [max]="Seguro.fechaFechaFin">
                   </ngl-datepicker-input>
@@ -52,13 +56,13 @@
                   <ngl-datepicker-input 
                     required
                     label="*Fecha fin" 
-                    fieldLevelHelpTooltip="Titulo de la nueva seguro"
+                    fieldLevelHelpTooltip="Fecha de fin de el seguro"
                     [(ngModel)]="Seguro.fechaFechaFin"
                     [min]="Seguro.fechaInicio">
                   </ngl-datepicker-input>
 
                   <ngl-input class='mb-1' label="Descripcion" fieldLevelHelpTooltip="Descripcion del seguro">
-                      <input ngl [(ngModel)]="Seguro.descripccion" type="text" required placeholder="Titulo">
+                      <input ngl [(ngModel)]="Seguro.descripccion" type="text" required placeholder="Descripcion">
                   </ngl-input>
 
                   <ngl-input class='mb-1' label="Costo" fieldLevelHelpTooltip="Costo total del seguro">
@@ -66,9 +70,10 @@
                   </ngl-input>
                   
                   <ngl-select label="Tipo de seguro" fieldLevelHelpTooltip="Seleccione el tipo de seguro">
-                    <select ngl required [(ngModel)]="Seguro.id_Tipo" >
-                      <option class='tipo'  [style.background-color]="tipo_seguro.color" *ngFor="let tipo_seguro of lista_tipo_seguro"  [value]="tipo_seguro.id_TipoDeSeguro">{{ tipo_seguro.nombre }}</option>
-                    </select>
+                    <select ngl required  [(ngModel)]="Seguro.id_Tipo">
+                        <option class='tipo' >Seleccione un tipos</option>
+                        <option class='tipo' [selected]='Seguro.id_Tipo == tipo_seguro.id_TipoDeSeguro' [style.background-color]="tipo_seguro.color" *ngFor="let tipo_seguro of lista_tipo_seguro" [value]='tipo_seguro.id_TipoDeSeguro' >{{ tipo_seguro.nombre }}</option>
+                      </select>
                   </ngl-select>
 
                 </div>

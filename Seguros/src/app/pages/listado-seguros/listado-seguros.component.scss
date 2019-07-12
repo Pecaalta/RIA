@@ -15,4 +15,28 @@
     }
 }.acciones {
     text-align: right
+}    
+
+
+.Color {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 50%;
+    margin: auto;
+    margin-right: 0;
+}
+
+@media only screen and (min-width: 769px) {
+    ::ng-deep {
+        .width-50px {
+            width: 100px!important;
+        }
+        .width-btn {
+            width: 220px!important;
+        }
+        .Color {
+            margin-right: auto!important;
+        }
+    }
 }
