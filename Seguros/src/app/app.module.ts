@@ -34,6 +34,7 @@ import { AgregarSegurosComponent } from './pages/agregar-seguros/agregar-seguros
 import { ListadoSegurosComponent } from './pages/listado-seguros/listado-seguros.component';
 import { SegurosListaUsuarioComponent } from './pages/seguros-lista-usuario/seguros-lista-usuario.component';
 import { SegurosVerUsuarioComponent } from './pages/seguros-ver-usuario/seguros-ver-usuario.component';
+import { ServiciosComponent } from './pages/servicios/servicios.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { SegurosVerUsuarioComponent } from './pages/seguros-ver-usuario/seguros-
     AgregarSegurosComponent,
     ListadoSegurosComponent,
     SegurosListaUsuarioComponent,
-    SegurosVerUsuarioComponent
+    SegurosVerUsuarioComponent,
+    ServiciosComponent
   ],
   imports: [
     BrowserModule,
