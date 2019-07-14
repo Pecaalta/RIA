@@ -100,11 +100,9 @@ export class SegurosListaUsuarioComponent implements OnInit {
     let v = new Date(vencimiento);
     console.log(hoy.toString());
     console.log(v.toString());
-    if(this.diferenciaEntreDiasEnDias(v,hoy) <= 31){
-      console.log(this.diferenciaEntreDiasEnDias(v,hoy));
-      return "porVencer";
-    } else{
-      return "normal";
+    if(this.diferenciaEntreDiasEnDias(v,hoy) >= -31){
+      console.log(this.diferenciaEntreDiasEnDias(v,hoy) + " entro al if");
+      return "true";
     }
   }
 

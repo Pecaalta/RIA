@@ -8,7 +8,13 @@
                 <h2 class="titulo">Seguros</h2>
               </div>
               <div class="slds-no-flex">
-                <p>Los seguros cuyo titulo este en color <span style="color:red;">rojo</span>, significa que esta cerca de vencer.</p>
+                <p>
+                  <span style="color:red" class="slds-icon_container slds-icon-utility-announcement slds-current-color" title="iconoVencimiento">
+                    <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                    </svg>
+                  </span>
+                 Indica que falta menos de un mes para que venza el seguro.</p>
               </div>
             </div>
           </header>
@@ -23,9 +29,17 @@
                     <span class='Color' [style.background-color]="print_color(value)"></span>
                   </ng-template>
                 </ngl-datatable-column>
-                <ngl-datatable-column heading="Titulo" key="titulo" [cellClass]="'porVencer'"></ngl-datatable-column>
+                <ngl-datatable-column heading="Titulo" key="titulo"></ngl-datatable-column>
                 <ngl-datatable-column heading="Vencimiento" key="fechaFechaFin" truncate sortable>
                   <ng-template nglDatatableCell let-value>
+                      <ng-container *ngIf="porVencer(value)">
+                        <span style="color:red" class="slds-icon_container slds-icon-utility-announcement slds-current-color" title="Falta menos de un mes para que venza el seguro!">
+                          <svg class="slds-icon slds-icon-text-default  slds-icon_x-small" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Falta menos de un mes para que venza el seguro!</span>
+                        </span>
+                      </ng-container>
                     {{ print_date(value) }}
                   </ng-template>
                 </ngl-datatable-column>
