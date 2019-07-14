@@ -28,7 +28,7 @@ const routes: Routes = [
   { path:"", component: NoticiasComponent },
   { path:"inicio", component: NoticiasComponent },
   { path:"nosotros", component: NosotrosComponent },
-  { path:"servicios", component: ServiciosComponent },
+  { path:"seguros", component: ServiciosComponent },
   { path:"contactos", component: ContactosComponent },
   { path:"registro", component: RegistroComponent },
   { path:"linea", canActivateChild:[AutentificadoGuard] , children: [
