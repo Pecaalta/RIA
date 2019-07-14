@@ -1,3 +1,45 @@
-<p>
-  seguros-ver-usuario works!
-</p>
+<app-nav-user></app-nav-user>
+<div class="container">
+  <div class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="sub-titulo">
+            {{seguro.titulo}}
+          </h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card_body" style="margin-left: 1rem">
+      <ul>
+        <li>
+          <span class="liTitulo">Fecha de contrato:</span> {{print_date(seguro.fechaInicio)}}
+        </li>
+        <li>
+          <span class="liTitulo">Fecha de vencimiento:</span> {{print_date(seguro.fechaFechaFin)}}
+        </li>
+        <li>
+          <span class="liTitulo">Costo:</span> ${{seguro.costoTotal}}
+        </li>
+        <li>
+          <span class="liTitulo">Descripcion:</span> {{seguro.descripccion}}
+        </li>
+        <li>
+          <span class="liTitulo">Tipo de seguro:</span> {{seguro.tipo.nombre}} color
+        </li>
+        <li>
+          <span class="liTitulo">Contrato:</span> 
+          <button (click)="descargarPdf()">
+            <span class="slds-icon_container slds-icon-utility-announcement" title="PDF">
+              <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+                <use xlink:href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"></use>
+              </svg>
+              <span class="slds-assistive-text">PDF</span>
+            </span>
+          </button>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

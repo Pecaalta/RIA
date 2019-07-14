@@ -36,7 +36,6 @@ import { SegurosListaUsuarioComponent } from './pages/seguros-lista-usuario/segu
 import { SegurosVerUsuarioComponent } from './pages/seguros-ver-usuario/seguros-ver-usuario.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +64,7 @@ import { ServiciosComponent } from './pages/servicios/servicios.component';
     SegurosListaUsuarioComponent,
     SegurosVerUsuarioComponent,
     ServiciosComponent
+
   ],
   imports: [
     BrowserModule,

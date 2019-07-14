@@ -3,10 +3,15 @@
   <ul>
     <li (click)="logout()">Salir</li>
     <div class="usuarioActualCuadro"> 
-      <svg aria-hidden="true" class="slds-icon" title="when needed">
-        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#user"></use>
-      </svg>
-      <p class="usuarioActual"> {{user}}</p>
+      <p class="usuarioActual">
+        <span class="slds-icon_container slds-icon-utility-announcement slds-current-color" title="Usuario actual: {{user}}">
+          <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#user"></use>
+          </svg>
+          <span class="slds-assistive-text">Usuario actual</span>
+        </span>
+        {{nombreCompleto}} 
+      </p>
     </div>
   </ul>
   
