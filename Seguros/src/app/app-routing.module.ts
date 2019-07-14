@@ -22,14 +22,14 @@ import { ListadoSegurosComponent } from './pages/listado-seguros/listado-seguros
 import { AgregarSegurosComponent } from './pages/agregar-seguros/agregar-seguros.component';
 import { SegurosListaUsuarioComponent } from './pages/seguros-lista-usuario/seguros-lista-usuario.component';
 import { SegurosVerUsuarioComponent } from './pages/seguros-ver-usuario/seguros-ver-usuario.component';
-import { SegurosListaPublicaComponent } from './pages/seguros-lista-publica/seguros-lista-publica.component';
+import { ServiciosComponent } from './pages/servicios/servicios.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
   { path:"inicio", component: NoticiasComponent },
   { path:"nosotros", component: NosotrosComponent },
+  { path:"seguros", component: ServiciosComponent },
   { path:"contactos", component: ContactosComponent },
-  { path:"seguros", component: SegurosListaPublicaComponent },
   { path:"registro", component: RegistroComponent },
   { path:"linea", canActivateChild:[AutentificadoGuard] , children: [
     

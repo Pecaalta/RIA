@@ -1,0 +1,111 @@
+header {
+    background: url("/assets/bg5.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 15rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    border-bottom: solid 1px rgba(0, 0, 0, .16);
+    h1 {
+        color: #eee;
+        font-size: 2rem;
+        margin: -10px;
+        padding: 0;
+        letter-spacing: 0.02em;
+    }
+    h2 {
+        color: #aaa;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+        letter-spacing: 0.02em;
+    }
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .8);
+        z-index: -1;
+    }
+}
+h3 {
+    color: #222;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.02em;
+}
+p {
+    margin: 0;
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+li {
+    min-height: 250px;
+    border-bottom: solid 1px rgba(0, 0, 0, .16);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    img {
+        width: 500px;
+        position: absolute;
+        top: -100px;
+        z-index: 0;
+        opacity: 0.16;
+    }
+}
+li:nth-child(2n) {
+    align-items: flex-start;
+    text-align: left;
+    img {
+        left: -150px;
+    }
+}
+li:nth-child(2n+1) {
+    align-items: flex-end;
+    text-align: right;
+    background: rgba(0, 0, 0, .06);
+    img {
+        right: -150px;
+    }
+}
+.marcador {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: red;
+    display: inline-block;
+}
+@media (max-width: 600px) {
+    header {
+        h1 {
+          font-size: 1rem;
+        }
+        h2 {
+          font-size: 0.75rem;
+        }
+    }
+    p {
+        margin: 1rem 0;
+        font-size: 0.75rem;
+    }
+    li {
+        align-items: center;
+        text-align: center;
+        img {
+            right: 50%;
+        }
+    }
+}

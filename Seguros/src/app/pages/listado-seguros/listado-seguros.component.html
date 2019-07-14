@@ -14,9 +14,10 @@
         <div class="slds-card__body">
             <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="lista_seguros" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">          
 
-              <ngl-datatable-column heading="Tipo" key="tipo" cellClass="width-50px"  headClass="width-50px" truncate sortable>
+              <ngl-datatable-column heading="Tipo" key="tipo" truncate sortable>
                 <ng-template nglDatatableCell let-value>
                   <span class='Color' [style.background-color]="print_color(value)"></span>
+                  {{ value.nombre }}
                 </ng-template>
               </ngl-datatable-column>
 
