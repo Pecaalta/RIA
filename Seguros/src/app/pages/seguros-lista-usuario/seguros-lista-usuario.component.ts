@@ -94,14 +94,9 @@ export class SegurosListaUsuarioComponent implements OnInit {
   }
 
   porVencer(vencimiento:Date){
-
-    console.log(vencimiento);
     let hoy = new Date();
     let v = new Date(vencimiento);
-    console.log(hoy.toString());
-    console.log(v.toString());
     if(this.diferenciaEntreDiasEnDias(v,hoy) >= -31){
-      console.log(this.diferenciaEntreDiasEnDias(v,hoy) + " entro al if");
       return "true";
     }
   }
@@ -110,7 +105,6 @@ export class SegurosListaUsuarioComponent implements OnInit {
 {
   var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
   var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-  console.log(Math.floor((utc2 - utc1) / this.MILISENGUNDOS_POR_DIA).toString());
   return Math.floor((utc2 - utc1) / this.MILISENGUNDOS_POR_DIA);
 }
 
