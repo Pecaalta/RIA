@@ -4,42 +4,99 @@
     <div class="slds-card__header slds-grid">
       <header class="slds-media slds-media_center slds-has-flexi-truncate">
         <div class="slds-media__body">
-          <h2 class="sub-titulo">
-            {{seguro.titulo}}
-          </h2>
+          <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+              <h2 class="sub-titulo">
+                {{seguro.titulo}}
+              </h2>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+              <p>
+                <span style="color: red">Descarga el documento del seguro:</span> 
+                <button (click)="descargarPdf()"><img src="https://cdn2.dineroenimagen.com/media/dinero/styles/gallerie/public/images/2018/07/pdf.jpg" width="70" height="70"></button>
+              </p>
+            </div>
+          </div>
+         
         </div>
       </header>
     </div>
-    <div class="slds-card_body" style="margin-left: 1rem">
-      <ul>
-        <li>
-          <span class="liTitulo">Fecha de contrato:</span> {{print_date(seguro.fechaInicio)}}
-        </li>
-        <li>
-          <span class="liTitulo">Fecha de vencimiento:</span> {{print_date(seguro.fechaFechaFin)}}
-        </li>
-        <li>
-          <span class="liTitulo">Costo:</span> ${{seguro.costoTotal}}
-        </li>
-        <li>
-          <span class="liTitulo">Descripcion:</span> {{seguro.descripccion}}
-        </li>
-        <li>
-          <span class="liTitulo">Tipo de seguro:</span> {{seguro.tipo.nombre}} color
-        </li>
-        <li>
-          <span class="liTitulo">Contrato:</span> 
-          <button (click)="descargarPdf()">
-            <span class="slds-icon_container slds-icon-utility-announcement" title="PDF">
-              <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true">
-                <use xlink:href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"></use>
-              </svg>
-              <span class="slds-assistive-text">PDF</span>
-            </span>
-          </button>
-          
-        </li>
-      </ul>
+    <div class="slds-card_body" style="margin-left: 0.2rem">
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 cuadros">
+          <article class="slds-card contenidoBody">
+            <div class="slds-card__header slds-grid contenidoHeader">
+              <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                  <span class="slds-icon_container slds-icon-standard-account" title="account">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#info"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Detalles</span>
+                  </span>
+                  </div>
+                  <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                    <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+                      <span>Detalles</span>
+                    </a>
+                    </h2>
+                </div>
+              </header>
+            </div>
+            <div class="slds-card__body">
+              <dl class="slds-dl_horizontal">
+                <dt class="slds-dl_horizontal__label">Descripcion:</dt>
+                <dd class="slds-dl_horizontal__detail">{{seguro.descripccion}}</dd>
+                <dt class="slds-dl_horizontal__label">Tipo:</dt>
+                <dd class="slds-dl_horizontal__detail">{{seguro.tipo.nombre}}</dd>
+                <dt class="slds-dl_horizontal__label">Costo:</dt>
+                <dd class="slds-dl_horizontal__detail">{{seguro.costoTotal}}</dd>
+                <dt class="slds-dl_horizontal__label">Alta:</dt>
+                <dd class="slds-dl_horizontal__detail">{{print_date(seguro.fechaInicio)}}</dd>
+                <dt class="slds-dl_horizontal__label">Vencimiento:</dt>
+                <dd class="slds-dl_horizontal__detail">{{print_date(seguro.fechaFechaFin)}}</dd>
+              </dl>
+            </div>
+          </article>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 cuadros">
+          <article class="slds-card contenidoBody">
+            <div class="slds-card__header slds-grid contenidoHeader">
+              <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                  <span class="slds-icon_container slds-icon-standard-account" title="account">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#user"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cliente</span>
+                  </span>
+                  </div>
+                  <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                    <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+                      <span>Cliente</span>
+                    </a>
+                    </h2>
+                </div>
+              </header>
+            </div>
+            <div class="slds-card__body">
+              <dl class="slds-dl_horizontal">
+                <dt class="slds-dl_horizontal__label">Nombres:</dt>
+                <dd class="slds-dl_horizontal__detail">{{seguro.cliente.nombres}}</dd>
+                <dt class="slds-dl_horizontal__label">Apellidos:</dt>
+                <dd class="slds-dl_horizontal__detail">{{seguro.cliente.apellidos}}</dd>
+                <dt class="slds-dl_horizontal__label">Documento:</dt>
+                <dd class="slds-dl_horizontal__detail">{{seguro.cliente.documento}}</dd>
+                <dt class="slds-dl_horizontal__label">Email/Usuario:</dt>
+                <dd class="slds-dl_horizontal__detail">{{seguro.cliente.usuario}}</dd>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>

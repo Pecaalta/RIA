@@ -9,17 +9,11 @@
               <textarea [(ngModel)]="consulta.consulta" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu consulta aquí"></textarea>
           </ngl-textarea>
           <span class="botonCentro"><button type="button" nglButton variant="brand" (click)="post_consulta()">Enviar consulta</button></span>
+          <div class="slds-notify_container">
+            <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
+                <h2 class="slds-text-heading_small">{{ msj }}</h2>
+            </ngl-toast>
+        </div>
       </div>
-      <ngl-modal [(open)]="open">
-          <div class="slds-p-around_medium">
-            <ng-container *ngIf="enviada == true; else elseTemplate">
-                <p>Tu consulta ha sido enviada, cuando uno de nuestro agentes responda a su consulta le será notificado.</p>
-                <button type="button" nglButton variant="brand" (click)="redirigir()">Volver a la pagina de consultas</button>
-              </ng-container>
-            <ng-template #elseTemplate>
-                <p>Ha ocurrido un error al enviar la consulta, por favor intentelo nuevamente.</p>
-            </ng-template>
-          </div>
-      </ngl-modal>
   </div>
 </div>

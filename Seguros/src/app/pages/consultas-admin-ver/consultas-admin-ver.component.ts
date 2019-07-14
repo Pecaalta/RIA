@@ -68,11 +68,17 @@ export class ConsultasAdminVerComponent implements OnInit {
     else{
       this.oConsultasService.put_respuesta(this.idConsulta, this.consultaTexto).subscribe(
         resultado => {
-          console.log(resultado);
-          this.enviada = true;
+          this.variant = "success";
+          this.msj = "Su respuesta fue enviada correctamente, sera redireccionado a la lista de consultas.";
+          this.showTopToast = true;
+          setTimeout(() => {
+            this.redirigir();
+          }, 3000);
         },
         error => {
-          console.log(error);
+          this.variant = "error";
+          this.msj = error;
+          this.showTopToast = true;
         }
       );
       this.open = true;

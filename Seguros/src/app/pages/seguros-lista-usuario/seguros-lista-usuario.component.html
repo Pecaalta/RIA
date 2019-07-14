@@ -27,6 +27,7 @@
                 <ngl-datatable-column heading="Tipo" key="tipo" cellClass="width-50px"  headClass="width-50px" truncate>
                   <ng-template nglDatatableCell let-value>
                     <span class='Color' [style.background-color]="print_color(value)"></span>
+                    {{ value.nombre }}
                   </ng-template>
                 </ngl-datatable-column>
                 <ngl-datatable-column heading="Titulo" key="titulo"></ngl-datatable-column>
@@ -45,7 +46,7 @@
                 </ngl-datatable-column>
                 <ngl-datatable-column headClass="text-center" heading="Ver" key="id_DeSeguro">
                   <ng-template nglDatatableCell let-value>
-                    <a [routerLink]="[ '/user/seguros/ver', value ]">Ver</a>
+                    <button type="button" nglButton variant="brand" [routerLink]="[ '/user/seguros/ver', value ]">Ver</button>
                   </ng-template>
                 </ngl-datatable-column>
                 
@@ -81,7 +82,7 @@
                 </ngl-datatable-column>
                 <ngl-datatable-column headClass="text-center" heading="Ver" key="id_DeSeguro">
                   <ng-template nglDatatableCell let-value>
-                    <a [routerLink]="[ '/user/seguros/ver', value ]">Ver</a>
+                    <button type="button" nglButton variant="brand" [routerLink]="[ '/user/seguros/ver', value ]">Ver</button>
                   </ng-template>
                 </ngl-datatable-column>
                 

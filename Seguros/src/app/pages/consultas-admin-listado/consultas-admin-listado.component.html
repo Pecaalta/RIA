@@ -14,7 +14,7 @@
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinLeer" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
                       <ngl-datatable-column heading="Ver" key="id_Consulta">
                         <ng-template nglDatatableCell let-value>
-                          <a [routerLink]="[ '/linea/consulta/ver', value ]" (click)="put_consultaVista(value)">Ver</a>
+                          <button type="button" nglButton variant="brand" [routerLink]="[ '/linea/consulta/ver', value ]" (click)="put_consultaVista(value)">Ver</button>
                         </ng-template>
                       </ngl-datatable-column>  
                       <ngl-datatable-column heading="Asunto" key="titulo" sortable></ngl-datatable-column>
@@ -36,7 +36,7 @@
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinResponder" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort3($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>
-                                <a [routerLink]="[ '/linea/consulta/ver', value ]">Ver</a>
+                                <button type="button" nglButton variant="brand" [routerLink]="[ '/linea/consulta/ver', value ]">Ver</button>
                             </ng-template>
                         </ngl-datatable-column>
                         <ngl-datatable-column heading="Asunto" key="titulo" sortable>
@@ -62,7 +62,7 @@
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasResueltas" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort2($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>
-                                <a [routerLink]="[ '/linea/consulta/ver', value ]">Ver</a>
+                                <button type="button" nglButton variant="brand" [routerLink]="[ '/linea/consulta/ver', value ]">Ver</button>
                             </ng-template>
                         </ngl-datatable-column>
                         <ngl-datatable-column heading="Asunto" key="titulo" sortable></ngl-datatable-column>

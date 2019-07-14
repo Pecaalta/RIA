@@ -53,15 +53,4 @@
       </div>
     </div>
   </div>
-  <ngl-modal [(open)]="open">
-    <div class="slds-p-around_medium">
-      <ng-container *ngIf="enviada == true; else elseTemplate">
-        <p>Tu respuesta ha sido enviada al usuario exitosamente.</p>
-        <button id="botonModal" (click)="redirigir()">Volver a la pagina de consultas</button>
-      </ng-container>
-      <ng-template #elseTemplate>
-        <p>Ha ocurrido un error al enviar la respuesta, por favor intentelo nuevamente.</p>
-      </ng-template>
-    </div>
-  </ngl-modal>
 </div>

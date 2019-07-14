@@ -36,7 +36,7 @@
     </div>  
     <div class="slds-col_padded">
       <ngl-input label="Contraseña" [error]="hasError ? error : null">
-        <input ngl type="password" [(ngModel)]="pass" [required]="required" [disabled]="disabled" placeholder="Contraseña">
+        <input class="searchbarinput" ngl type="password" [(ngModel)]="pass" [required]="required" [disabled]="disabled" placeholder="Contraseña" ng-keyup="$event.keyCode == 13 ? login() : null">
       </ngl-input>
     </div>
     <a class="registro" [routerLink]="['/registro']">Registrate si aun no tienes usuario</a>

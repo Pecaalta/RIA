@@ -16,6 +16,10 @@ export class ConsultasNuevaComponent implements OnInit {
   hasErrorConsulta = false;
   error = 'The input has an error!';
 
+  variant:string = "error"; 
+  showTopToast = false;
+  msj: string = "";
+
   consulta:ConsultaDto = {
     titulo: "",
     consulta: ""
@@ -32,6 +36,7 @@ export class ConsultasNuevaComponent implements OnInit {
   post_consulta(){
     this.hasErrorConsulta = false;
     this.hasErrorTitulo = false;
+    this.variant = "warning";
     if (this.consulta.titulo.length < 3 || this.consulta.titulo == "" || this.consulta.titulo == null) {
       this.hasErrorTitulo = true;
       this.error = "El título debe tener al menos 3 caracteres";
@@ -41,12 +46,17 @@ export class ConsultasNuevaComponent implements OnInit {
     } else {
       this.oConsultasService.post(this.consulta).subscribe(
         resultado => {
-          console.log(resultado);
-          this.enviada = true;
+          this.variant = "success";
+          this.msj = "Su consulta fue enviada correctamente, sera redireccionado a la lista de consultas.";
+          this.showTopToast = true;
+          setTimeout(() => {
+            this.redirigir();
+          }, 3000);
         },
         error => {
-          console.log(error);
-          this.enviada = false;
+          this.variant = "error";
+          this.msj = error;
+          this.showTopToast = true;
         }
       )
       this.open = true;
