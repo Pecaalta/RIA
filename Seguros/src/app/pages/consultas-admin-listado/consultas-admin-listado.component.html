@@ -10,7 +10,7 @@
         </div>
         <div class="slds-card_body cuadroConsulta">
             <ngl-tabset [(selected)]="selectedTab" [variant]="variant">
-                <ng-template ngl-tab label="Pendientes de lectura">
+                <ng-template ngl-tab label="Para leer"  >
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinLeer" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
                       <ngl-datatable-column heading="Ver" key="id_Consulta">
                         <ng-template nglDatatableCell let-value>
@@ -32,7 +32,7 @@
                         <ng-template nglNoRowsOverlay>No tienes nuevas consultas para leer.</ng-template>
                     </table>
                 </ng-template>
-                <ng-template ngl-tab label="Pendientes de respuesta">
+                <ng-template ngl-tab label="Para responder">
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinResponder" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort3($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>

@@ -7,13 +7,13 @@
                     <h2 class="titulo">Tus consultas</h2>
                 </div>
                 <div class="slds-no-flex">
-                    <button class="slds-button slds-button_neutral" [routerLink]="['/user/consulta/nueva']">Realizar nueva consulta</button>
+                    <button class="slds-button slds-button_neutral" [routerLink]="['/user/consulta/nueva']">Consultar</button>
                 </div>
             </header>
         </div>
         <div class="slds-card_body cuadroConsulta">
             <ngl-tabset [(selected)]="selectedTab" [variant]="variant">
-                <ng-template ngl-tab label="Pendientes de lectura">
+                <ng-template ngl-tab label="Sin leer">
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinLeer" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>
@@ -34,7 +34,7 @@
                         <ng-template nglNoRowsOverlay>No tienes nuevas consultas respondidas para leer.</ng-template>
                     </table>
                 </ng-template>
-                <ng-template ngl-tab label="Pendientes de respuesta">
+                <ng-template ngl-tab label="Sin respuesta">
                     <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_fixed-layout" ngl-datatable [data]="consultasSinResponder" trackByKey="rank" [loading]="cargando" [(sort)]="sort" (sortChange)="onSort3($event)" (rowClick)="onRowClick($event)">
                         <ngl-datatable-column heading="Ver" key="id_Consulta">
                             <ng-template nglDatatableCell let-value>
