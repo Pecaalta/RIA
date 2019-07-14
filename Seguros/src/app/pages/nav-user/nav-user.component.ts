@@ -19,6 +19,9 @@ export class NavUserComponent implements OnInit {
 
   user:string = "";
   pass:string = "";
+  nombres:string = "";
+  apellidos:string = "";
+  nombreCompleto:string = "";
 
   constructor(
     private router: Router,
@@ -27,6 +30,9 @@ export class NavUserComponent implements OnInit {
   ngOnInit() {
     this.bNavModeVertical = !(window.innerWidth > 720);
     this.user = this.oUsuariosService.getSession().email;
+    this.nombres = this.oUsuariosService.getSession().nombres;
+    this.apellidos = this.oUsuariosService.getSession().apellidos;
+    this.nombreCompleto = this.nombres + " " + this.apellidos;
   }
 
   onResize(event){

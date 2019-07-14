@@ -9,8 +9,8 @@
               <h2 class="sub-titulo">
                 {{item.titulo}}
               </h2>
-              <p>Usuario: <span style="color: red">{{item.usuario}}</span></p>
-              <p>Fecha de envío: {{print_date(item.fechaHora)}}</p>
+              <p><b>Usuario:</b> <span style="color: red"> {{item.usuario}}</span></p>
+              <p><b>Fecha de envío:</b> {{print_date(item.fechaHora)}}</p>
               <ng-container *ngIf="item.respuesta.length > 0">
                 <ng-container *ngIf="item.respuestaVista == true; else elseTemplate" st>
                   <p style="color: red">La respuesta fue leída por el usuario.</p>
@@ -26,20 +26,29 @@
           <h5 class="subTituloConsulta">
             Consulta del cliente:
           </h5>
-          <p>{{item.consulta}}</p>
+          <div class="fondo">
+            <p>{{item.consulta}}</p>
+          </div>
           <br>
           <h5 class="subTituloConsulta">
-              Respuesta:
+            Respuesta:
             </h5>
           <ng-container *ngIf="item.respuesta.length > 0; else elseTemplate2">
-            <p>{{item.respuesta}}</p>
+            <div class="fondo">
+              <p>{{item.respuesta}}</p>
+            </div>
           </ng-container>
           <ng-template #elseTemplate2>
             <ngl-textarea label="Respuesta a la consulta" fieldLevelHelpTooltip="Aquí va tu respuesta para el usuario" [error]="hasErrorConsulta ? error : null">
               <textarea [(ngModel)]="consultaTexto.value" ngl [required]="required" [disabled]="disabled" placeholder="Escribe tu respuesta aquí"></textarea>
             </ngl-textarea>
-            <button (click)="put_respuesta()">Enviar respuesta</button>
+            <button type="button" nglButton variant="brand" (click)="put_respuesta()">Enviar respuesta</button>
           </ng-template>
+          <div class="slds-notify_container">
+            <ngl-toast *ngIf="showTopToast" [variant]="variant" (close)="showTopToast = false;" duration="5000">
+              <h2 class="slds-text-heading_small">{{ msj }}</h2>
+            </ngl-toast>
+          </div>
         </div>
       </div>
     </div>

@@ -8,15 +8,11 @@ import { AutentificadoGuard } from './guards/autentificado.guard';
 import { ListadoNoticiasComponent } from './pages/listado-noticias/listado-noticias.component';
 import { AgregarNoticiaComponent } from './pages/agregar-noticia/agregar-noticia.component';
 import { VerNoticiasComponent } from './pages/ver-noticias/ver-noticias.component';
-
-//Consultas - Lucas
 import { ConsultasListaComponent } from "./pages/consultas-lista/consultas-lista.component";
 import { ConsultasNuevaComponent } from './pages/consultas-nueva/consultas-nueva.component';
 import { ConsultasVerComponent } from './pages/consultas-ver/consultas-ver.component';
 import { ConsultasAdminListadoComponent } from './pages/consultas-admin-listado/consultas-admin-listado.component';
 import { ConsultasAdminVerComponent } from './pages/consultas-admin-ver/consultas-admin-ver.component';
-
-//Tipos de seguro - Mariano
 import { TiposdeseguroNuevoComponent } from './pages/tiposdeseguro-nuevo/tiposdeseguro-nuevo.component';
 import { TiposdeseguroListaComponent } from './pages/tiposdeseguro-lista/tiposdeseguro-lista.component';
 import { TiposdeseguroVerComponent } from './pages/tiposdeseguro-ver/tiposdeseguro-ver.component';
@@ -26,12 +22,14 @@ import { ListadoSegurosComponent } from './pages/listado-seguros/listado-seguros
 import { AgregarSegurosComponent } from './pages/agregar-seguros/agregar-seguros.component';
 import { SegurosListaUsuarioComponent } from './pages/seguros-lista-usuario/seguros-lista-usuario.component';
 import { SegurosVerUsuarioComponent } from './pages/seguros-ver-usuario/seguros-ver-usuario.component';
+import { SegurosListaPublicaComponent } from './pages/seguros-lista-publica/seguros-lista-publica.component';
 
 const routes: Routes = [
   { path:"", component: NoticiasComponent },
   { path:"inicio", component: NoticiasComponent },
   { path:"nosotros", component: NosotrosComponent },
   { path:"contactos", component: ContactosComponent },
+  { path:"seguros", component: SegurosListaPublicaComponent },
   { path:"registro", component: RegistroComponent },
   { path:"linea", canActivateChild:[AutentificadoGuard] , children: [
     

@@ -37,6 +37,8 @@ export class SegurosListaUsuarioComponent implements OnInit {
   lista_segurosVencidos:Seguro[] = [];
   lista_segurosVencidosFiltro:Seguro[] = [];
 
+  MILISENGUNDOS_POR_DIA = 1000 * 60 * 60 * 24;
+
   getMisSeguros(){
     this.cargando = true;
     this.oSegurosService.get_misseguros().subscribe(
@@ -90,6 +92,29 @@ export class SegurosListaUsuarioComponent implements OnInit {
         break;
     }
   }
+
+  porVencer(vencimiento:Date){
+
+    console.log(vencimiento);
+    let hoy = new Date();
+    let v = new Date(vencimiento);
+    console.log(hoy.toString());
+    console.log(v.toString());
+    if(this.diferenciaEntreDiasEnDias(v,hoy) <= 31){
+      console.log(this.diferenciaEntreDiasEnDias(v,hoy));
+      return "porVencer";
+    } else{
+      return "normal";
+    }
+  }
+
+ diferenciaEntreDiasEnDias(a:Date, b:Date)
+{
+  var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  console.log(Math.floor((utc2 - utc1) / this.MILISENGUNDOS_POR_DIA).toString());
+  return Math.floor((utc2 - utc1) / this.MILISENGUNDOS_POR_DIA);
+}
 
   print_date(date:string){
     let oDate = new Date(date);

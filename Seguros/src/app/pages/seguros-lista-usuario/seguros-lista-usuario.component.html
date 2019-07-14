@@ -8,7 +8,7 @@
                 <h2 class="titulo">Seguros</h2>
               </div>
               <div class="slds-no-flex">
-                <p>Los seguros marcados con "icono" significa que estan cerca de vencer</p>
+                <p>Los seguros cuyo titulo este en color <span style="color:red;">rojo</span>, significa que esta cerca de vencer.</p>
               </div>
             </div>
           </header>
@@ -23,7 +23,7 @@
                     <span class='Color' [style.background-color]="print_color(value)"></span>
                   </ng-template>
                 </ngl-datatable-column>
-                <ngl-datatable-column heading="Titulo" key="titulo"></ngl-datatable-column>
+                <ngl-datatable-column heading="Titulo" key="titulo" [cellClass]="'porVencer'"></ngl-datatable-column>
                 <ngl-datatable-column heading="Vencimiento" key="fechaFechaFin" truncate sortable>
                   <ng-template nglDatatableCell let-value>
                     {{ print_date(value) }}

@@ -14,11 +14,15 @@ export class ConsultasAdminVerComponent implements OnInit {
   open = false;
   enviada = false;
 
+  variant:string = "error"; 
+  showTopToast = false;
+  msj: string = "";
+
   idConsulta:string;
   consultas:Consultas[] = [];
 
   consultaTexto:StrignDto ={
-    value: null
+    value: ""
   }
 
   cargando:boolean = false;
@@ -56,16 +60,23 @@ export class ConsultasAdminVerComponent implements OnInit {
   }
 
   put_respuesta(){
-    this.oConsultasService.put_respuesta(this.idConsulta, this.consultaTexto).subscribe(
-      resultado => {
-        console.log(resultado);
-        this.enviada = true;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-    this.open = true;
+    this.variant = "warning";
+    if (this.consultaTexto.value.length <= 0) {
+      this.msj = "La respuesta no debe estar vacía";
+      this.showTopToast = true;
+    }
+    else{
+      this.oConsultasService.put_respuesta(this.idConsulta, this.consultaTexto).subscribe(
+        resultado => {
+          console.log(resultado);
+          this.enviada = true;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      this.open = true;
+    }
   }
 
   redirigir(){

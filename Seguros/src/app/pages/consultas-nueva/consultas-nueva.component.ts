@@ -17,8 +17,8 @@ export class ConsultasNuevaComponent implements OnInit {
   error = 'The input has an error!';
 
   consulta:ConsultaDto = {
-    titulo: null,
-    consulta: null
+    titulo: "",
+    consulta: ""
   }
 
   constructor(
