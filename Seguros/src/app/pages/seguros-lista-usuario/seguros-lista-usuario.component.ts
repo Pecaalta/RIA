@@ -55,6 +55,7 @@ export class SegurosListaUsuarioComponent implements OnInit {
           }
         });
         this.filtroVencidos();
+        this.lista_segurosActivos = this.lista_segurosActivos.sort((a,b) => a.fechaFechaFin.localeCompare(b.fechaFechaFin));
       },
       error => {
         this.cargando = false;
