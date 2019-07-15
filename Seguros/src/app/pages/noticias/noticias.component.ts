@@ -20,6 +20,7 @@ export class NoticiasComponent implements OnInit {
       resultado => {
         this.cargando = false;
         this.lista_noticias = resultado; 
+        this.lista_noticias = this.lista_noticias.reverse();
       },
       error => {
         this.cargando = false;
