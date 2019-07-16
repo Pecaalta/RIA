@@ -45,8 +45,7 @@ export class AgregarNoticiaComponent implements OnInit {
         'align': 'right',
         'buttonsVisible': 2
       }
-    },
-    iconsTemplate: 'font_awesome_5'
+    }
   }
   constructor(
     private router: Router,

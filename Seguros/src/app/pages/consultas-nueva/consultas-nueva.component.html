@@ -1,7 +1,7 @@
 <app-nav-user></app-nav-user>
 <div class="container">
   <div class="slds-card">
-      <div class="slds-card_body">
+      <div class="slds-card_body p-1rem">
           <ngl-input label="Título" [error]="hasErrorTitulo ? error : null">
               <input ngl [(ngModel)]="consulta.titulo" type="input" [required]="required" [disabled]="disabled" placeholder="Título de la consulta">
           </ngl-input>
