@@ -49,14 +49,30 @@
                 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
+.imagen{
+    padding: 0;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    margin-top: 5px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 
+                0 1px 5px 0 rgba(0, 0, 0, 0.12), 
+                0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    padding: .5rem;
+    margin-right: 0.5rem;
+}
+
 @media only screen and (max-width: 600px) {
-    .slds-media__figure {
+    .imagen {
         border-radius: 0px;
     }
     .slds-card {
-        overflow: hidden;
+        //overflow: hidden;
     }
-    .slds-media__figure {
+    .info{
+        display: none;
+    }
+    .imagen {
         margin-top: 0;
         width: 100%;
         display: block;
@@ -69,7 +85,7 @@
     .slds-card__header {
         padding: 0;
     }
-    .slds-media__figure {
+    .imagen {
         padding: 0;
     }
     .slds-media__body {

@@ -29,6 +29,7 @@ export class VerNoticiasComponent implements OnInit {
 
   get(){
     let id = this.route.snapshot.paramMap.get("id");
+    let e;
     if (id != null){
       this.cargando = true;
       this.oNoticiasService.get(id).subscribe(

@@ -154,9 +154,9 @@ export class AgregarSegurosComponent implements OnInit {
     else if(this.Seguro.id_Tipo == null) this.norificacion("Falta un tipo de seguro", "2");
     else if(this.Seguro.titulo == "") this.norificacion("Falta un titulo", "2");
     else if(this.Seguro.descripccion == "") this.norificacion("Falta un descripcion", "2");
-    else if(this.Seguro.fechaFechaFin == null) this.norificacion("Falta un fecha de fin", "2");
+    else if(this.Seguro.fechaFechaFin == null) this.norificacion("Falta un fecha de vencimiento", "2");
     else if(this.Seguro.fechaInicio == null) this.norificacion("Falta un fecha de inicio", "2");
-    else if(this.Seguro.fechaInicio >= this.Seguro.fechaFechaFin) this.norificacion("Falta un fecha de inicio tiene que ue ser anterior a la de fin", "2");
+    else if(this.Seguro.fechaInicio >= this.Seguro.fechaFechaFin) this.norificacion("La fecha de inicio tiene que ser anterior a la de vencimiento", "2");
     else {
       this.cargando = true;
       let pedido = null;
@@ -167,7 +167,7 @@ export class AgregarSegurosComponent implements OnInit {
       }
       pedido.subscribe(
         resultado => {
-          this.norificacion("Su seguro se a guardado con exito", "3");
+          this.norificacion("Su seguro se ha guardado con exito", "3");
           this.cargando = false;
           this.router.navigate(['/linea/seguros']); 
         },

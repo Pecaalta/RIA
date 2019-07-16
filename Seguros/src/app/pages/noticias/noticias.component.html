@@ -1,21 +1,30 @@
 <app-nav-publica></app-nav-publica>
 
 <div *ngIf="!cargando && lista_noticias != null && lista_noticias.length > 0" class="container padding-top-1rem">
-    <article  *ngFor="let noticia of lista_noticias" class="slds-card" [routerLink]="['/' + noticia.id_Noticia]">
-      <div class="slds-card__header slds-grid">
-        <header class="slds-media slds-has-flexi-truncate">
-          <div class="slds-media__figure">
-              <img [src]="print_img(noticia)" alt="">
+  <article  *ngFor="let noticia of lista_noticias" class="slds-card" [routerLink]="['/' + noticia.id_Noticia]">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-has-flexi-truncate">
+        <!-- <div class="slds-media__figure">
+            <img [src]="print_img(noticia)" alt="">
+        </div> -->
+        <div class="slds-media__body">
+          <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 imagen">
+            <img [src]="print_img(noticia)">
           </div>
-          <div class="slds-media__body">
-            <h2 class="slds-card__header-title">{{ noticia.titulo }}</h2>
-            <span [innerHTML]='print_date(noticia.fechaHora)'></span>
-            <p [innerHTML]='print_text(noticia.texto)'></p>
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
+              <h2 class="slds-card__header-title">{{ noticia.titulo }}</h2>
+              <span class="info">
+                <span [innerHTML]='print_date(noticia.fechaHora)'></span>
+                <p [innerHTML]='print_text(noticia.texto)'></p>
+              </span>
           </div>
-        </header>
-      </div>
-    </article>
-</div>    
+        </div>
+        </div>
+      </header>
+    </div>
+  </article>
+</div>  
 
 <div *ngIf="!cargando && (lista_noticias == null || lista_noticias.length == 0)" class="container padding-top-1rem">
   <div class='msg_no_noticias'>
